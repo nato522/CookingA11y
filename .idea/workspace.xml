@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,8 +53,16 @@
       <option name="presentableId" value="Default" />
       <updated>1577224298916</updated>
       <workItem from="1577224300859" duration="860000" />
-      <workItem from="1577284220177" duration="3513000" />
+      <workItem from="1577284220177" duration="4076000" />
     </task>
+    <task id="LOCAL-00001" summary="added the .gitignore file">
+      <created>1577287941476</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1577287941476</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -73,5 +80,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added the .gitignore file" />
+    <option name="LAST_COMMIT_MESSAGE" value="added the .gitignore file" />
   </component>
 </project>
