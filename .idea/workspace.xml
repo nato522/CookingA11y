@@ -2,13 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Homepage/Homepage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Homepage/Homepage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RecipeDetails/RecipeDetails.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RecipeDetails/RecipeDetails.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Recipes/Recipes.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Recipes/Recipes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sidebar/Sidebar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/ApiKey.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/DataModel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -21,14 +41,24 @@
     </option>
   </component>
   <component name="ProjectId" id="1VRmUeR2kxFeGW1ceiOOLsFCgNI" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../KTH/P3/Interactive Programming/Project/IRhyme" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ruxan\OneDrive\Desktop\UPM\go_bananas\src" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -54,6 +84,7 @@
       <updated>1577224298916</updated>
       <workItem from="1577224300859" duration="860000" />
       <workItem from="1577284220177" duration="4076000" />
+      <workItem from="1577288396562" duration="2021000" />
     </task>
     <task id="LOCAL-00001" summary="added the .gitignore file">
       <created>1577287941476</created>
@@ -62,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577287941476</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added the .gitignore file">
+      <created>1577288591872</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1577288591872</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
