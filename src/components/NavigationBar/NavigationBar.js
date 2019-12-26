@@ -45,11 +45,11 @@ class NavigationBar extends Component {
 								<Anchor label="Recommendations" href="#" />
 								<Anchor label="Add your recipe" href="#" />
 							</AppBar>
-							<Box direction='row' flex overflow={{ horizontal: 'hidden' }}>
-								<Box flex align='center' justify='center'>
-									app body
-								</Box>
-							</Box>
+							{/*<Box direction='row' flex overflow={{ horizontal: 'hidden' }}>*/}
+							{/*	<Box flex align='center' justify='center'>*/}
+							{/*		app body*/}
+							{/*	</Box>*/}
+							{/*</Box>*/}
 						</Box>
 					)}
 				</ResponsiveContext.Consumer>

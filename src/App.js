@@ -3,6 +3,7 @@ import {Link, Route} from "react-router-dom";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import Footer from "./components/FooterWebpage/FooterWebpage"
 import SkipToContent from "./components/SkipToContent/SkipToContent";
+import Homepage from "./views/Homepage/Homepage"
 
 class App extends Component {
   constructor(props) {
@@ -16,8 +17,8 @@ class App extends Component {
         <div className="App">
           <SkipToContent/>
           <NavigationBar/>
+          <Route exact path="/" component={Homepage}/>
           <Footer/>
-          {/*<Route exact path="/" component={NavigationBar}/>*/}
         </div>
     );
   }
