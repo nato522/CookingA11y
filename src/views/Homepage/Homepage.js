@@ -25,7 +25,8 @@ class Homepage extends Component {
 		super(props);
 
 		this.state = {
-			joke: ""
+			joke: "",
+			welcome_recipes: []
 		}
 	}
 
@@ -39,10 +40,31 @@ class Homepage extends Component {
 			}).catch(error => {
 			console.error(error);
 		});
+
+		modelInstance.getRandomRecipes(4)
+			.then(welcome_recipes => {
+				this.setState({
+					welcome_recipes: welcome_recipes.recipes
+				})
+			}).catch(error => {
+			console.error(error);
+		});
 	}
 
 
 	render() {
+		let welcome_recipes = this.state.welcome_recipes;
+		let recipes = welcome_recipes.map((recipe, i) => (
+			<div className="col-md-3" key={i}>
+				<div>
+					<img className="img-thumbnail" src={recipe.image} alt={recipe.title}/>
+					<div className="caption" id="captionOverview">
+						<p>{recipe.title}</p>
+					</div>
+				</div>
+			</div>
+		));
+
 		return(
 			<Grid as="welcome_grid"
 				areas={[
@@ -61,7 +83,9 @@ class Homepage extends Component {
 						{this.state.joke}
 					</Heading>
 				</Box>
-				<Box gridArea="nav" background="light-3" />
+				<Box gridArea="nav" background="light-3">
+					{recipes}
+				</Box>
 			</Grid>
 	);
 	}

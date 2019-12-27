@@ -16,6 +16,11 @@ class DataModel {
 		return fetch(url, httpOptions).then(this.processResponse);
 	}
 
+	getRandomRecipes(number_of_recipes) {
+		const url = `${BASE_URL}/recipes/random?number=` + number_of_recipes;
+		return fetch(url, httpOptions).then(this.processResponse);
+	}
+
 	processResponse(response) {
 		if (response.ok) {
 			return response.json();
