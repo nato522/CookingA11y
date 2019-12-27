@@ -2,6 +2,9 @@ import modelInstance from "../../data/DataModel"
 import React, { Component } from "react";
 import "./Recipes.css";
 import {Box, Button, Grommet} from 'grommet';
+import { Add } from 'grommet-icons';
+import SearchBox from '../../components/SearchBox/SearchBox';
+import RecipeCard from '../../components/RecipeCard/RecipeCard';
 
 let limit = 9;
 let offset = 0;
@@ -12,6 +15,7 @@ class Recipes extends Component {
 		super(props);
 		this.state = {
             recipes: [],
+            total: 0,
         }
 	}
 
@@ -21,6 +25,7 @@ class Recipes extends Component {
                 console.log(data);
                 this.setState({
                     recipes: data.results,
+                    total: data.totalResults,
                 });
 			}).catch(error => {
                 console.error(error);
@@ -36,6 +41,7 @@ class Recipes extends Component {
                 const old_recipes = this.state.recipes.slice();
                 this.setState({
                     recipes: old_recipes.concat(data.results),
+                    total: data.totalResults,
                 });
 			}).catch(error => {
                 console.error(error);
@@ -46,24 +52,19 @@ class Recipes extends Component {
 		return(
 			<Grommet>
 				<Box flex align='center' justify='center'>
-                    {/* TODO: <SearchBox />*/}
-                    {/* TODO: <Filters />*/}
-                    {/* TODO: <RecipeCards />*/}
-                    {/* TODO: <RecipeCards />*/}
-                    {/* TODO: <RecipeCards />*/}
+                    <SearchBox />
                     { this.state.recipes.map((recipe) => {
                         return(
-                            <div key={recipe.id}>
-                                <img src={`https://spoonacular.com/recipeImages/${recipe.id}-90x90.jpg`} alt={recipe.title}/>
-                                <h2>{recipe.title}</h2>
-                                <p>Ready in {recipe.readyInMinutes} minutes!</p>
-                            </div>
+                            <RecipeCard key={recipe.id} recipe={recipe} />
                         )
                     })}
-                    <Button
+                    { this.state.recipes.length < this.state.total && <Button
+                        icon={<Add />}
                         label= "See more!"
                         onClick={this.getMoreRecipes}
                     />
+
+                    }
 				</Box>
                 <Box>
                     {/* TODO: <Sidebar />*/}
