@@ -1,8 +1,23 @@
 import modelInstance from "../../data/DataModel"
 import React, { Component } from "react";
 import "./Homepage.css";
-import {Box, Grommet} from 'grommet';
+import {Box, Grid, Heading} from 'grommet';
+import banana from "../../images/banana.jpg";
+import meal from "../../images/meal.jpg"
+import cooking from "../../images/cooking.jpg"
 
+const theme = {
+	global: {
+		colors: {
+			brand: 'black',
+		},
+		font: {
+			family: 'Roboto',
+			size: '18px',
+			height: '20px',
+		},
+	},
+};
 
 class Homepage extends Component {
 
@@ -26,14 +41,29 @@ class Homepage extends Component {
 		});
 	}
 
+
 	render() {
 		return(
-			<Grommet>
-				<Box flex align='center' justify='center'>
-					{this.state.joke}
+			<Grid as="welcome_grid"
+				areas={[
+					{ name: "main", start: [0, 0], end: [2, 0] },
+					{ name: "nav", start: [0, 1], end: [2, 1] }
+				]}
+				columns={["flex"]}
+				rows={["medium", "medium"]}
+				gap="medium"
+			>
+				<Box gridArea="main" background="url(http://bgfons.com/upload/img1384812620.jpg)">
+					<Heading level='1' alignSelf='center' margin={{top: 'xlarge'}}>
+						Welcome
+					</Heading>
+					<Heading level='3' alignSelf='center' margin={{top: 'medium'}}>
+						{this.state.joke}
+					</Heading>
 				</Box>
-			</Grommet>
-		);
+				<Box gridArea="nav" background="light-3" />
+			</Grid>
+	);
 	}
 }
 
