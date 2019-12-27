@@ -18,7 +18,7 @@ class Recipes extends Component {
             total: 0,
         }
 	}
-
+/*
 	componentDidMount() {
 		modelInstance.getRecipes(limit, offset)
 			.then(data => {
@@ -31,7 +31,7 @@ class Recipes extends Component {
                 console.error(error);
             });
     }
-
+*/
     getMoreRecipes = () =>{
         offset += limit;
 
