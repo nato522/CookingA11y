@@ -2,7 +2,9 @@ import API_KEY from "./ApiKey";
 
 const BASE_URL= "http://sunset.nada.kth.se:8080/iprog/group/45";
 const httpOptions = {
-	headers: { "X-Mashape-Key": API_KEY }
+	headers: {
+		"X-Mashape-Key": API_KEY,
+	}
 };
 
 
@@ -13,6 +15,11 @@ class DataModel {
 
 	getRandomFoodJoke() {
 		const url = `${BASE_URL}/food/jokes/random`;
+		return fetch(url, httpOptions).then(this.processResponse);
+	}
+
+	getRecipes(limit, offset) {
+		const url = `${BASE_URL}/recipes/search?number=${limit}&offset=${offset}`;
 		return fetch(url, httpOptions).then(this.processResponse);
 	}
 
