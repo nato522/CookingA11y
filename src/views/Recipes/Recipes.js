@@ -4,6 +4,7 @@ import "./Recipes.css";
 import {Box, Button, Grommet} from 'grommet';
 import { Add } from 'grommet-icons';
 import SearchBox from '../../components/SearchBox/SearchBox';
+import RecipeCard from '../../components/RecipeCard/RecipeCard';
 
 let limit = 9;
 let offset = 0;
@@ -54,15 +55,7 @@ class Recipes extends Component {
                     <SearchBox />
                     { this.state.recipes.map((recipe) => {
                         return(
-                            /**
-                            *   TODO: recipeCard with the basic info
-                            *   <RecipeCard key={recipe.id} recipe={recipe} />
-                            */
-                            <div key={recipe.id}>
-                                <img src={`https://spoonacular.com/recipeImages/${recipe.id}-90x90.jpg`} alt={recipe.title}/>
-                                <h2>{recipe.title}</h2>
-                                <p>Ready in {recipe.readyInMinutes} minutes!</p>
-                            </div>
+                            <RecipeCard key={recipe.id} recipe={recipe} />
                         )
                     })}
                     { this.state.recipes.length < this.state.total && <Button
