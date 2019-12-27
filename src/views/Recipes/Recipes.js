@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./Recipes.css";
 import {Box, Button, Grommet} from 'grommet';
 import { Add } from 'grommet-icons';
+import SearchBox from '../../components/SearchBox/SearchBox';
 
 let limit = 9;
 let offset = 0;
@@ -16,7 +17,7 @@ class Recipes extends Component {
             total: 0,
         }
 	}
-    /*
+
 	componentDidMount() {
 		modelInstance.getRecipes(limit, offset)
 			.then(data => {
@@ -29,7 +30,7 @@ class Recipes extends Component {
                 console.error(error);
             });
     }
-    */
+
     getMoreRecipes = () =>{
         offset += limit;
 
@@ -39,6 +40,7 @@ class Recipes extends Component {
                 const old_recipes = this.state.recipes.slice();
                 this.setState({
                     recipes: old_recipes.concat(data.results),
+                    total: data.totalResults,
                 });
 			}).catch(error => {
                 console.error(error);
@@ -49,13 +51,13 @@ class Recipes extends Component {
 		return(
 			<Grommet>
 				<Box flex align='center' justify='center'>
-                    {/* TODO: <SearchBox />*/}
-                    {/* TODO: <Filters />*/}
-                    {/* TODO: <RecipeCard />*/}
-                    {/* TODO: <RecipeCard />*/}
-                    {/* TODO: <RecipeCard />*/}
+                    <SearchBox />
                     { this.state.recipes.map((recipe) => {
                         return(
+                            /**
+                            *   TODO: recipeCard with the basic info
+                            *   <RecipeCard key={recipe.id} recipe={recipe} />
+                            */
                             <div key={recipe.id}>
                                 <img src={`https://spoonacular.com/recipeImages/${recipe.id}-90x90.jpg`} alt={recipe.title}/>
                                 <h2>{recipe.title}</h2>
@@ -63,7 +65,7 @@ class Recipes extends Component {
                             </div>
                         )
                     })}
-                    { this.state.recipes.length <= this.state.total && <Button
+                    { this.state.recipes.length < this.state.total && <Button
                         icon={<Add />}
                         label= "See more!"
                         onClick={this.getMoreRecipes}
