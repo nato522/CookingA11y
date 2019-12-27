@@ -1,7 +1,7 @@
 import modelInstance from "../../data/DataModel"
 import React, { Component } from "react";
 import "./Recipes.css";
-import {Box, Button, Grommet} from 'grommet';
+import {Box, Button, Grid} from 'grommet';
 import { Add } from 'grommet-icons';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import RecipeCard from '../../components/RecipeCard/RecipeCard';
@@ -19,6 +19,7 @@ class Recipes extends Component {
         }
 	}
 
+    /*
 	componentDidMount() {
 		modelInstance.getRecipes(limit, offset)
 			.then(data => {
@@ -31,6 +32,7 @@ class Recipes extends Component {
                 console.error(error);
             });
     }
+    */
 
     getMoreRecipes = () =>{
         offset += limit;
@@ -50,8 +52,8 @@ class Recipes extends Component {
 
 	render() {
 		return(
-			<Grommet>
-				<Box flex align='center' justify='center'>
+            <div>
+                <Box flex >
                     <SearchBox />
                     { this.state.recipes.map((recipe) => {
                         return(
@@ -63,13 +65,12 @@ class Recipes extends Component {
                         label= "See more!"
                         onClick={this.getMoreRecipes}
                     />
-
                     }
-				</Box>
+                </Box>
                 <Box>
                     {/* TODO: <Sidebar />*/}
                 </Box>
-			</Grommet>
+            </div>
 		);
 	}
 }
