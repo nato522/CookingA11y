@@ -2,6 +2,7 @@ import modelInstance from "../../data/DataModel"
 import React, { Component } from "react";
 import "./Recipes.css";
 import {Box, Button, Grommet} from 'grommet';
+import { Add } from 'grommet-icons';
 
 let limit = 9;
 let offset = 0;
@@ -12,21 +13,23 @@ class Recipes extends Component {
 		super(props);
 		this.state = {
             recipes: [],
+            total: 0,
         }
 	}
-
+    /*
 	componentDidMount() {
 		modelInstance.getRecipes(limit, offset)
 			.then(data => {
                 console.log(data);
                 this.setState({
                     recipes: data.results,
+                    total: data.totalResults,
                 });
 			}).catch(error => {
                 console.error(error);
             });
     }
-
+    */
     getMoreRecipes = () =>{
         offset += limit;
 
@@ -48,9 +51,9 @@ class Recipes extends Component {
 				<Box flex align='center' justify='center'>
                     {/* TODO: <SearchBox />*/}
                     {/* TODO: <Filters />*/}
-                    {/* TODO: <RecipeCards />*/}
-                    {/* TODO: <RecipeCards />*/}
-                    {/* TODO: <RecipeCards />*/}
+                    {/* TODO: <RecipeCard />*/}
+                    {/* TODO: <RecipeCard />*/}
+                    {/* TODO: <RecipeCard />*/}
                     { this.state.recipes.map((recipe) => {
                         return(
                             <div key={recipe.id}>
@@ -60,10 +63,13 @@ class Recipes extends Component {
                             </div>
                         )
                     })}
-                    <Button
+                    { this.state.recipes.length <= this.state.total && <Button
+                        icon={<Add />}
                         label= "See more!"
                         onClick={this.getMoreRecipes}
                     />
+
+                    }
 				</Box>
                 <Box>
                     {/* TODO: <Sidebar />*/}
