@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="">
+    <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="added the joke of the day calling the API">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FooterWebpage/FooterWebpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FooterWebpage/FooterWebpage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/ApiKey.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/ApiKey.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/DataModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DataModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Homepage/Homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Homepage/Homepage.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +76,8 @@
       <workItem from="1577224300859" duration="860000" />
       <workItem from="1577284220177" duration="4076000" />
       <workItem from="1577288396562" duration="4335000" />
-      <workItem from="1577379167424" duration="12896000" />
+      <workItem from="1577379167424" duration="12965000" />
+      <workItem from="1577463509675" duration="44000" />
     </task>
     <task id="LOCAL-00001" summary="added the .gitignore file">
       <created>1577287941476</created>
@@ -118,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577395494958</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added the joke of the day calling the API">
+      <created>1577397261049</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1577397261049</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -142,6 +145,7 @@
     <MESSAGE value="created the structure of the project" />
     <MESSAGE value="draft on creating the Navigation Bar" />
     <MESSAGE value="completed SkipToContent, NavigationBar and Footer" />
-    <option name="LAST_COMMIT_MESSAGE" value="completed SkipToContent, NavigationBar and Footer" />
+    <MESSAGE value="added the joke of the day calling the API" />
+    <option name="LAST_COMMIT_MESSAGE" value="added the joke of the day calling the API" />
   </component>
 </project>
