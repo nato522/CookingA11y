@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./NavigationBar.css";
 import {Anchor, Box, Heading, Grommet, ResponsiveContext} from 'grommet';
+import {Link} from "react-router-dom";
 
 /* theme & AppBar need to be moved in NavigationBar.css or another file for the components folder*/
 const theme = {
@@ -35,21 +36,18 @@ class NavigationBar extends Component {
 
 	render() {
 		return (
-			<Grommet theme={theme} full>
+			<Grommet theme={theme}>
 				<ResponsiveContext.Consumer>
 					{size => (
 						<Box fill>
 							<AppBar>
 								<Heading level='3' margin='none'>Go Bananas Logo</Heading>
-								<Anchor label="Recipes" href="#" />
+								{/*<Link to="/recipes">*/}
+									<Anchor label="Recipes" href="#" />
+								{/*</Link>*/}
 								<Anchor label="Recommendations" href="#" />
 								<Anchor label="Add your recipe" href="#" />
 							</AppBar>
-							{/*<Box direction='row' flex overflow={{ horizontal: 'hidden' }}>*/}
-							{/*	<Box flex align='center' justify='center'>*/}
-							{/*		app body*/}
-							{/*	</Box>*/}
-							{/*</Box>*/}
 						</Box>
 					)}
 				</ResponsiveContext.Consumer>
