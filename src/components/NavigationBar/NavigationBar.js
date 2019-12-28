@@ -42,9 +42,9 @@ class NavigationBar extends Component {
 						<Box fill>
 							<AppBar>
 								<Heading level='3' margin='none'>Go Bananas Logo</Heading>
-								{/*<Link to="/recipes">*/}
+								<Link to="/recipes">
 									<Anchor label="Recipes" href="#" />
-								{/*</Link>*/}
+								</Link>
 								<Anchor label="Recommendations" href="#" />
 								<Anchor label="Add your recipe" href="#" />
 							</AppBar>
