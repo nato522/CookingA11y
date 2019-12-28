@@ -18,7 +18,7 @@ const theme = {
 const AppBar = (props) => (
 	<Box
 		align='start'
-		background= '#d6cfcf'
+		background= '#E0E3F0'
 		pad={{ left: 'medium'}}
 		{...props}
 	/>

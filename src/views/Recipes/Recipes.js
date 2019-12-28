@@ -16,16 +16,17 @@ class Recipes extends Component {
 		this.state = {
             recipes: [],
             total: 0,
+			baseURI: ""
         }
 	}
 
 	componentDidMount() {
 		modelInstance.getRecipes(limit, offset)
 			.then(data => {
-                console.log(data);
                 this.setState({
                     recipes: data.results,
                     total: data.totalResults,
+					baseURI: data.baseUri
                 });
 			}).catch(error => {
                 console.error(error);
@@ -53,9 +54,14 @@ class Recipes extends Component {
             <div>
                 <Box flex >
                     <SearchBox />
-                    { this.state.recipes.map((recipe) => {
+                    { this.state.recipes.map((recipe, i) => {
                         return(
-                            <RecipeCard key={recipe.id} recipe={recipe} />
+                            <RecipeCard key={i}
+								recipeID={recipe.id}
+								imageURL={`${this.state.baseURI}${recipe.imageUrls[0]}`}
+								title={recipe.title}
+								cookingTime={recipe.readyInMinutes}
+							/>
                         )
                     })}
                     { this.state.recipes.length < this.state.total && <Button

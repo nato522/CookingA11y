@@ -7,7 +7,7 @@ import {Link} from "react-router-dom";
 const theme = {
   global: {
     colors: {
-      brand: 'black',
+      brand: '#341A04',
     },
     font: {
       family: 'Roboto',
@@ -23,7 +23,7 @@ const AppBar = (props) => (
         direction='row'
         align='center'
         justify='evenly'
-        background= 'grey'
+        background= '#163D57'
         pad={{ left: 'medium', right: 'small', vertical: 'small', top: 'medium', bottom: 'medium'}}
         elevation='medium'
         style={{ zIndex: '1' }}

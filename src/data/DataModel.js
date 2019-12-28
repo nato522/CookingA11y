@@ -28,6 +28,11 @@ class DataModel {
 		return fetch(url, httpOptions).then(this.processResponse);
 	}
 
+	getRecipeByID(recipeID) {
+		const url = `${BASE_URL}/recipes/${recipeID}/information?includeNutrition=false`
+		return fetch(url, httpOptions).then(this.processResponse);
+	}
+
 	processResponse(response) {
 		if (response.ok) {
 			return response.json();
