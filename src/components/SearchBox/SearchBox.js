@@ -1,8 +1,9 @@
 import React from 'react';
 import { Box, Button, CheckBox, TextInput } from 'grommet';
 import { Search } from 'grommet-icons';
+import './SearchBox.css'
 
-const SearchBox = () => (
+const SearchBox = (props) => (
     <Box>
         <Box
             direction="row-responsive"
@@ -16,9 +17,16 @@ const SearchBox = () => (
             <Button
                 icon={<Search />}
                 label="Search"
+                onClick={props.getNewQuery}
             />
         </Box>
-        <Box margin="auto">
+        <Box
+            className="padding-20"
+            margin="auto"
+            background="white"
+            border="all"
+            elevation="medium"
+        >
             <Box
                 direction="row-responsive"
                 justify="center"

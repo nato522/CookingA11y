@@ -48,11 +48,17 @@ class Recipes extends Component {
             });
     }
 
+    getNewQuery = () => {
+        /**
+         * TODO: search recipes using the input
+         */
+    }
+
 	render() {
 		return(
             <div>
                 <Box flex >
-                    <SearchBox />
+                    <SearchBox search={this.getNewQuery} />
                     { this.state.recipes.map((recipe) => {
                         return(
                             <RecipeCard key={recipe.id} recipe={recipe} />
