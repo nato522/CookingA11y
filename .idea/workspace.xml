@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="added the joke of the day calling the API">
+    <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="finished Details View, but without the sidebar">
+      <change afterPath="$PROJECT_DIR$/src/components/RecipeCard/RecipeCard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/SearchBox/SearchBox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/burger.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/carrots.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/healthy_food.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/strawberries.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/vegetables.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Filters/Filters.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeCard/RecipeCard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Filters/Filters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchBox/SearchBox.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FooterWebpage/FooterWebpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FooterWebpage/FooterWebpage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SkipToContent/SkipToContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SkipToContent/SkipToContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/DataModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DataModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Homepage/Homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Homepage/Homepage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/RecipeDetails/RecipeDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/RecipeDetails/RecipeDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Recipes/Recipes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Recipes/Recipes.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +51,7 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -128,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577463575067</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="click in the navbar to go to the recipes page">
+      <created>1577537970364</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1577537970364</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,12 +173,14 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="added the .gitignore file" />
     <MESSAGE value="created the structure of the project" />
     <MESSAGE value="draft on creating the Navigation Bar" />
     <MESSAGE value="completed SkipToContent, NavigationBar and Footer" />
     <MESSAGE value="added the joke of the day calling the API" />
     <MESSAGE value="random commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="random commit" />
+    <MESSAGE value="click in the navbar to go to the recipes page" />
+    <option name="LAST_COMMIT_MESSAGE" value="click in the navbar to go to the recipes page" />
   </component>
 </project>

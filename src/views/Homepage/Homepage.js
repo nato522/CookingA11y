@@ -1,10 +1,15 @@
 import modelInstance from "../../data/DataModel"
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
 import "./Homepage.css";
-import {Box, Grid, Heading} from 'grommet';
+import {Box, Grid, Heading, Text} from 'grommet';
 import banana from "../../images/banana.jpg";
-import meal from "../../images/meal.jpg"
 import cooking from "../../images/cooking.jpg"
+import burger from "../../images/burger.jpg"
+import healthy from "../../images/healthy_food.jpg"
+import carrots from "../../images/carrots.jpg"
+import vegetables from "../../images/vegetables.jpg"
+import RecipeCard from "../../components/RecipeCard/RecipeCard";
 
 const theme = {
 	global: {
@@ -54,19 +59,20 @@ class Homepage extends Component {
 
 	render() {
 		let welcome_recipes = this.state.welcome_recipes;
+
 		let recipes = welcome_recipes.map((recipe, i) => (
-			<div className="col-md-3" key={i}>
-				<div>
-					<img className="img-thumbnail" src={recipe.image} alt={recipe.title}/>
-					<div className="caption" id="captionOverview">
-						<p>{recipe.title}</p>
-					</div>
-				</div>
-			</div>
+			<Link  to={"/recipe_details/" + recipe.id}>
+				<RecipeCard
+					recipeID={recipe.id}
+					imageURL={recipe.image}
+					title={recipe.title}
+					cookingTime={recipe.readyInMinutes}
+				/>
+			</Link>
 		));
 
 		return(
-			<Grid as="welcome_grid"
+			<Grid as="welcome_grid" justify="stretch"
 				areas={[
 					{ name: "main", start: [0, 0], end: [2, 0] },
 					{ name: "nav", start: [0, 1], end: [2, 1] }
@@ -75,15 +81,35 @@ class Homepage extends Component {
 				rows={["medium", "medium"]}
 				gap="medium"
 			>
-				<Box gridArea="main" background="url(http://bgfons.com/upload/img1384812620.jpg)">
-					<Heading level='1' alignSelf='center' margin={{top: 'xlarge'}}>
-						Welcome
-					</Heading>
-					<Heading level='3' alignSelf='center' margin={{top: 'medium'}}>
-						{this.state.joke}
-					</Heading>
+				<Box
+					gridArea="main"
+					background={`url(${burger})`}
+				>
+					{/*<Box*/}
+					{/*	width="400px"*/}
+					{/*	height="250px"*/}
+					{/*	background="#E0E3F0"*/}
+					{/*	direction="column"*/}
+					{/*	alignSelf="center"*/}
+					{/*	margin="auto"*/}
+					{/*>*/}
+						<Heading level='1' alignSelf='center' color="#E0E3F0">
+							Welcome
+						</Heading>
+						<Heading level='4' alignSelf='center' color="#E0E3F0">
+							{this.state.joke}
+						</Heading>
+					{/*</Box>*/}
 				</Box>
-				<Box gridArea="nav" background="light-3">
+				<Box
+					gridArea="nav"
+					background="#E0E3F0"
+					direction="row"
+					elevation="medium"
+					alignSelf='center'
+					justify='evenly'
+					pad={{ left: 'medium', right: 'small', vertical: 'small', top: 'medium', bottom: 'medium'}}
+				>
 					{recipes}
 				</Box>
 			</Grid>
