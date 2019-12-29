@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Button, CheckBox, TextInput } from 'grommet';
 import { Search } from 'grommet-icons';
-import './SearchBox.css'
+import './SearchBox.css';
 
 const SearchBox = (props) => (
     <Box>

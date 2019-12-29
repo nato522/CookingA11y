@@ -1,10 +1,12 @@
 import modelInstance from "../../data/DataModel"
 import React, { Component } from "react";
+import {Link} from "react-router-dom";
 import "./Recipes.css";
 import {Box, Button, Grid} from 'grommet';
 import { Add } from 'grommet-icons';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import RecipeCard from '../../components/RecipeCard/RecipeCard';
+import Sidebar from '../../components/Sidebar/Sidebar';
 
 let limit = 9;
 let offset = 0;
@@ -151,12 +153,12 @@ class Recipes extends Component {
 		return(
             <Grid as="recipes_grid"
                 areas={[
-                    {name: "searchbox", start: [0,0], end: [2,0]},
+                    {name: "searchbox", start: [0,0], end: [1,0]},
                     {name: "recipes", start: [0,1], end: [1,1]},
-                    {name: "sidebar", start: [2,1], end: [2,1]},
+                    {name: "sidebar", start: [2,0], end: [2,1]},
                 ]}
                 columns={['1000px', 'small']}
-                rows={['500px', 'large']}
+                rows={['200px', 'large']}
                 gap='none'
             >
                 <Box
@@ -177,14 +179,16 @@ class Recipes extends Component {
                     >
                         { this.state.recipes.map((recipe, i) => {
                             return(
-                                <Box gridArea="RecipeCard">
-                                    <RecipeCard key={i}
-                                        recipeID={recipe.id}
-                                        imageURL={`${this.state.baseURI}${recipe.imageUrls[0]}`}
-                                        title={recipe.title}
-                                        cookingTime={recipe.readyInMinutes}
-                                    />
-                                </Box>
+                                <Link to={"/recipe_details/" + recipe.id}>>
+                                    <Box gridArea="RecipeCard">
+                                        <RecipeCard key={i}
+                                            recipeID={recipe.id}
+                                            imageURL={`${this.state.baseURI}${recipe.imageUrls[0]}`}
+                                            title={recipe.title}
+                                            cookingTime={recipe.readyInMinutes}
+                                        />
+                                    </Box>
+                                </Link>
                             )
                         })}
                     </Box>
@@ -204,7 +208,7 @@ class Recipes extends Component {
                     gridArea='sidebar'
                     background='brand'
                 >
-                    {/* TODO: <Sidebar />*/}
+                    <Sidebar />
                 </Box>
             </Grid>
 		);
