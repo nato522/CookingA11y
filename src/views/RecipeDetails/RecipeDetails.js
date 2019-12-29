@@ -4,6 +4,7 @@ import { Add } from 'grommet-icons';
 import {Box, Button, Grid, Heading, Image, Paragraph, Text} from 'grommet';
 import {Table, TableBody, TableCell, TableHeader, TableRow} from 'grommet';
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
+import Sidebar from '../../components/Sidebar/Sidebar';
 import {Link} from "react-router-dom";
 
 
@@ -106,7 +107,9 @@ class RecipeDetails extends Component {
 						</Box>
 					</Box>
 				</Box>
-				<Box gridArea='sidebar' background='brand'margin={{top:'medium', right:'medium'}}/>
+				<Box gridArea='sidebar' background='brand'margin={{top:'medium', right:'medium'}}>
+					<Sidebar />
+				</Box>
 				<Box
 					gridArea='recipe_instructions'
 					background='#236ea0'
