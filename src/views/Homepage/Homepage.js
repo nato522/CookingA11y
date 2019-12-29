@@ -1,28 +1,20 @@
-import modelInstance from "../../data/DataModel"
 import React, { Component } from "react";
-import {Link} from "react-router-dom";
-import "./Homepage.css";
-import {Box, Grid, Heading, Text} from 'grommet';
+import { Link } from "react-router-dom";
+
+import modelInstance from "../../data/DataModel"
+
+import { Box, Grid, Heading, ResponsiveContext } from 'grommet';
+
 import banana from "../../images/banana.jpg";
 import cooking from "../../images/cooking.jpg"
 import burger from "../../images/burger.jpg"
 import healthy from "../../images/healthy_food.jpg"
 import carrots from "../../images/carrots.jpg"
 import vegetables from "../../images/vegetables.jpg"
-import RecipeCard from "../../components/RecipeCard/RecipeCard";
 
-const theme = {
-	global: {
-		colors: {
-			brand: 'black',
-		},
-		font: {
-			family: 'Roboto',
-			size: '18px',
-			height: '20px',
-		},
-	},
-};
+import "./Homepage.css";
+
+import RecipeCard from "../../components/RecipeCard/RecipeCard";
 
 class Homepage extends Component {
 
@@ -72,47 +64,46 @@ class Homepage extends Component {
 		));
 
 		return(
-			<Grid as="welcome_grid" justify="stretch"
-				areas={[
-					{ name: "main", start: [0, 0], end: [2, 0] },
-					{ name: "nav", start: [0, 1], end: [2, 1] }
-				]}
-				columns={["flex"]}
-				rows={["medium", "medium"]}
-				gap="medium"
-			>
-				<Box
-					gridArea="main"
-					background={`url(${burger})`}
-				>
-					{/*<Box*/}
-					{/*	width="400px"*/}
-					{/*	height="250px"*/}
-					{/*	background="#E0E3F0"*/}
-					{/*	direction="column"*/}
-					{/*	alignSelf="center"*/}
-					{/*	margin="auto"*/}
-					{/*>*/}
-						<Heading level='1' alignSelf='center' color="#E0E3F0">
-							Welcome
-						</Heading>
-						<Heading level='4' alignSelf='center' color="#E0E3F0">
-							{this.state.joke}
-						</Heading>
-					{/*</Box>*/}
-				</Box>
-				<Box
-					gridArea="nav"
-					background="#E0E3F0"
-					direction="row"
-					elevation="medium"
-					alignSelf='center'
-					justify='evenly'
-					pad={{ left: 'medium', right: 'small', vertical: 'small', top: 'medium', bottom: 'medium'}}
-				>
-					{recipes}
-				</Box>
-			</Grid>
+			<ResponsiveContext.Consumer>
+				{ size => (
+					<Grid as="welcome_grid" justify="stretch"
+						areas={[
+							{ name: "main", start: [0, 0], end: [2, 0] },
+							{ name: "nav", start: [0, 1], end: [2, 1] }
+						]}
+						columns={["flex"]}
+						rows={["medium", "medium"]}
+						gap="medium"
+					>
+						<Box
+							gridArea="main"
+							background={`url(${burger})`}
+						>
+							<Heading level='1' alignSelf='center' color="#E0E3F0">
+								Welcome
+							</Heading>
+							<Heading level='4' alignSelf='center' color="#E0E3F0">
+								{this.state.joke}
+							</Heading>
+						</Box>
+						{(size !== 'small') ? (
+							<Box
+							gridArea="nav"
+							background="#E0E3F0"
+							direction="row"
+							elevation="medium"
+							alignSelf='center'
+							justify='evenly'
+							pad={{ left: 'medium', right: 'small', vertical: 'small', top: 'medium', bottom: 'medium'}}
+						>
+							{recipes}
+						</Box>
+						) : (
+							<Heading>Testing responsiveness</Heading>
+						)}
+					</Grid>
+				)}
+			</ResponsiveContext.Consumer>
 	);
 	}
 }
