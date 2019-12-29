@@ -1,0 +1,29 @@
+.search-input{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.search-input__input{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.search-input__button{
+    border-style: solid;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.search-filters{
+    padding: 20px 0px 0px 20px;
+}
+
+.search-filters>div>label{
+    /**
+    * It's gonna be messy giving styles to this components...
+    * We have to build them and then find the elements created in actual html,
+    * and then finally apply the styles to those elements.
+    * I do not like this, there must be another way (please)
+    */
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
