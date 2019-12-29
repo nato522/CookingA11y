@@ -1,28 +1,28 @@
 import React from 'react';
-import { Box, Heading, Image, Paragraph } from 'grommet';
+import { Box, Heading, Image, Paragraph, Text } from 'grommet';
 
 const RecipeCard = (props) => {
     return(
         <Box
-            width="medium"
-            height="medium"
+            width='300px'
+            height="360px"
             round="small"
             border="all"
-            flex="grow"
-            overflow="auto"
+            overflow="hidden"
             responsive="true"
+            background="#F7F7F8"
+            margin={{right:"large"}}
         >
-            <Box
-            >
+            <Box height="250px" width="301px">
                 <Image
                     fit="cover"
-                    src={`https://spoonacular.com/recipeImages/${props.recipe.imageUrls[0]}`}
-                    alt={props.recipe.title}
+                    src={`${props.imageURL}`}
+                    alt={props.title}
                 />
             </Box>
             <Box>
-                <Heading level="2">{props.recipe.title}</Heading>
-                <Paragraph>Ready in {props.recipe.readyInMinutes} minutes!</Paragraph>
+                <Text size="20px" textAlign="center" weight="bold">{props.title}</Text>
+                <Text textAlign="center">Ready in {props.cookingTime} minutes!</Text>
             </Box>
         </Box>
     );

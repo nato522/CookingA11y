@@ -6,7 +6,7 @@ import {Box, Grommet, Footer, Text} from 'grommet';
 const theme = {
 	global: {
 		colors: {
-			brand: 'black',
+			brand: '#F7F7F8',
 		},
 		font: {
 			family: 'Roboto',
@@ -19,7 +19,7 @@ const AppBar = (props) => (
 	<Box
 		align='center'
 		justify='center'
-		background= 'grey'
+		background= '#163D57'
 		{...props}
 	/>
 );

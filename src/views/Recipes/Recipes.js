@@ -13,25 +13,118 @@ class Recipes extends Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {
-            recipes: [],
-            total: 0,
+        this.state = {
+            "recipes": [
+                {
+                    "id": 592479,
+                    "title": "Kale and Quinoa Salad with Black Beans",
+                    "readyInMinutes": 50,
+                    "servings": 6,
+                    "image": "Kale-and-Quinoa-Salad-with-Black-Beans-592479.jpg",
+                    "imageUrls": [
+                        "Kale-and-Quinoa-Salad-with-Black-Beans-592479.jpg"
+                    ]
+                },
+                {
+                    "id": 547775,
+                    "title": "Creamy Avocado Pasta",
+                    "readyInMinutes": 15,
+                    "servings": 2,
+                    "image": "Creamy-Avocado-Pasta-547775.jpg",
+                    "imageUrls": [
+                        "Creamy-Avocado-Pasta-547775.jpg"
+                    ]
+                },
+                {
+                    "id": 818941,
+                    "title": "Avocado Toast with Eggs, Spinach, and Tomatoes",
+                    "readyInMinutes": 10,
+                    "servings": 1,
+                    "image": "avocado-toast-with-eggs-spinach-and-tomatoes-818941.jpg",
+                    "imageUrls": [
+                        "avocado-toast-with-eggs-spinach-and-tomatoes-818941.jpg"
+                    ]
+                },
+                {
+                    "id": 495111,
+                    "title": "Citrus Sesame Kale",
+                    "readyInMinutes": 15,
+                    "servings": 4,
+                    "image": "Citrus-Sesame-Kale-495111.jpg",
+                    "imageUrls": [
+                        "Citrus-Sesame-Kale-495111.jpg"
+                    ]
+                },
+                {
+                    "id": 689502,
+                    "title": "Melt In Your Mouth Kale Salad",
+                    "readyInMinutes": 10,
+                    "servings": 2,
+                    "image": "Melt-In-Your-Mouth-Kale-Salad-689502.jpg",
+                    "imageUrls": [
+                        "Melt-In-Your-Mouth-Kale-Salad-689502.jpg"
+                    ]
+                },
+                {
+                    "id": 837136,
+                    "title": "Kale Pineapple Smoothie",
+                    "readyInMinutes": 4,
+                    "servings": 1,
+                    "image": "kale-pineapple-smoothie-837136.jpg",
+                    "imageUrls": [
+                        "kale-pineapple-smoothie-837136.jpg"
+                    ]
+                },
+                {
+                    "id": 582897,
+                    "title": "Mexican Salad with Lime Dressing",
+                    "readyInMinutes": 15,
+                    "servings": 4,
+                    "image": "Mexican-Salad-with-Lime-Dressing-582897.jpg",
+                    "imageUrls": [
+                        "Mexican-Salad-with-Lime-Dressing-582897.jpg"
+                    ]
+                },
+                {
+                    "id": 777037,
+                    "title": "Weekly Meal Plan #17",
+                    "readyInMinutes": 15,
+                    "servings": 6,
+                    "image": "weekly-meal-plan-17-777037.jpg",
+                    "imageUrls": [
+                        "weekly-meal-plan-17-777037.jpg"
+                    ]
+                },
+                {
+                    "id": 801710,
+                    "title": "Matcha Green Tea and Pineapple Smoothie",
+                    "readyInMinutes": 10,
+                    "servings": 1,
+                    "image": "matcha-green-tea-and-pineapple-smoothie-801710.jpg",
+                    "imageUrls": [
+                        "matcha-green-tea-and-pineapple-smoothie-801710.jpg"
+                    ]
+                }
+            ],
+            "total": 313346,
+            "baseURI": "https://spoonacular.com/recipeImages/"
         }
-	}
-/*
+    }
+    /*
 	componentDidMount() {
 		modelInstance.getRecipes(limit, offset)
 			.then(data => {
-                console.log(data);
                 this.setState({
                     recipes: data.results,
                     total: data.totalResults,
+					baseURI: data.baseUri
                 });
 			}).catch(error => {
                 console.error(error);
             });
     }
-*/
+    */
+
     getMoreRecipes = () =>{
         offset += limit;
 
@@ -56,25 +149,64 @@ class Recipes extends Component {
 
 	render() {
 		return(
-            <div>
-                <Box flex >
-                    <SearchBox search={this.getNewQuery} />
-                    { this.state.recipes.map((recipe) => {
-                        return(
-                            <RecipeCard key={recipe.id} recipe={recipe} />
-                        )
-                    })}
-                    { this.state.recipes.length < this.state.total && <Button
-                        icon={<Add />}
-                        label= "See more!"
-                        onClick={this.getMoreRecipes}
-                    />
-                    }
+            <Grid as="recipes_grid"
+                areas={[
+                    {name: "searchbox", start: [0,0], end: [2,0]},
+                    {name: "recipes", start: [0,1], end: [1,1]},
+                    {name: "sidebar", start: [2,1], end: [2,1]},
+                ]}
+                columns={['1000px', 'small']}
+                rows={['500px', 'large']}
+                gap='none'
+            >
+                <Box
+                    gridArea='searchbox'
+                    background='red'
+                >
+                    <SearchBox search={this.getNewQuery}/>
                 </Box>
-                <Box>
+                <Box
+                    gridArea='recipes'
+					background='blue'
+					overflow="auto"
+                >
+                    <Box
+                        direction="row"
+                        justify="evenly"
+                        alignSelf="center"
+                    >
+                        { this.state.recipes.map((recipe, i) => {
+                            return(
+                                <Box gridArea="RecipeCard">
+                                    <RecipeCard key={i}
+                                        recipeID={recipe.id}
+                                        imageURL={`${this.state.baseURI}${recipe.imageUrls[0]}`}
+                                        title={recipe.title}
+                                        cookingTime={recipe.readyInMinutes}
+                                    />
+                                </Box>
+                            )
+                        })}
+                    </Box>
+                    <Box
+                        align="end"
+                        margin="auto"
+                    >
+                        { this.state.recipes.length < this.state.total && <Button
+                            icon={<Add />}
+                            label= "See more!"
+                            onClick={this.getMoreRecipes}
+                        />
+                        }
+                    </Box>
+                </Box>
+                <Box
+                    gridArea='sidebar'
+                    background='brand'
+                >
                     {/* TODO: <Sidebar />*/}
                 </Box>
-            </div>
+            </Grid>
 		);
 	}
 }
