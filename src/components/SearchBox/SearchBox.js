@@ -8,20 +8,23 @@ const SearchBox = (props) => (
         <Box
             direction="row-responsive"
             margin="auto"
+            className="search-input"
         >
             <TextInput
+                className="search-input__input"
                 label="label"
                 placeholder="type here"
                 name="query"
             />
             <Button
+                className="search-input__button"
                 icon={<Search />}
                 label="Search"
                 onClick={props.getNewQuery}
             />
         </Box>
         <Box
-            className="padding-20"
+            className="search-filters"
             margin="auto"
             background="white"
             border="all"

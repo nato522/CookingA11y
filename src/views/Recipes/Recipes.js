@@ -151,66 +151,67 @@ class Recipes extends Component {
 
 	render() {
 		return(
-            <Grid as="recipes_grid"
-                areas={[
-                    {name: "searchbox", start: [0,0], end: [1,0]},
-                    {name: "recipes", start: [0,1], end: [1,1]},
-                    {name: "sidebar", start: [2,0], end: [2,1]},
-                ]}
-                columns={['1000px', 'small']}
-                rows={['200px', 'large']}
-                gap='none'
+            <Box
+                background="#ffc458"
             >
-                <Box
-                    gridArea='searchbox'
-                    background='red'
-                >
-                    <SearchBox search={this.getNewQuery}/>
-                </Box>
-                <Box
-                    gridArea='recipes'
-					background='blue'
-					overflow="auto"
+                <Grid as="recipes_grid"
+                    areas={[
+                        {name: "searchbox", start: [0,0], end: [1,0]},
+                        {name: "recipes", start: [0,1], end: [1,1]},
+                        {name: "sidebar", start: [2,0], end: [2,1]},
+                    ]}
+                    columns={['1000px', 'small']}
+                    rows={['200px', 'large']}
+                    gap='none'
                 >
                     <Box
-                        direction="row"
-                        justify="evenly"
-                        alignSelf="center"
+                        gridArea='searchbox'
                     >
-                        { this.state.recipes.map((recipe, i) => {
-                            return(
-                                <Link to={"/recipe_details/" + recipe.id}>>
-                                    <Box gridArea="RecipeCard">
-                                        <RecipeCard key={i}
-                                            recipeID={recipe.id}
-                                            imageURL={`${this.state.baseURI}${recipe.imageUrls[0]}`}
-                                            title={recipe.title}
-                                            cookingTime={recipe.readyInMinutes}
-                                        />
-                                    </Box>
-                                </Link>
-                            )
-                        })}
+                        <SearchBox search={this.getNewQuery}/>
                     </Box>
                     <Box
-                        align="end"
-                        margin="auto"
+                        gridArea='recipes'
+                        overflow="auto"
                     >
-                        { this.state.recipes.length < this.state.total && <Button
-                            icon={<Add />}
-                            label= "See more!"
-                            onClick={this.getMoreRecipes}
-                        />
-                        }
+                        <Box
+                            direction="row"
+                            justify="evenly"
+                            alignSelf="center"
+                        >
+                            { this.state.recipes.map((recipe, i) => {
+                                return(
+                                    <Link to={"/recipe_details/" + recipe.id}>
+                                        <Box gridArea="RecipeCard">
+                                            <RecipeCard key={i}
+                                                recipeID={recipe.id}
+                                                imageURL={`${this.state.baseURI}${recipe.imageUrls[0]}`}
+                                                title={recipe.title}
+                                                cookingTime={recipe.readyInMinutes}
+                                            />
+                                        </Box>
+                                    </Link>
+                                )
+                            })}
+                        </Box>
+                        <Box
+                            align="end"
+                            margin="auto"
+                        >
+                            { this.state.recipes.length < this.state.total && <Button
+                                icon={<Add />}
+                                label= "See more!"
+                                onClick={this.getMoreRecipes}
+                            />
+                            }
+                        </Box>
                     </Box>
-                </Box>
-                <Box
-                    gridArea='sidebar'
-                    background='brand'
-                >
-                    <Sidebar />
-                </Box>
-            </Grid>
+                    <Box
+                        gridArea='sidebar'
+                    >
+                        <Sidebar />
+                    </Box>
+                </Grid>
+            </Box>
 		);
 	}
 }
