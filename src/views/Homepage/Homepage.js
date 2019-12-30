@@ -72,7 +72,7 @@ class Homepage extends Component {
 							{ name: "random_recipes", start: [0, 1], end: [2, 1] }
 						]}
 						columns={["flex"]}
-						rows={["medium", "medium"]}
+						rows={["medium", "auto"]}
 						gap="medium"
 					>
 						<Box

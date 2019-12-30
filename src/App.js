@@ -15,8 +15,8 @@ import RecipeDetails from "./views/RecipeDetails/RecipeDetails";
 const theme = {
 	global: {
 		colors: {
-			brand: 'black',
-		},
+      brand: 'black'
+    },
 		font: {
 			family: 'Roboto',
 			size: '18px',
@@ -34,7 +34,11 @@ class App extends Component {
 
   render() {
     return (
-        <Grommet className="App" theme={theme}>
+        <Grommet
+          className="App"
+          theme={theme}
+          full={true}
+        >
           <SkipToContent/>
           <NavigationBar/>
           <Route exact path="/" component={Homepage}/>
