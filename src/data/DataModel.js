@@ -11,6 +11,7 @@ const httpOptions = {
 class DataModel {
 
 	constructor() {
+		this.dishType = ""
 	}
 
 	getRandomFoodJoke() {
@@ -38,6 +39,14 @@ class DataModel {
 			return response.json();
 		}
 		throw response;
+	}
+
+	setDishType(value) {
+		this.dishType = value;
+	}
+
+	getDishType() {
+		return this.dishType;
 	}
 }
 

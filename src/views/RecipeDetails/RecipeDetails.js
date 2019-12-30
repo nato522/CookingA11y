@@ -1,11 +1,52 @@
 import modelInstance from "../../data/DataModel"
 import React, { Component } from "react";
 import { Add } from 'grommet-icons';
-import {Box, Button, Grid, Heading, Image, Paragraph, Text} from 'grommet';
+import {Box, Button, CheckBox, Grid, Heading, Image, Layer, RadioButtonGroup, Text} from 'grommet';
 import {Table, TableBody, TableCell, TableHeader, TableRow} from 'grommet';
-import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import Sidebar from '../../components/Sidebar/Sidebar';
-import {Link} from "react-router-dom";
+
+function AddToMyMenu() {
+	const [show, setShow] = React.useState();
+	const [value, setValue] = React.useState('Starter');
+
+	return (
+		<Box>
+			<Button label="show"
+					gridArea="recipeDetailsGrid"
+					alignSelf="start"
+					margin="small"
+					icon={<Add />}
+					label="Add to my menu"
+					onClick={() => setShow(true)}
+			/>
+			{show && (
+				<Layer
+					   position='center'
+					   onEsc={() => setShow(false)}
+					   onClickOutside={() => setShow(false)}
+				>
+					<Text margin="small" >Please choose the dish type:</Text>
+					<RadioButtonGroup
+						name="dishType"
+						options={['Starter', 'First Dish', 'Second Dish', 'Desert']}
+						value={value}
+						onChange={(event) => setValue(event.target.value)}
+						margin="small"
+					/>
+					<Button
+						label="Finish"
+						onClick={() => {
+							setShow(false);
+							modelInstance.setDishType(value);
+						}}
+						alignSelf="center"
+						margin="small"
+					/>
+				</Layer>
+			)}
+		</Box>
+	);
+}
 
 
 class RecipeDetails extends Component {
@@ -16,7 +57,7 @@ class RecipeDetails extends Component {
 		this.state = {
 			recipe: "",
 			ingredients: [],
-			instructions: []
+			instructions: [],
 		}
 	}
 
@@ -69,14 +110,7 @@ class RecipeDetails extends Component {
 					margin={{top:'medium', left:'medium'}}
 				>
 					<Heading level="1" margin="small"> {this.state.recipe.title}</Heading>
-					<Button
-						gridArea="recipeDetailsGrid"
-						alignSelf="start"
-						margin="small"
-						icon={<Add />}
-						label="Add to my menu"
-						onClick={() => {}}
-					/>
+					<AddToMyMenu/>
 					<Box
 						gridArea="nav"
 						direction="row"
@@ -108,7 +142,7 @@ class RecipeDetails extends Component {
 					</Box>
 				</Box>
 				<Box gridArea='sidebar' background='brand'margin={{top:'medium', right:'medium'}}>
-					<Sidebar />
+					<Sidebar type={modelInstance.getDishType()}/>
 				</Box>
 				<Box
 					gridArea='recipe_instructions'
@@ -122,9 +156,7 @@ class RecipeDetails extends Component {
 					<Text margin="small">
 						{this.state.recipe.instructions}
 					</Text>
-					{/*<Text margin="small">*/}
-						{detailedInstructions}
-					{/*</Text>*/}
+					{detailedInstructions}
 				</Box>
 			</Grid>
 		);
