@@ -198,7 +198,7 @@ class Recipes extends Component {
                         {(size === "medium") &&
                             <Grid
                                 gridArea="recipes"
-                                columns={["1/2", "1/2"]}
+                                columns={["1/3", "1/3", "1/3"]}
                                 margin="auto"
                                 gap="medium"
                             >
