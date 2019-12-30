@@ -46,7 +46,6 @@ class Recipes extends Component {
 
         modelInstance.getRecipes(limit, offset)
 			.then(data => {
-                console.log(data);
                 const old_recipes = this.state.recipes.slice();
                 this.setState({
                     recipes: old_recipes.concat(data.results),
@@ -141,7 +140,7 @@ class Recipes extends Component {
                         <Box
                             gridArea='sidebar'
                         >
-                            <Sidebar />
+                            <Sidebar model={this.props.model}/>
                         </Box>
 
                     </Grid>
