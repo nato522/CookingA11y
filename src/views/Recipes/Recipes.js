@@ -228,7 +228,7 @@ class Recipes extends Component {
                         <Box
                             gridArea='sidebar'
                         >
-                            <Sidebar />
+                            <Sidebar model={this.props.model}/>
                         </Box>
 
                     </Grid>

@@ -4,11 +4,12 @@ import { Add } from 'grommet-icons';
 import {Box, Button, CheckBox, Grid, Heading, Image, Layer, RadioButtonGroup, Text} from 'grommet';
 import {Table, TableBody, TableCell, TableHeader, TableRow} from 'grommet';
 import Sidebar from '../../components/Sidebar/Sidebar';
+import {STARTER, FIRST_DISH, SECOND_DISH, DESERT} from "../../data/Constants"
 
 function AddToMyMenu(props) {
 
 	const [show, setShow] = React.useState();
-	const [value, setValue] = React.useState('Starter');
+	const [value, setValue] = React.useState(STARTER);
 
 	let addDishToMenu = () => {
 		modelInstance.addDishToMenu(value, props.dishTitle);
@@ -33,7 +34,7 @@ function AddToMyMenu(props) {
 					<Text margin="small" >Please choose the dish type:</Text>
 					<RadioButtonGroup
 						name="dishType"
-						options={['Starter', 'First Dish', 'Second Dish', 'Desert']}
+						options={[STARTER, FIRST_DISH, SECOND_DISH, DESERT]}
 						value={value}
 						onChange={(event) => setValue(event.target.value)}
 						margin="small"

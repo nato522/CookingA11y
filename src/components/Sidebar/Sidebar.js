@@ -2,11 +2,15 @@ import React, {Component} from 'react';
 import modelInstance from "../../data/DataModel"
 import { Accordion, AccordionPanel, Box, Heading, Text } from 'grommet';
 import './Sidebar.css';
+import {STARTER, FIRST_DISH, SECOND_DISH, DESERT} from "../../data/Constants"
 
 class Sidebar extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            startersList: []
+        }
     }
 
     // when the components are loaded, we add the observer
@@ -22,26 +26,37 @@ class Sidebar extends Component {
 
     update() {
         this.setState({
-            selectedDishes: modelInstance.getSelectedDish()
+            selectedDishes: modelInstance.getSelectedDishes()
         });
     }
 
-    renderDishInMenu(dishType) {
-        let selectedDish = modelInstance.getSelectedDish();
-
-        if(selectedDish.dishType === dishType) {
-            return(
-                <Box pad="medium" background="light-2">
-                   <Text>{selectedDish.dishTitle}</Text>
-                </Box>
-            )
-        }
-    }
 
     render() {
-        let selectedDish = modelInstance.getSelectedDish();
-        let dishType = selectedDish.dishType
-        let dishTitle = selectedDish.dishTitle
+        let selectedDishMap = modelInstance.getSelectedDishes();
+
+        let starters = selectedDishMap.get(STARTER).map(starterTitle => (
+            <Box pad="medium" background="light-2">
+                <Text>{starterTitle}</Text>
+            </Box>
+        ));
+
+        let firstDishes = selectedDishMap.get(FIRST_DISH).map(firstDishesTitle => (
+            <Box pad="medium" background="light-2">
+                <Text>{firstDishesTitle}</Text>
+            </Box>
+        ));
+
+        let secondDishes = selectedDishMap.get(SECOND_DISH).map(secondDishesTitle => (
+            <Box pad="medium" background="light-2">
+                <Text>{secondDishesTitle}</Text>
+            </Box>
+        ));
+
+        let deserts = selectedDishMap.get(DESERT).map(desertTitle => (
+            <Box pad="medium" background="light-2">
+                <Text>{desertTitle}</Text>
+            </Box>
+        ));
 
         return(
             <Box
@@ -54,17 +69,17 @@ class Sidebar extends Component {
                     My Menu
                 </Heading>
                 <Accordion>
-                    <AccordionPanel label="Starter">
-                        {this.renderDishInMenu("Starter")}
+                    <AccordionPanel label= {STARTER}>
+                        {starters}
                     </AccordionPanel>
-                    <AccordionPanel label="First Dish">
-                        {this.renderDishInMenu("First Dish")}
+                    <AccordionPanel label={FIRST_DISH}>
+                        {firstDishes}
                     </AccordionPanel>
-                    <AccordionPanel label="Second Dish">
-                        {this.renderDishInMenu("Second Dish")}
+                    <AccordionPanel label={SECOND_DISH}>
+                        {secondDishes}
                     </AccordionPanel>
-                    <AccordionPanel label="Desert">
-                        {this.renderDishInMenu("Desert")}
+                    <AccordionPanel label={DESERT}>
+                        {deserts}
                     </AccordionPanel>
                 </Accordion>
             </Box>
