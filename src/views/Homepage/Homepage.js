@@ -53,7 +53,7 @@ class Homepage extends Component {
 		let welcome_recipes = this.state.welcome_recipes;
 
 		let recipes = welcome_recipes.map((recipe, i) => (
-			<Link  to={"/recipe_details/" + recipe.id}>
+			<Link to={"/recipe_details/" + recipe.id} key={recipe.id}>
 				<RecipeCard
 					recipeID={recipe.id}
 					imageURL={recipe.image}
@@ -66,17 +66,17 @@ class Homepage extends Component {
 		return(
 			<ResponsiveContext.Consumer>
 				{ size => (
-					<Grid as="welcome_grid" justify="stretch"
+					<Grid as="div" justify="stretch"
 						areas={[
-							{ name: "main", start: [0, 0], end: [2, 0] },
-							{ name: "nav", start: [0, 1], end: [2, 1] }
+							{ name: "cover", start: [0, 0], end: [2, 0] },
+							{ name: "random_recipes", start: [0, 1], end: [2, 1] }
 						]}
 						columns={["flex"]}
 						rows={["medium", "medium"]}
 						gap="medium"
 					>
 						<Box
-							gridArea="main"
+							gridArea="cover"
 							background={`url(${burger})`}
 						>
 							<Heading level='1' alignSelf='center' color="#E0E3F0">
@@ -86,21 +86,52 @@ class Homepage extends Component {
 								{this.state.joke}
 							</Heading>
 						</Box>
-						{(size !== 'small') ? (
-							<Box
-							gridArea="nav"
-							background="#E0E3F0"
-							direction="row"
-							elevation="medium"
-							alignSelf='center'
-							justify='evenly'
-							pad={{ left: 'medium', right: 'small', vertical: 'small', top: 'medium', bottom: 'medium'}}
-						>
-							{recipes}
-						</Box>
-						) : (
-							<Heading>Testing responsiveness</Heading>
-						)}
+						{(size === 'small' ) &&
+							<Grid
+								gridArea="random_recipes"
+								columns={["full"]}
+								margin="auto"
+								gap="medium"
+								background="#E0E3F0"
+							>
+								{recipes}
+							</Grid>
+							/*
+								<Box
+									gridArea="nav"
+									background="#E0E3F0"
+									direction="row"
+									elevation="medium"
+									alignSelf='center'
+									justify='evenly'
+									pad={{ left: 'medium', right: 'small', vertical: 'small', top: 'medium', bottom: 'medium'}}
+									>
+										{recipes}
+								</Box>
+							*/
+						}
+						{(size === 'medium') &&
+							<Grid
+								gridArea="random_recipes"
+								columns={["1/2", "1/2"]}
+								margin="auto"
+								gap="medium"
+								background="#E0E3F0"
+							>
+								{recipes}
+							</Grid>
+						}
+						{(size === 'large') &&
+							<Grid
+								columns={["1/4", "1/4", "1/4", "1/4"]}
+								margin="auto"
+								gap="medium"
+								gridArea="random_recipes"
+								background="#E0E3F0"
+							>
+								{recipes}
+							</Grid>
+						}
 					</Grid>
 				)}
 			</ResponsiveContext.Consumer>
