@@ -7,30 +7,42 @@ class Sidebar extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            dishType: "bla",
-        };
     }
 
-    // componentDidMount() {
-    //     this.handleUpdateName();
-    // }
-    //
-    // componentDidUpdate(prevProps, prevState) {
-    //     if (prevState.dishType !== this.state.dishType) {
-    //         this.handleUpdateName();
-    //     }
-    // }
-    //
-    // handleUpdateName = () => {
-    //     console.log("===================")
-    //     this.setState({ dishType: this.props.dishType})
-    // }
+    // when the components are loaded, we add the observer
+    componentDidMount() {
+        this.props.model.addObserver(this);
+    }
 
+    // this is called when component is removed from the DOM
+    // good place to remove observer
+    componentWillUnmount() {
+        this.props.model.removeObserver(this);
+    }
+
+    update() {
+        this.setState({
+            selectedDishes: modelInstance.getSelectedDish()
+        });
+    }
+
+    renderDishInMenu(dishType) {
+        let selectedDish = modelInstance.getSelectedDish();
+
+        if(selectedDish.dishType === dishType) {
+            return(
+                <Box pad="medium" background="light-2">
+                   <Text>{selectedDish.dishTitle}</Text>
+                </Box>
+            )
+        }
+    }
 
     render() {
+        let selectedDish = modelInstance.getSelectedDish();
+        let dishType = selectedDish.dishType
+        let dishTitle = selectedDish.dishTitle
 
-        console.log("TYPE: " + this.props.dishType)
         return(
             <Box
                 background="white"
@@ -43,24 +55,16 @@ class Sidebar extends Component {
                 </Heading>
                 <Accordion>
                     <AccordionPanel label="Starter">
-                        <Box pad="medium" background="light-2">
-                            <Text>{this.state.dishType}</Text>
-                        </Box>
+                        {this.renderDishInMenu("Starter")}
                     </AccordionPanel>
                     <AccordionPanel label="First Dish">
-                        <Box pad="medium" background="light-2">
-                            <Text>Two</Text>
-                        </Box>
+                        {this.renderDishInMenu("First Dish")}
                     </AccordionPanel>
                     <AccordionPanel label="Second Dish">
-                        <Box pad="medium" background="light-2">
-                            <Text>Three</Text>
-                        </Box>
+                        {this.renderDishInMenu("Second Dish")}
                     </AccordionPanel>
                     <AccordionPanel label="Desert">
-                        <Box pad="medium" background="light-2">
-                            <Text>Four</Text>
-                        </Box>
+                        {this.renderDishInMenu("Desert")}
                     </AccordionPanel>
                 </Accordion>
             </Box>

@@ -5,9 +5,14 @@ import {Box, Button, CheckBox, Grid, Heading, Image, Layer, RadioButtonGroup, Te
 import {Table, TableBody, TableCell, TableHeader, TableRow} from 'grommet';
 import Sidebar from '../../components/Sidebar/Sidebar';
 
-function AddToMyMenu() {
+function AddToMyMenu(props) {
+
 	const [show, setShow] = React.useState();
 	const [value, setValue] = React.useState('Starter');
+
+	let addDishToMenu = () => {
+		modelInstance.addDishToMenu(value, props.dishTitle);
+	};
 
 	return (
 		<Box>
@@ -37,7 +42,7 @@ function AddToMyMenu() {
 						label="Finish"
 						onClick={() => {
 							setShow(false);
-							modelInstance.setDishType(value);
+							addDishToMenu()
 						}}
 						alignSelf="center"
 						margin="small"
@@ -47,7 +52,6 @@ function AddToMyMenu() {
 		</Box>
 	);
 }
-
 
 class RecipeDetails extends Component {
 
@@ -110,7 +114,7 @@ class RecipeDetails extends Component {
 					margin={{top:'medium', left:'medium'}}
 				>
 					<Heading level="1" margin="small"> {this.state.recipe.title}</Heading>
-					<AddToMyMenu/>
+					<AddToMyMenu dishTitle={this.state.recipe.title}/>
 					<Box
 						gridArea="nav"
 						direction="row"
@@ -142,7 +146,7 @@ class RecipeDetails extends Component {
 					</Box>
 				</Box>
 				<Box gridArea='sidebar' background='brand'margin={{top:'medium', right:'medium'}}>
-					<Sidebar type={modelInstance.getDishType()}/>
+					<Sidebar model={this.props.model}/>
 				</Box>
 				<Box
 					gridArea='recipe_instructions'

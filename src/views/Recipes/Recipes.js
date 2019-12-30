@@ -135,7 +135,6 @@ class Recipes extends Component {
 
         modelInstance.getRecipes(limit, offset)
 			.then(data => {
-                console.log(data);
                 const old_recipes = this.state.recipes.slice();
                 this.setState({
                     recipes: old_recipes.concat(data.results),

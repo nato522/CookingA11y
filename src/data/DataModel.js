@@ -1,4 +1,6 @@
 import API_KEY from "./ApiKey";
+import ObservableModel from "./ObservableModel";
+import Dish from "./Dish"
 
 const BASE_URL= "http://sunset.nada.kth.se:8080/iprog/group/45";
 const httpOptions = {
@@ -8,10 +10,14 @@ const httpOptions = {
 };
 
 
-class DataModel {
+class DataModel extends ObservableModel{
 
 	constructor() {
+		super()
 		this.dishType = ""
+		this.dishTitle = ""
+		this.selectedDishes = []
+		this.currentDish = new Dish()
 	}
 
 	getRandomFoodJoke() {
@@ -41,8 +47,16 @@ class DataModel {
 		throw response;
 	}
 
-	setDishType(value) {
-		this.dishType = value;
+	addDishToMenu(dishType, dishTitle) {
+		console.log("add dish to menu");
+		let dish = new Dish(dishType, dishTitle)
+		this.currentDish = dish
+		// this.selectedDishes.push(dish);
+		this.notifyObservers("addDishToMenu");
+	}
+
+	getSelectedDish() {
+		return this.currentDish
 	}
 
 	getDishType() {
