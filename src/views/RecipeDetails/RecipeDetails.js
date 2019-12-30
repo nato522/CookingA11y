@@ -1,7 +1,7 @@
 import modelInstance from "../../data/DataModel"
 import React, { Component } from "react";
 import { Add } from 'grommet-icons';
-import {Box, Button, CheckBox, Grid, Heading, Image, Layer, RadioButtonGroup, Text} from 'grommet';
+import {Box, Button, Grid, Heading, Image, Layer, RadioButtonGroup, Text} from 'grommet';
 import {Table, TableBody, TableCell, TableHeader, TableRow} from 'grommet';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import {STARTER, FIRST_DISH, SECOND_DISH, DESERT} from "../../data/Constants"

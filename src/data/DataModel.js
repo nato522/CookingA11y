@@ -58,10 +58,6 @@ class DataModel extends ObservableModel{
 	getSelectedDishes() {
 		return this.selectedDishesMap
 	}
-
-	getDishType() {
-		return this.dishType;
-	}
 }
 
 

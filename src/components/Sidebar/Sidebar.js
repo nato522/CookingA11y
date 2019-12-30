@@ -30,7 +30,6 @@ class Sidebar extends Component {
         });
     }
 
-
     render() {
         let selectedDishMap = modelInstance.getSelectedDishes();
 
