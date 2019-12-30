@@ -9,9 +9,8 @@ const RecipeCard = (props) => {
             round="small"
             border="all"
             overflow="hidden"
-            responsive="true"
+            responsive={true}
             background="#F7F7F8"
-            margin={{right:"large"}}
         >
             <Box height="250px" width="301px">
                 <Image

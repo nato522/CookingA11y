@@ -1,12 +1,29 @@
 import React, { Component } from "react";
-import {Route} from "react-router-dom";
+import { Route } from "react-router-dom";
+import { Grommet } from 'grommet';
+
 import modelInstance from "./data/DataModel";
+
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import Footer from "./components/FooterWebpage/FooterWebpage"
 import SkipToContent from "./components/SkipToContent/SkipToContent";
+
 import Homepage from "./views/Homepage/Homepage";
 import Recipes from "./views/Recipes/Recipes";
 import RecipeDetails from "./views/RecipeDetails/RecipeDetails";
+
+const theme = {
+	global: {
+		colors: {
+      brand: 'black'
+    },
+		font: {
+			family: 'Roboto',
+			size: '18px',
+      height: '20px',
+		},
+	},
+};
 
 class App extends Component {
   constructor(props) {
@@ -17,7 +34,11 @@ class App extends Component {
 
   render() {
     return (
-        <div className="App">
+        <Grommet
+          className="App"
+          theme={theme}
+          full={true}
+        >
           <SkipToContent/>
           <NavigationBar/>
           <Route exact path="/" component={Homepage}/>
@@ -27,7 +48,7 @@ class App extends Component {
               render={(props) => <RecipeDetails {...props} model={modelInstance} />}
           />
           <Footer/>
-        </div>
+        </Grommet>
     );
   }
 }
