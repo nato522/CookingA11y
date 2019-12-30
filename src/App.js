@@ -11,6 +11,7 @@ import SkipToContent from "./components/SkipToContent/SkipToContent";
 import Homepage from "./views/Homepage/Homepage";
 import Recipes from "./views/Recipes/Recipes";
 import RecipeDetails from "./views/RecipeDetails/RecipeDetails";
+import Playground from "./views/Playground/Playground";
 
 const theme = {
 	global: {
@@ -47,6 +48,7 @@ class App extends Component {
               path="/recipe_details/:id"
               render={(props) => <RecipeDetails {...props} model={modelInstance} />}
           />
+          <Route path="/playground" component={Playground}/>
           <Footer/>
         </Grommet>
     );
