@@ -12,20 +12,29 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 
 import "./Recipes.css";
 
-let limit = 9;
+const limit = 9;
 let offset = 0;
+let query = null;
 
 class Recipes extends Component {
 
 	constructor(props) {
 		super(props);
         this.state = {
-            "recipes": Store.searchedRecipes || [],
+            "recipes": Store.searchedInfo.recipes || [],
             "total": null,
-            "baseURI": null
+            "baseURI": null,
+            "filters": Store.filters || {
+                complexSearch: false,
+                diets: [],
+                maxTimeReady: null,
+                intolerances: []
+            }
         }
     }
-
+    /**
+     *  Get recipes when initialized
+     */
 	componentDidMount() {
 		modelInstance.getRecipes(limit, offset)
 			.then(data => {
@@ -34,33 +43,85 @@ class Recipes extends Component {
                     total: (this.state.total === null ? data.totalResults : this.state.total),
                     baseURI: (this.state.baseURI === null ? data.baseUri : this.state.baseURI),
                 });
-                if (Store.searchedRecipes === null)
-                    Store.searchedRecipes = this.state.recipes;
+                if (Store.searchedInfo.recipes === null)
+                    Store.searchedInfo.recipes = this.state.recipes;
 			}).catch(error => {
                 console.error(error);
             });
     }
 
+    /**
+     *  Triggered by the "see more" button
+     */
     getMoreRecipes = () =>{
         offset += (this.state.recipes.length + 1);
+        if (this.state.filters.complexSearch){
+            /**
+             * TODO: get more elements with complexSearch url
+             */
+            const filters = this.state.filters
 
-        modelInstance.getRecipes(limit, offset)
-			.then(data => {
-                const old_recipes = this.state.recipes.slice();
-                this.setState({
-                    recipes: old_recipes.concat(data.results),
+            modelInstance.getComplexRecipes(filters, limit, offset)
+                .then(data => {
+                    const old_recipes = this.state.recipes.slice();
+                    this.setState({
+                        recipes: old_recipes.concat(data.results),
+                    });
+                    offset = 0;
+                    Store.searchedInfo.recipes = this.state.recipes;
+                }).catch(error => {
+                    console.error(error);
                 });
-                offset = 0;
-                Store.searchedRecipes = this.state.recipes;
-			}).catch(error => {
-                console.error(error);
-            });
+        } else {
+            modelInstance.getRecipes(limit, offset, query)
+                .then(data => {
+                    const old_recipes = this.state.recipes.slice();
+                    this.setState({
+                        recipes: old_recipes.concat(data.results),
+                    });
+                    offset = 0;
+                    Store.searchedInfo.recipes = this.state.recipes;
+                }).catch(error => {
+                    console.error(error);
+                });
+        }
     }
 
-    getNewQuery = () => {
+    /**
+     * Trigerred when user uses the input at the top of the page
+     */
+    searchRecipe = (e) => {
         /**
          * TODO: search recipes using the input
          */
+        query = e.target.elements.query.value;
+        console.log('before', Store.searchedInfo.recipes);
+        modelInstance.getRecipes(limit, offset, query)
+			.then(data => {
+                this.setState({
+                    recipes: data.results,
+                    total: data.totalResults,
+                    baseURI: data.baseUri,
+                    filters:{
+                        complexSearch: false,
+                    },
+                });
+                Store.searchedInfo.recipes = this.state.recipes;
+                console.log('after', Store.searchedInfo.recipes);
+			}).catch(error => {
+                console.error(error);
+            });
+    }
+
+    /**
+     * Trigerred when user uses the input at the "advanced search" modal
+     */
+    searchComplexRecipe = () => {
+        this.setState({
+            filters:{
+                complexSearch: true
+            }
+        });
     }
 
 	render() {
@@ -94,7 +155,7 @@ class Recipes extends Component {
                         <Box
                             gridArea='searchbox'
                         >
-                            <SearchBox search={this.getNewQuery}/>
+                            <SearchBox search={this.searchRecipe}/>
                         </Box>
                         {(size === "small") &&
                             <Grid

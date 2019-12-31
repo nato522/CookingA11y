@@ -33,7 +33,21 @@ class DataModel extends ObservableModel{
 		return fetch(url, httpOptions).then(this.processResponse);
 	}
 
-	getRecipes(limit, offset) {
+	getRecipes(limit, offset, query) {
+		let url = null;
+		if (query){
+			url = `${BASE_URL}/recipes/search?query=${query}&number=${limit}&offset=${offset}`;
+		} else {
+			url = `${BASE_URL}/recipes/search?number=${limit}&offset=${offset}`;
+		}
+		return fetch(url, httpOptions).then(this.processResponse);
+	}
+
+	getComplexRecipes(limit, offset, filters){
+		/**
+		 * TODO: read filters and apply them to the url
+		 * urlExample: https://api.spoonacular.com/recipes/complexSearch?query=burger&number=10&offset=0&diet=vegetarian,vegan&maxTimeReady=30&intolerances=gluten,dairy,egg
+		 */
 		const url = `${BASE_URL}/recipes/search?number=${limit}&offset=${offset}`;
 		return fetch(url, httpOptions).then(this.processResponse);
 	}
