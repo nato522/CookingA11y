@@ -29,7 +29,7 @@ class Recipes extends Component {
                 diets: [],
                 intolerances: [],
                 mealType: null,
-                maxTimeReady: null,
+                maxReadyTime: null,
             }
         }
     }
@@ -117,7 +117,7 @@ class Recipes extends Component {
         let allFilters;
         let filterDiets = [];
         let filterIntolerances = [];
-        let filterMaxTimeReady = null;
+        let filterMaxReadyTime = null;
         let filterMealType = null;
 
         const query = e.target.elements.advancedQuery.value;
@@ -139,7 +139,7 @@ class Recipes extends Component {
         if (e.target.elements.tree_nut.checked){ filterIntolerances = filterIntolerances.concat(e.target.elements.tree_nut.name); }
         if (e.target.elements.wheat.checked){ filterIntolerances = filterIntolerances.concat(e.target.elements.wheat.name); }
 
-        if (e.value.cookingTime){filterMaxTimeReady="30";}
+        if (e.value.cookingTime){filterMaxReadyTime="30";}
         if (e.value.mealType){filterMealType=e.value.mealType;}
 
         allFilters = {
@@ -147,7 +147,7 @@ class Recipes extends Component {
             diets: filterDiets,
             intolerances: filterIntolerances,
             mealType: filterMealType,
-            maxTimeReady: filterMaxTimeReady,
+            maxReadyTime: filterMaxReadyTime,
         }
 
         return [query, allFilters];

@@ -46,13 +46,13 @@ class DataModel extends ObservableModel{
 	getComplexRecipes(limit, offset, query, filters){
 		/**
 		 * TODO: read filters and apply them to the url
-		 * urlExample: https://api.spoonacular.com/recipes/complexSearch?query=burger&number=10&offset=0&diet=vegetarian,vegan&maxTimeReady=30&intolerances=gluten,dairy,egg
+		 * urlExample: https://api.spoonacular.com/recipes/complexSearch?query=burger&number=10&offset=0&diet=vegetarian,vegan&maxReadyTime=30&intolerances=gluten,dairy,egg
 		 */
 		let url = null;
 		let diets = "";
 		let intolerances = "";
 		let mealType = "";
-		let maxTimeReady = "";
+		let maxReadyTime = "";
 
 		if (filters.diets.length){
 			diets = "&diet="
@@ -69,12 +69,12 @@ class DataModel extends ObservableModel{
 			})
 		}
 		if (filters.mealType){ mealType = `&type=${filters.mealType}`; }
-		if (filters.maxTimeReady){ maxTimeReady = `&maxTimeReady=${filters.maxTimeReady}`; }
+		if (filters.maxReadyTime){ maxReadyTime = `&maxReadyTime=${filters.maxReadyTime}`; }
 		debugger;
 		if (query){
-			url = `${BASE_URL}/recipes/complexSearch?query=${query}&number=${limit}&offset=${offset}${diets}${intolerances}${mealType}${maxTimeReady}`;
+			url = `${BASE_URL}/recipes/complexSearch?query=${query}&number=${limit}&offset=${offset}&addRecipeInformation=true${diets}${intolerances}${mealType}${maxReadyTime}`;
 		} else {
-			url = `${BASE_URL}/recipes/complexSearch?number=${limit}&offset=${offset}${diets}${intolerances}${mealType}${maxTimeReady}`;
+			url = `${BASE_URL}/recipes/complexSearch?number=${limit}&offset=${offset}&addRecipeInformation=true${diets}${intolerances}${mealType}${maxReadyTime}`;
 		}
 		return fetch(url, httpOptions).then(this.processResponse);
 	}
