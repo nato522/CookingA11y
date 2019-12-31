@@ -9,6 +9,7 @@ import { Add } from 'grommet-icons';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import RecipeCard from '../../components/RecipeCard/RecipeCard';
 import Sidebar from '../../components/Sidebar/Sidebar';
+import EmptySearch from '../../components/EmptySearch/EmptySearch';
 
 import "./Recipes.css";
 
@@ -95,9 +96,9 @@ class Recipes extends Component {
          * TODO: search recipes using the input
          */
         query = e.target.elements.query.value;
-        console.log('before', Store.searchedInfo.recipes);
         modelInstance.getRecipes(limit, offset, query)
 			.then(data => {
+                console.log(data);
                 this.setState({
                     recipes: data.results,
                     total: data.totalResults,
@@ -107,7 +108,6 @@ class Recipes extends Component {
                     },
                 });
                 Store.searchedInfo.recipes = this.state.recipes;
-                console.log('after', Store.searchedInfo.recipes);
 			}).catch(error => {
                 console.error(error);
             });
@@ -157,6 +157,7 @@ class Recipes extends Component {
                         >
                             <SearchBox search={this.searchRecipe}/>
                         </Box>
+                        {(this.state.total === 0) && <EmptySearch />}
                         {(size === "small") &&
                             <Grid
                                 gridArea="recipes"
