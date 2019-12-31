@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {
-    Anchor, Box, Button, Form, FormField, Heading,
-    Layer, Text, TextInput, RadioButtonGroup, CheckBox, Select
+    Anchor, Box, Button, CheckBox, Form, FormField, Heading,
+    Layer, RadioButtonGroup, Text, TextInput
 } from 'grommet';
-import { Search, Checkbox } from 'grommet-icons';
+import { Search, SearchAdvanced } from 'grommet-icons';
 import './SearchBox.css';
 
 
@@ -12,7 +12,7 @@ function AdvancedSearch(props){
 
     return(
         <Box>
-            <Anchor role="button" onClick={() => setShow(true)}>
+            <Anchor onClick={() => setShow(true)}>
                 <Text size="small" margin="auto">Advanced search</Text>
             </Anchor>
             {show && (
@@ -83,6 +83,7 @@ function AdvancedSearch(props){
                                 <FormField component={CheckBox} name="wheat" label="Wheat"></FormField>
                             </Box>
                             <Button
+                                icon={<SearchAdvanced />}
                                 type="submit"
                                 label="Search"
                             />
@@ -101,17 +102,22 @@ const SearchBox = (props) => (
     >
         <Box>
             <Form onSubmit={props.search}>
-                <FormField name="query" label="Search a recipe:">
-                    <TextInput
-                        name="query"
-                        placeholder="type here"
-                    />
-                </FormField>
-                <Button
-                    icon={<Search />}
-                    type="submit"
-                    label="Search"
-                />
+                <Box direction="row-responsive">
+                    <FormField name="query" label="Search a recipe:">
+                        <TextInput
+                            name="query"
+                            placeholder="type here"
+                        />
+                    </FormField>
+                    <Box justify="center">
+                        <Button
+                            icon={<Search />}
+                            type="submit"
+                            label="Search"
+                            size="small"
+                        />
+                    </Box>
+                </Box>
             </Form>
         </Box>
         <AdvancedSearch advancedSearch={props.advancedSearch}/>

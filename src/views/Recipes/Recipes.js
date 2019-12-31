@@ -3,7 +3,7 @@ import Store from '../../data/Store';
 
 import React, { Component } from "react";
 import {Link} from "react-router-dom";
-import {Box, Button, Grid, ResponsiveContext } from 'grommet';
+import {Box, Button, Grid, Paragraph, ResponsiveContext } from 'grommet';
 import { Add } from 'grommet-icons';
 
 import SearchBox from '../../components/SearchBox/SearchBox';
@@ -214,34 +214,37 @@ class Recipes extends Component {
                         </Box>
                         {(this.state.total === 0) && <EmptySearch />}
                         {(size === "small") &&
-                            <Grid
-                                gridArea="recipes"
-                                columns={["full"]}
-                                margin="auto"
-                                gap="medium"
-                            >
-                                { result_recipes }
-                            </Grid>
+                            <Box gridArea="recipes" margin="auto">
+                                { this.state.total && <Paragraph>Showing {this.state.recipes.length} recipes out of {this.state.total}!</Paragraph>}
+                                <Grid
+                                    columns={["full"]}
+                                    gap="medium"
+                                >
+                                    { result_recipes }
+                                </Grid>
+                            </Box>
                         }
                         {(size === "medium") &&
-                            <Grid
-                                gridArea="recipes"
-                                columns={["1/2", "1/2"]}
-                                margin="auto"
-                                gap="medium"
-                            >
-                                { result_recipes }
-                            </Grid>
+                            <Box gridArea="recipes" margin="auto">
+                                { this.state.total && <Paragraph>Showing {this.state.recipes.length} recipes out of {this.state.total}!</Paragraph>}
+                                <Grid
+                                    columns={["1/2", "1/2"]}
+                                    gap="medium"
+                                >
+                                    { result_recipes }
+                                </Grid>
+                            </Box>
                         }
                         {(size === "large") &&
-                            <Grid
-                                gridArea="recipes"
-                                columns={["1/3", "1/3", "1/3"]}
-                                margin="auto"
-                                gap="medium"
-                            >
-                                { result_recipes }
-                            </Grid>
+                            <Box gridArea="recipes" margin="auto">
+                                { this.state.total && <Paragraph>Showing {this.state.recipes.length} out of {this.state.total} recipes!</Paragraph>}
+                                <Grid
+                                    columns={["1/3", "1/3", "1/3"]}
+                                    gap="medium"
+                                >
+                                    { result_recipes }
+                                </Grid>
+                            </Box>
                         }
                         <Box
                             alignSelf="end"
