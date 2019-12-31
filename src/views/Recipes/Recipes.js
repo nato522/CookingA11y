@@ -18,7 +18,6 @@ let offset = 0;
 let query = null;
 
 class Recipes extends Component {
-
 	constructor(props) {
 		super(props);
         this.state = {
@@ -28,8 +27,9 @@ class Recipes extends Component {
             "filters": Store.filters || {
                 complexSearch: false,
                 diets: [],
+                intolerances: [],
+                mealType: null,
                 maxTimeReady: null,
-                intolerances: []
             }
         }
     }
@@ -60,9 +60,9 @@ class Recipes extends Component {
             /**
              * TODO: get more elements with complexSearch url
              */
-            const filters = this.state.filters
+            const filters = this.state.filters;
 
-            modelInstance.getComplexRecipes(filters, limit, offset)
+            modelInstance.getComplexRecipes(limit, offset, query, filters)
                 .then(data => {
                     const old_recipes = this.state.recipes.slice();
                     this.setState({
@@ -92,9 +92,6 @@ class Recipes extends Component {
      * Trigerred when user uses the input at the top of the page
      */
     searchRecipe = (e) => {
-        /**
-         * TODO: search recipes using the input
-         */
         query = e.target.elements.query.value;
         modelInstance.getRecipes(limit, offset, query)
 			.then(data => {
@@ -112,15 +109,63 @@ class Recipes extends Component {
             });
     }
 
+    handleFilters = (e) =>{
+        let filterDiets = [];
+        let filterIntolerances = [];
+        let filterMaxTimeReady = null;
+        let filterMealType = null;
+
+        query = e.target.elements.advancedQuery.value;
+
+        if (e.target.elements.vegan.checked){ filterDiets = filterDiets.concat(e.target.elements.vegan.name); }
+        if (e.target.elements.vegetarian.checked){ filterDiets = filterDiets.concat(e.target.elements.vegetarian.name); }
+        if (e.target.elements.pescetarian.checked){ filterDiets = filterDiets.concat(e.target.elements.pescetarian.name); }
+
+        if (e.target.elements.dairy.checked){ filterIntolerances = filterIntolerances.concat(e.target.elements.dairy.name); }
+        if (e.target.elements.egg.checked){ filterIntolerances = filterIntolerances.concat(e.target.elements.egg.name); }
+        if (e.target.elements.gluten.checked){ filterIntolerances = filterIntolerances.concat(e.target.elements.gluten.name); }
+        if (e.target.elements.grain.checked){ filterIntolerances = filterIntolerances.concat(e.target.elements.grain.name); }
+        if (e.target.elements.peanut.checked){ filterIntolerances = filterIntolerances.concat(e.target.elements.peanut.name); }
+        if (e.target.elements.seafood.checked){ filterIntolerances = filterIntolerances.concat(e.target.elements.seafood.name); }
+        if (e.target.elements.sesame.checked){ filterIntolerances = filterIntolerances.concat(e.target.elements.sesame.name); }
+        if (e.target.elements.shellfish.checked){ filterIntolerances = filterIntolerances.concat(e.target.elements.shellfish.name); }
+        if (e.target.elements.soy.checked){ filterIntolerances = filterIntolerances.concat(e.target.elements.soy.name); }
+        if (e.target.elements.sulfite.checked){ filterIntolerances = filterIntolerances.concat(e.target.elements.sulfite.name); }
+        if (e.target.elements.tree_nut.checked){ filterIntolerances = filterIntolerances.concat(e.target.elements.tree_nut.name); }
+        if (e.target.elements.wheat.checked){ filterIntolerances = filterIntolerances.concat(e.target.elements.wheat.name); }
+
+        if (e.value.cookingTime){filterMaxTimeReady="30";}
+        if (e.value.mealType){filterMealType=e.value.mealType;}
+
+        this.setState({
+            filters:{
+                complexSearch: true,
+                diets: filterDiets,
+                intolerances: filterIntolerances,
+                mealType: filterMealType,
+                maxTimeReady: filterMaxTimeReady,
+            }
+        });
+        Store.searchedInfo.filters = this.state.filters;
+    }
     /**
      * Trigerred when user uses the input at the "advanced search" modal
      */
-    searchComplexRecipe = () => {
-        this.setState({
-            filters:{
-                complexSearch: true
-            }
-        });
+    searchComplexRecipe = (e) => {
+        this.handleFilters(e);
+        const filters = this.state.filters;
+
+        modelInstance.getComplexRecipes(limit, offset, query, filters)
+			.then(data => {
+                this.setState({
+                    recipes: data.results,
+                    total: data.totalResults,
+                    baseURI: data.baseUri,
+                });
+                Store.searchedInfo.recipes = this.state.recipes;
+			}).catch(error => {
+                console.error(error);
+            });
     }
 
 	render() {
@@ -154,7 +199,10 @@ class Recipes extends Component {
                         <Box
                             gridArea='searchbox'
                         >
-                            <SearchBox search={this.searchRecipe}/>
+                            <SearchBox
+                                search={this.searchRecipe}
+                                advancedSearch={this.searchComplexRecipe}
+                            />
                         </Box>
                         {(this.state.total === 0) && <EmptySearch />}
                         {(size === "small") &&
