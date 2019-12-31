@@ -98,7 +98,6 @@ class Recipes extends Component {
         query = e.target.elements.query.value;
         modelInstance.getRecipes(limit, offset, query)
 			.then(data => {
-                console.log(data);
                 this.setState({
                     recipes: data.results,
                     total: data.totalResults,
