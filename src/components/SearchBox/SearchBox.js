@@ -12,9 +12,13 @@ function AdvancedSearch(props){
 
     return(
         <Box>
-            <Anchor onClick={() => setShow(true)}>
-                <Text size="small" margin="auto">Advanced search</Text>
-            </Anchor>
+            <Button
+                className="advancedSearch-button"
+                label="Advanced Search"
+                onClick={() => setShow(true)}
+                plain={true}
+            >
+            </Button>
             {show && (
                 <Layer
                 onEsc={() => setShow(false)}
