@@ -70,7 +70,7 @@ class DataModel extends ObservableModel{
 		}
 		if (filters.mealType){ mealType = `&type=${filters.mealType}`; }
 		if (filters.maxReadyTime){ maxReadyTime = `&maxReadyTime=${filters.maxReadyTime}`; }
-		debugger;
+
 		if (query){
 			url = `${BASE_URL}/recipes/complexSearch?query=${query}&number=${limit}&offset=${offset}&addRecipeInformation=true${diets}${intolerances}${mealType}${maxReadyTime}`;
 		} else {

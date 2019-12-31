@@ -21,10 +21,10 @@ class Recipes extends Component {
 		super(props);
         this.state = {
             recipes: Store.searchedInfo.recipes || [],
-            total: null,
-            baseURI: null,
+            total: Store.searchedInfo.total || null,
+            baseURI: Store.searchedInfo.baseURI || null,
             query: Store.searchedInfo.query || null,
-            filters: Store.filters || {
+            filters: Store.searchedInfo.filters || {
                 complexSearch: false,
                 diets: [],
                 intolerances: [],
@@ -37,18 +37,19 @@ class Recipes extends Component {
      *  Get recipes when initialized
      */
 	componentDidMount() {
-		modelInstance.getRecipes(limit, offset)
-			.then(data => {
-                this.setState({
-                    recipes: (this.state.recipes.length === 0 ? data.results : this.state.recipes),
-                    total: (this.state.total === null ? data.totalResults : this.state.total),
-                    baseURI: (this.state.baseURI === null ? data.baseUri : this.state.baseURI),
+        if(this.state.recipes.length === 0){
+            modelInstance.getRecipes(limit, offset)
+                .then(data => {
+                    this.setState({
+                        recipes: (this.state.recipes.length === 0 ? data.results : this.state.recipes),
+                        total: (this.state.total === null ? data.totalResults : this.state.total),
+                        baseURI: (this.state.baseURI === null ? data.baseUri : this.state.baseURI),
+                    });
+                    Store.searchedInfo = this.state;
+                }).catch(error => {
+                    console.error(error);
                 });
-                if (Store.searchedInfo.recipes === null)
-                    Store.searchedInfo.recipes = this.state.recipes;
-			}).catch(error => {
-                console.error(error);
-            });
+        }
     }
 
     /**
@@ -162,15 +163,14 @@ class Recipes extends Component {
         modelInstance.getComplexRecipes(limit, offset, query, filters)
 			.then(data => {
                 console.log(data);
-                /*this.setState({
+                this.setState({
                     recipes: data.results,
                     total: data.totalResults,
-                    baseURI: data.baseUri,
+                    baseURI: null,
                     query: query,
                     filters: filters
                 });
-                Store.searchedInfo.recipes = this.state.recipes;
-                */
+                Store.searchedInfo = this.state;
 			}).catch(error => {
                 console.error(error);
             });
@@ -182,7 +182,7 @@ class Recipes extends Component {
                 <Link to={"/recipe_details/" + recipe.id} key={recipe.id}>
                     <RecipeCard key={i}
                         recipeID={recipe.id}
-                        imageURL={`${this.state.baseURI}${recipe.imageUrls[0]}`}
+                        imageURL={(this.state.baseURI ? (`${this.state.baseURI}${recipe.imageUrls[0]}`) : recipe.image)}
                         title={recipe.title}
                         cookingTime={recipe.readyInMinutes}
                     />
