@@ -15,16 +15,16 @@ import "./Recipes.css";
 
 const limit = 9;
 let offset = 0;
-let query = null;
 
 class Recipes extends Component {
 	constructor(props) {
 		super(props);
         this.state = {
-            "recipes": Store.searchedInfo.recipes || [],
-            "total": null,
-            "baseURI": null,
-            "filters": Store.filters || {
+            recipes: Store.searchedInfo.recipes || [],
+            total: null,
+            baseURI: null,
+            query: Store.searchedInfo.query || null,
+            filters: Store.filters || {
                 complexSearch: false,
                 diets: [],
                 intolerances: [],
@@ -56,6 +56,8 @@ class Recipes extends Component {
      */
     getMoreRecipes = () =>{
         offset += (this.state.recipes.length + 1);
+        const query = this.state.query;
+
         if (this.state.filters.complexSearch){
             /**
              * TODO: get more elements with complexSearch url
@@ -92,13 +94,15 @@ class Recipes extends Component {
      * Trigerred when user uses the input at the top of the page
      */
     searchRecipe = (e) => {
-        query = e.target.elements.query.value;
+        const query = e.target.elements.query.value;
+
         modelInstance.getRecipes(limit, offset, query)
 			.then(data => {
                 this.setState({
                     recipes: data.results,
                     total: data.totalResults,
                     baseURI: data.baseUri,
+                    query: query,
                     filters:{
                         complexSearch: false,
                     },
@@ -110,12 +114,13 @@ class Recipes extends Component {
     }
 
     handleFilters = (e) =>{
+        let allFilters;
         let filterDiets = [];
         let filterIntolerances = [];
         let filterMaxTimeReady = null;
         let filterMealType = null;
 
-        query = e.target.elements.advancedQuery.value;
+        const query = e.target.elements.advancedQuery.value;
 
         if (e.target.elements.vegan.checked){ filterDiets = filterDiets.concat(e.target.elements.vegan.name); }
         if (e.target.elements.vegetarian.checked){ filterDiets = filterDiets.concat(e.target.elements.vegetarian.name); }
@@ -137,32 +142,35 @@ class Recipes extends Component {
         if (e.value.cookingTime){filterMaxTimeReady="30";}
         if (e.value.mealType){filterMealType=e.value.mealType;}
 
-        this.setState({
-            filters:{
-                complexSearch: true,
-                diets: filterDiets,
-                intolerances: filterIntolerances,
-                mealType: filterMealType,
-                maxTimeReady: filterMaxTimeReady,
-            }
-        });
-        Store.searchedInfo.filters = this.state.filters;
+        allFilters = {
+            complexSearch: true,
+            diets: filterDiets,
+            intolerances: filterIntolerances,
+            mealType: filterMealType,
+            maxTimeReady: filterMaxTimeReady,
+        }
+
+        return [query, allFilters];
     }
     /**
      * Trigerred when user uses the input at the "advanced search" modal
      */
     searchComplexRecipe = (e) => {
-        this.handleFilters(e);
-        const filters = this.state.filters;
+        const query = this.handleFilters(e)[0];
+        const filters = this.handleFilters(e)[1];
 
         modelInstance.getComplexRecipes(limit, offset, query, filters)
 			.then(data => {
-                this.setState({
+                console.log(data);
+                /*this.setState({
                     recipes: data.results,
                     total: data.totalResults,
                     baseURI: data.baseUri,
+                    query: query,
+                    filters: filters
                 });
                 Store.searchedInfo.recipes = this.state.recipes;
+                */
 			}).catch(error => {
                 console.error(error);
             });
