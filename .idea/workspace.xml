@@ -1,26 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="finished Details View, but without the sidebar">
-      <change afterPath="$PROJECT_DIR$/src/components/RecipeCard/RecipeCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/SearchBox/SearchBox.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/burger.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/carrots.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/healthy_food.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/strawberries.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/vegetables.jpg" afterDir="false" />
+    <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="finished the add to menu functionality">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Filters/Filters.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RecipeCard/RecipeCard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Filters/Filters.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchBox/SearchBox.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FooterWebpage/FooterWebpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FooterWebpage/FooterWebpage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SkipToContent/SkipToContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SkipToContent/SkipToContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/DataModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DataModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Homepage/Homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Homepage/Homepage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/RecipeDetails/RecipeDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/RecipeDetails/RecipeDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Recipes/Recipes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Recipes/Recipes.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,8 +14,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -68,6 +51,9 @@
       <recent name="C:\Users\ruxan\OneDrive\Desktop\UPM\go_bananas\src\components" />
       <recent name="C:\Users\ruxan\OneDrive\Desktop\UPM\go_bananas\src\views" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ruxan\OneDrive\Desktop\UPM\go_bananas\src\data" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -96,6 +82,10 @@
       <workItem from="1577288396562" duration="4335000" />
       <workItem from="1577379167424" duration="12965000" />
       <workItem from="1577463509675" duration="11088000" />
+      <workItem from="1577609916933" duration="1583000" />
+      <workItem from="1577631810587" duration="3487000" />
+      <workItem from="1577711594934" duration="30029000" />
+      <workItem from="1577784165997" duration="48000" />
     </task>
     <task id="LOCAL-00001" summary="added the .gitignore file">
       <created>1577287941476</created>
@@ -153,7 +143,35 @@
       <option name="project" value="LOCAL" />
       <updated>1577537970364</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="finished Details View, but without the sidebar">
+      <created>1577566542288</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1577566542288</updated>
+    </task>
+    <task id="LOCAL-00010" summary="finished the popup">
+      <created>1577727293985</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1577727293985</updated>
+    </task>
+    <task id="LOCAL-00011" summary="added dish according to the type; still some bugs">
+      <created>1577741797212</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1577741797212</updated>
+    </task>
+    <task id="LOCAL-00012" summary="finished the add to menu functionality">
+      <created>1577746171574</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1577746171574</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,6 +199,10 @@
     <MESSAGE value="added the joke of the day calling the API" />
     <MESSAGE value="random commit" />
     <MESSAGE value="click in the navbar to go to the recipes page" />
-    <option name="LAST_COMMIT_MESSAGE" value="click in the navbar to go to the recipes page" />
+    <MESSAGE value="finished Details View, but without the sidebar" />
+    <MESSAGE value="finished the popup" />
+    <MESSAGE value="added dish according to the type; still some bugs" />
+    <MESSAGE value="finished the add to menu functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished the add to menu functionality" />
   </component>
 </project>

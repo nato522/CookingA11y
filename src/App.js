@@ -43,7 +43,10 @@ class App extends Component {
           <SkipToContent/>
           <NavigationBar/>
           <Route exact path="/" component={Homepage}/>
-          <Route path="/recipes" component={Recipes}/>
+          <Route
+			  path="/recipes"
+			  render={(props) => <Recipes {...props} model={modelInstance} />}
+		  />
           <Route
               path="/recipe_details/:id"
               render={(props) => <RecipeDetails {...props} model={modelInstance} />}
