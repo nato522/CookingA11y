@@ -96,6 +96,12 @@ class DataModel extends ObservableModel{
 		this.notifyObservers("addDishToMenu");
 	}
 
+	deleteDishFromMenu(dishType, dishTitle) {
+		let listOfKey = this.selectedDishesMap.get(dishType)
+		listOfKey.splice(listOfKey.indexOf(dishTitle), 1 );
+		this.notifyObservers("deleteDishFromMenu");
+	}
+
 	getSelectedDishes() {
 		return this.selectedDishesMap
 	}

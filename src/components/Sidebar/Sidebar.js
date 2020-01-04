@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import modelInstance from "../../data/DataModel"
-import { Accordion, AccordionPanel, Box, Heading, Text } from 'grommet';
+import {Accordion, AccordionPanel, Box, Button, Heading, Text} from 'grommet';
 import './Sidebar.css';
 import {STARTER, FIRST_DISH, SECOND_DISH, DESERT} from "../../data/Constants"
+import {FormTrash} from "grommet-icons";
 
 class Sidebar extends Component {
 
@@ -30,30 +31,55 @@ class Sidebar extends Component {
         });
     }
 
+    deleteRecipeFromMenu(dishType, dishTitle) {
+        modelInstance.deleteDishFromMenu(dishType, dishTitle);
+    }
+
     render() {
         let selectedDishMap = modelInstance.getSelectedDishes();
 
         let starters = selectedDishMap.get(STARTER).map(starterTitle => (
             <Box pad="medium" background="light-2">
-                <Text>{starterTitle}</Text>
+                <Text>
+                    {starterTitle}
+                    <Button onClick={() => this.deleteRecipeFromMenu(STARTER, starterTitle)}>
+                        <FormTrash color='brand'/>
+                    </Button>
+                </Text>
+
             </Box>
         ));
 
         let firstDishes = selectedDishMap.get(FIRST_DISH).map(firstDishesTitle => (
             <Box pad="medium" background="light-2">
-                <Text>{firstDishesTitle}</Text>
+                <Text>
+                    {firstDishesTitle}
+                    <Button onClick={() => this.deleteRecipeFromMenu(FIRST_DISH, firstDishesTitle)}>
+                        <FormTrash color='brand'/>
+                    </Button>
+                </Text>
             </Box>
         ));
 
         let secondDishes = selectedDishMap.get(SECOND_DISH).map(secondDishesTitle => (
             <Box pad="medium" background="light-2">
-                <Text>{secondDishesTitle}</Text>
+                <Text>
+                    {secondDishesTitle}
+                    <Button onClick={() => this.deleteRecipeFromMenu(SECOND_DISH, secondDishesTitle)}>
+                        <FormTrash color='brand'/>
+                    </Button>
+                </Text>
             </Box>
         ));
 
         let deserts = selectedDishMap.get(DESERT).map(desertTitle => (
             <Box pad="medium" background="light-2">
-                <Text>{desertTitle}</Text>
+                <Text>
+                    {desertTitle}
+                    <Button onClick={() => this.deleteRecipeFromMenu(DESERT, desertTitle)}>
+                        <FormTrash color='brand'/>
+                    </Button>
+                </Text>
             </Box>
         ));
 
