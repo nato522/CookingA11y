@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import {
     Box, Button, Form, FormField, Grid, Heading,
-    ResponsiveContext, Select, TextArea,
+    Select, TextArea,
 } from 'grommet';
 import { Add } from 'grommet-icons';
 
@@ -11,6 +11,8 @@ import { Add } from 'grommet-icons';
 import burger from "../../images/burger.jpg"
 
 import "./AddRecipe.css";
+
+let localRecipes = JSON.parse(localStorage.getItem('my_recipes')) || [];
 
 class AddRecipe extends Component {
     constructor(props) {
@@ -22,16 +24,34 @@ class AddRecipe extends Component {
     }
 
     addIngredient = () => {
-        console.log("addIngredient clicked");
         this.setState({
             ingredientCount: this.state.ingredientCount + 1
         });
     }
     addStep = () => {
-        console.log("addStep clicked");
         this.setState({
             stepCount: this.state.stepCount + 1
         });
+    }
+
+    addRecipe = (e) => {
+        console.log(e.value);
+        const data = e.value;
+
+        /**
+         * TODO: handle array of ingredients and array of instructions
+         */
+
+        const new_recipe = {
+            recipe:{
+                title: data.title,
+                instructions: data.instructions,
+            },
+            ingredients: [],
+            instructions: [],
+        }
+        localRecipes.push(new_recipe);
+        localStorage.setItem('my_recipes', JSON.stringify(localRecipes));
     }
 
 	render() {
@@ -90,61 +110,62 @@ class AddRecipe extends Component {
         };
 
 		return(
-			<ResponsiveContext.Consumer>
-				{ size => (
-					<Grid as="div" justify="stretch"
-						areas={[
-							{ name: "cover", start: [0, 0], end: [2, 0] },
-							{ name: "recipe_form", start: [0, 1], end: [2, 1] }
-						]}
-						columns={["flex"]}
-						rows={["small", "auto"]}
-					>
-						<Box
-							gridArea="cover"
-							background={`url(${burger})`}
-						>
-							<Heading level='1' alignSelf='center' color="#F8F8F8">
-								Add your own recipe!
-							</Heading>
-						</Box>
-						{(size === 'large') &&
-							<Grid
-								gridArea="recipe_form"
-							>
-                                <Form>
-                                    <Box>
-                                        <FormField
-                                            label="Recipe name:"
-                                            name="title"
-                                            required={true}
-                                        />
-                                        <FormField
-                                            component={ TextArea }
-                                            label="Recipe description:"
-                                            name="instructions"
-                                            required={true}
-                                        />
-                                    </Box>
-                                    { ingredients }
-                                    <Button
-                                        icon={ <Add /> }
-                                        label="Add ingredient"
-                                        onClick={()=>{this.addIngredient()}}
-                                    />
-                                    { steps }
-                                    <Button
-                                        icon={ <Add /> }
-                                        label="Add step"
-                                        onClick={()=>{this.addStep()}}
-                                    />
-                                </Form>
-							</Grid>
-						}
-					</Grid>
-				)}
-			</ResponsiveContext.Consumer>
-	);
+            <Grid as="div" justify="stretch"
+                areas={[
+                    { name: "cover", start: [0, 0], end: [2, 0] },
+                    { name: "recipe_form", start: [0, 1], end: [2, 1] }
+                ]}
+                columns={["flex"]}
+                rows={["small", "auto"]}
+            >
+                <Box
+                    gridArea="cover"
+                    background={`url(${burger})`}
+                >
+                    <Heading level='1' alignSelf='center' color="#F8F8F8">
+                        Add your own recipe!
+                    </Heading>
+                </Box>
+                <Grid
+                    gridArea="recipe_form"
+                >
+                    <Form onSubmit={this.addRecipe}>
+                        <Box>
+                            <FormField
+                                label="Recipe name:"
+                                name="title"
+                                required={true}
+                            />
+                            <FormField
+                                component={ TextArea }
+                                label="Recipe description:"
+                                name="instructions"
+                                required={true}
+                            />
+                        </Box>
+                        { ingredients }
+                        <Button
+                            icon={ <Add /> }
+                            label="Add ingredient"
+                            onClick={()=>{this.addIngredient()}}
+                        />
+                        { steps }
+                        <Button
+                            icon={ <Add /> }
+                            label="Add step"
+                            onClick={()=>{this.addStep()}}
+                        />
+                        <Box>
+                            <Button
+                                type="submit"
+                                label="Submit"
+                                margin="auto"
+                            />
+                        </Box>
+                    </Form>
+                </Grid>
+            </Grid>
+	    );
 	}
 }
 
