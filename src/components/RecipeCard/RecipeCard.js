@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Heading, Image, Paragraph, Text } from 'grommet';
+import { Box, Image, Text } from 'grommet';
 
 const RecipeCard = (props) => {
     return(

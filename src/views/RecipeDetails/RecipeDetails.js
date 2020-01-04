@@ -1,8 +1,14 @@
 import modelInstance from "../../data/DataModel"
 import React, { Component } from "react";
+
+import {
+	Box, Button, Grid, Heading, Image, Layer,
+	RadioButtonGroup, Paragraph, Table, TableBody,
+	TableCell, TableHeader, TableRow, Text
+} from 'grommet';
+
 import { Add } from 'grommet-icons';
-import {Box, Button, Grid, Heading, Image, Layer, RadioButtonGroup, Text} from 'grommet';
-import {Table, TableBody, TableCell, TableHeader, TableRow} from 'grommet';
+
 import Sidebar from '../../components/Sidebar/Sidebar';
 import {STARTER, FIRST_DISH, SECOND_DISH, DESERT} from "../../data/Constants"
 
@@ -17,19 +23,19 @@ function AddToMyMenu(props) {
 
 	return (
 		<Box>
-			<Button label="show"
-					gridArea="recipeDetailsGrid"
-					alignSelf="start"
-					margin="small"
-					icon={<Add />}
-					label="Add to my menu"
-					onClick={() => setShow(true)}
+			<Button
+				gridArea="recipeDetailsGrid"
+				alignSelf="start"
+				margin="small"
+				icon={<Add />}
+				label="Add to my menu"
+				onClick={() => setShow(true)}
 			/>
 			{show && (
 				<Layer
-					   position='center'
-					   onEsc={() => setShow(false)}
-					   onClickOutside={() => setShow(false)}
+					position='center'
+					onEsc={() => setShow(false)}
+					onClickOutside={() => setShow(false)}
 				>
 					<Text margin="small" >Please choose the dish type:</Text>
 					<RadioButtonGroup
@@ -81,7 +87,7 @@ class RecipeDetails extends Component {
 
 	render() {
 		let tableRow = this.state.ingredients.map((ingredient, i) => (
-			<TableRow>
+			<TableRow key={i}>
 				<TableCell scope="row">
 					<strong>{ingredient.name}</strong>
 				</TableCell>
@@ -90,16 +96,18 @@ class RecipeDetails extends Component {
 		));
 
 		let detailedInstructions = this.state.instructions.map((instruction, i) => (
-			<Text size="large" margin="small">
-				Step {instruction.number} <br/>
-				<Text>
+			<Text as="div" size="large" margin="small" key={i}>
+				<Heading level="3" margin="none">
+					Step {instruction.number} <br/>
+				</Heading>
+				<Paragraph fill={true} margin="none">
 					{instruction.step}
-				</Text>
+				</Paragraph>
 			</Text>
 		));
 
 		return (
-			<Grid as="recipeDetailsGrid"
+			<Grid
 				areas={[
 					{ name: 'recipe_title', start: [0, 0], end: [1, 0] },
 					{ name: 'sidebar', start: [1, 0], end: [2, 0] },
@@ -155,12 +163,12 @@ class RecipeDetails extends Component {
 					margin={{bottom:'medium', left:'medium', right:'402px'}}
 					overflow="auto"
 				>
-					<Heading level="1" margin="small">
+					<Heading level="2" margin="small">
 						Recipe Steps
 					</Heading>
-					<Text margin="small">
+					<Paragraph margin="small" fill={true}>
 						{this.state.recipe.instructions}
-					</Text>
+					</Paragraph>
 					{detailedInstructions}
 				</Box>
 			</Grid>

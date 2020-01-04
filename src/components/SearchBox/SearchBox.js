@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {
-    Anchor, Box, Button, CheckBox, Form, FormField, Heading,
-    Layer, RadioButtonGroup, Text, TextInput
+    Box, Button, CheckBox, Form, FormField, Heading,
+    Layer, RadioButtonGroup, TextInput
 } from 'grommet';
 import { Search, SearchAdvanced } from 'grommet-icons';
 import './SearchBox.css';
