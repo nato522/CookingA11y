@@ -27,7 +27,7 @@ class AddRecipe extends Component {
 							gridArea="cover"
 							background={`url(${burger})`}
 						>
-							<Heading level='1' alignSelf='center' color="blue">
+							<Heading level='1' alignSelf='center' color="#F8F8F8">
 								Welcome
 							</Heading>
 						</Box>
