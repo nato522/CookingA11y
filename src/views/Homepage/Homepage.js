@@ -85,8 +85,6 @@ class Homepage extends Component {
 							<Grid
 								gridArea="random_recipes"
 								columns={["full"]}
-								margin="auto"
-								gap="medium"
 								background="#E0E3F0"
 							>
 								{recipes}
@@ -109,8 +107,6 @@ class Homepage extends Component {
 							<Grid
 								gridArea="random_recipes"
 								columns={["1/2", "1/2"]}
-								margin="auto"
-								gap="medium"
 								background="#E0E3F0"
 							>
 								{recipes}
@@ -119,8 +115,6 @@ class Homepage extends Component {
 						{(size === 'large') &&
 							<Grid
 								columns={["1/4", "1/4", "1/4", "1/4"]}
-								margin="auto"
-								gap="medium"
 								gridArea="random_recipes"
 								background="#E0E3F0"
 							>
