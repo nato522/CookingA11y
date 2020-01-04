@@ -1,6 +1,6 @@
 import API_KEY from "./ApiKey";
 import ObservableModel from "./ObservableModel";
-import {STARTER, FIRST_DISH, SECOND_DISH, DESERT} from "./Constants"
+import {STARTER, FIRST_DISH, SECOND_DISH, DESSERT} from "./Constants"
 
 const BASE_URL= "http://sunset.nada.kth.se:8080/iprog/group/45";
 const httpOptions = {
@@ -20,7 +20,7 @@ class DataModel extends ObservableModel{
 		this.selectedDishesMap.set(STARTER, []);
 		this.selectedDishesMap.set(FIRST_DISH, []);
 		this.selectedDishesMap.set(SECOND_DISH, []);
-		this.selectedDishesMap.set(DESERT, []);
+		this.selectedDishesMap.set(DESSERT, []);
 	}
 
 	getRandomFoodJoke() {

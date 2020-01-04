@@ -4,7 +4,7 @@ import { Add } from 'grommet-icons';
 import {Box, Button, Grid, Heading, Image, Layer, RadioButtonGroup, Text} from 'grommet';
 import {Table, TableBody, TableCell, TableHeader, TableRow} from 'grommet';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import {STARTER, FIRST_DISH, SECOND_DISH, DESERT} from "../../data/Constants"
+import {STARTER, FIRST_DISH, SECOND_DISH, DESSERT} from "../../data/Constants"
 
 function AddToMyMenu(props) {
 
@@ -34,7 +34,7 @@ function AddToMyMenu(props) {
 					<Text margin="small" >Please choose the dish type:</Text>
 					<RadioButtonGroup
 						name="dishType"
-						options={[STARTER, FIRST_DISH, SECOND_DISH, DESERT]}
+						options={[STARTER, FIRST_DISH, SECOND_DISH, DESSERT]}
 						value={value}
 						onChange={(event) => setValue(event.target.value)}
 						margin="small"
