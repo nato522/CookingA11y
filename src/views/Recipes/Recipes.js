@@ -218,7 +218,6 @@ class Recipes extends Component {
                                 { this.state.total && <Paragraph>Showing {this.state.recipes.length} recipes out of {this.state.total}!</Paragraph>}
                                 <Grid
                                     columns={["full"]}
-                                    gap="medium"
                                 >
                                     { result_recipes }
                                 </Grid>
@@ -229,7 +228,6 @@ class Recipes extends Component {
                                 { this.state.total && <Paragraph>Showing {this.state.recipes.length} recipes out of {this.state.total}!</Paragraph>}
                                 <Grid
                                     columns={["1/3", "1/3", "1/3"]}
-                                    gap="medium"
                                 >
                                     { result_recipes }
                                 </Grid>
@@ -239,8 +237,7 @@ class Recipes extends Component {
                             <Box gridArea="recipes" margin="auto">
                                 { this.state.total && <Paragraph>Showing {this.state.recipes.length} out of {this.state.total} recipes!</Paragraph>}
                                 <Grid
-                                    columns={["1/3", "1/3", "1/3"]}
-                                    gap="medium"
+                                    columns={["1/4", "1/4", "1/4", "1/4"]}
                                 >
                                     { result_recipes }
                                 </Grid>

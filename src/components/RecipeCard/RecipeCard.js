@@ -4,14 +4,13 @@ import { Box, Image, Text } from 'grommet';
 const RecipeCard = (props) => {
     return(
         <Box
-            height="100%"
-            width="small"
             round="small"
             border="all"
             overflow="hidden"
             responsive={true}
             background="#F7F7F8"
             wrap={true}
+            margin="15px"
         >
             <Box
                 height="small"
