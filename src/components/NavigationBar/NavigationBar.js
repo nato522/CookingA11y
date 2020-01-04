@@ -33,9 +33,23 @@ const AppBar = (props) => (
     />
 );
 
+const CustomMenu = () => {
+    const my_recipes = JSON.parse(localStorage.getItem('my_recipes'));
+    let menu_items = [];
+    for (let index = 0; index < my_recipes.length; index++) {
+        const item = {
+            label: my_recipes[index].recipe.title
+        }
+        menu_items = menu_items.concat(item);
+    }
+    return (<Menu
+        label="Menu"
+        items={menu_items}
+    />)
+
+}
 
 class NavigationBar extends Component {
-
 	render() {
 		return (
 			<Grommet theme={theme}>
@@ -53,16 +67,7 @@ class NavigationBar extends Component {
                                 <Link to="/addRecipe">
                                     Add your recipe
                                 </Link>
-                                <Menu
-                                    label="My recipes"
-                                    items={[
-                                        {label: 'First recipe', onClick:()=>{}},
-                                        {label: 'Second recipe', onClick:()=>{}},
-                                        {label: 'Third recipe', onClick:()=>{}},
-                                        {label: 'Fourth recipe', onClick:()=>{}},
-                                    ]}
-                                >
-                                </Menu>
+                                <CustomMenu />
 							</AppBar>
 						</Box>
 					)}
