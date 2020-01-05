@@ -162,7 +162,6 @@ class Recipes extends Component {
 
         modelInstance.getComplexRecipes(limit, offset, query, filters)
 			.then(data => {
-                console.log(data);
                 this.setState({
                     recipes: data.results,
                     total: data.totalResults,
@@ -213,7 +212,7 @@ class Recipes extends Component {
                             />
                         </Box>
                         {(this.state.total === 0) && <EmptySearch />}
-                        {(size === "small") &&
+                        {(size === "small") && (this.state.total > 0) &&
                             <Box gridArea="recipes" margin="auto">
                                 { this.state.total && <Paragraph>Showing {this.state.recipes.length} recipes out of {this.state.total}!</Paragraph>}
                                 <Grid
@@ -223,7 +222,7 @@ class Recipes extends Component {
                                 </Grid>
                             </Box>
                         }
-                        {(size === "medium") &&
+                        {(size === "medium") && (this.state.total > 0) &&
                             <Box gridArea="recipes" margin="auto">
                                 { this.state.total && <Paragraph>Showing {this.state.recipes.length} recipes out of {this.state.total}!</Paragraph>}
                                 <Grid
@@ -233,7 +232,7 @@ class Recipes extends Component {
                                 </Grid>
                             </Box>
                         }
-                        {(size === "large") &&
+                        {(size === "large") && (this.state.total > 0) &&
                             <Box gridArea="recipes" margin="auto">
                                 { this.state.total && <Paragraph>Showing {this.state.recipes.length} out of {this.state.total} recipes!</Paragraph>}
                                 <Grid
