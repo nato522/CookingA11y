@@ -95,6 +95,34 @@ class RecipeDetails extends Component {
 		}
 	}
 
+	componentDidUpdate(prevProps) {
+		const currentId = prevProps.match.params.id;
+		const incomingId = this.props.match.params.id;
+
+		if (incomingId !== currentId) {
+			this.id = incomingId;
+			if (!isNaN(this.id)){
+				modelInstance.getRecipeByID(this.id)
+					.then(recipe => {
+						this.setState({
+							recipe: recipe,
+							ingredients: recipe.extendedIngredients,
+							instructions: recipe.analyzedInstructions[0].steps
+						})
+					}).catch(error => {
+					console.error(error);
+				});
+			} else {
+				const customRecipe = modelInstance.getCustomRecipe(this.id);
+				this.setState({
+					recipe: customRecipe.recipe,
+					ingredients: customRecipe.ingredients,
+					instructions: customRecipe.instructions
+				})
+			}
+		}
+	}
+
 	render() {
 		let tableRow = this.state.ingredients.map((ingredient, i) => (
 			<TableRow key={i}>
