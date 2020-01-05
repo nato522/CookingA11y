@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import {
     Box, Button, Form, FormField, Grid, Heading,
-    Select, TextArea,
+    Select, Text, TextArea, Layer,
 } from 'grommet';
 import { Add } from 'grommet-icons';
 
@@ -15,9 +15,29 @@ import "./AddRecipe.css";
 let localRecipes = JSON.parse(localStorage.getItem('my_recipes')) || [];
 
 function _getUnitShort(unitLong){
-    const obj = UNITS.find(obj => obj.unitLong === unitLong);
+    const obj = UNITS.find(unit => unit.unitLong === unitLong);
     return obj.unitShort;
 }
+
+const FormFieldLabel = props => {
+    const { required, label, ...rest } = props;
+    return (
+        <FormField
+            label={
+                required ? (
+                <Box direction="row">
+                <Text>{label}</Text>
+                <Text color="status-critical">*</Text>
+                </Box>
+            ) : (
+                label
+            )
+            }
+            required={required}
+            {...rest}
+        />
+    );
+};
 
 class AddRecipe extends Component {
     constructor(props) {
@@ -25,6 +45,7 @@ class AddRecipe extends Component {
         this.state = {
             ingredientCount: 1,
             stepCount: 1,
+            openLayer: false,
         }
     }
 
@@ -85,6 +106,21 @@ class AddRecipe extends Component {
         localStorage.setItem('my_recipes', JSON.stringify(localRecipes));
     }
 
+    reset = (e) => {
+        this.setState({
+            ingredientCount: 1,
+            stepCount: 1,
+            openLayer: true,
+        });
+        e.currentTarget.reset();
+    }
+
+    onClose = () => {
+        this.setState({
+            openLayer: false
+        });
+    }
+
 	render() {
         let ingredients = [];
         let steps = [];
@@ -94,18 +130,18 @@ class AddRecipe extends Component {
                 <Box key={i}
                     direction="row-responsive"
                 >
-                    <FormField
+                    <FormFieldLabel
                         label="Name:"
                         name={`ingredient_${i + 1}_name`}
                         required={true}
                     />
-                    <FormField
+                    <FormFieldLabel
                         type="number"
                         label="Amount:"
                         name={`ingredient_${i + 1}_amount`}
                         required={true}
                     />
-                    <FormField
+                    <FormFieldLabel
                         label="Unit:"
                         name={`ingredient_${i + 1}_unit`}
                         component={ Select }
@@ -127,7 +163,7 @@ class AddRecipe extends Component {
         for (var i = 0; i < this.state.stepCount; i++) {
             steps.push(
                 <Box key={i}>
-                    <FormField
+                    <FormFieldLabel
                         component={ TextArea }
                         label={`Step ${i + 1}:`}
                         name={`step_${i + 1}_description`}
@@ -157,14 +193,17 @@ class AddRecipe extends Component {
                 <Grid
                     gridArea="recipe_form"
                 >
-                    <Form onSubmit={this.addRecipe}>
+                    <Form id="form-recipe" onSubmit={(e) =>{
+                        this.addRecipe(e);
+                        this.reset(e);
+                        }}>
                         <Box>
-                            <FormField
+                            <FormFieldLabel
                                 label="Recipe name:"
                                 name="title"
                                 required={true}
                             />
-                            <FormField
+                            <FormFieldLabel
                                 component={ TextArea }
                                 label="Recipe description:"
                                 name="instructions"
@@ -192,8 +231,32 @@ class AddRecipe extends Component {
                         </Box>
                     </Form>
                 </Grid>
+                {this.state.openLayer && (
+                    <Layer
+                        position="center"
+                        modal
+                        onClickOutside={this.onClose}
+                        onEsc={this.onClose}
+                    >
+                        <Box pad="medium" gap="small" width="medium">
+                            <Heading level={3} margin="none">
+                                Congratulations!
+                            </Heading>
+                            <Text>You have added a new recipe!</Text>
+                            <Box
+                                as="footer"
+                                gap="small"
+                                direction="row"
+                                align="center"
+                                pad={{ top: "medium", bottom: "small" }}
+                            >
+                                <Button label="Close" onClick={this.onClose} color="status-ok" />
+                            </Box>
+                        </Box>
+                    </Layer>
+                )}
             </Grid>
-	    );
+        );
 	}
 }
 
