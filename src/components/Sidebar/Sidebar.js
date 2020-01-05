@@ -39,7 +39,7 @@ class Sidebar extends Component {
         let selectedDishMap = modelInstance.getSelectedDishes();
 
         let starters = selectedDishMap.get(STARTER).map(starterTitle => (
-            <Box pad="medium" background="light-2">
+            <Box pad="medium" background="light-2" key={starterTitle}>
                 <Text>
                     {starterTitle}
                     <Button onClick={() => this.deleteRecipeFromMenu(STARTER, starterTitle)}>
@@ -51,7 +51,7 @@ class Sidebar extends Component {
         ));
 
         let firstDishes = selectedDishMap.get(FIRST_DISH).map(firstDishesTitle => (
-            <Box pad="medium" background="light-2">
+            <Box pad="medium" background="light-2" key={firstDishesTitle}>
                 <Text>
                     {firstDishesTitle}
                     <Button onClick={() => this.deleteRecipeFromMenu(FIRST_DISH, firstDishesTitle)}>
@@ -62,7 +62,7 @@ class Sidebar extends Component {
         ));
 
         let secondDishes = selectedDishMap.get(SECOND_DISH).map(secondDishesTitle => (
-            <Box pad="medium" background="light-2">
+            <Box pad="medium" background="light-2" key={secondDishesTitle}>
                 <Text>
                     {secondDishesTitle}
                     <Button onClick={() => this.deleteRecipeFromMenu(SECOND_DISH, secondDishesTitle)}>
@@ -73,7 +73,7 @@ class Sidebar extends Component {
         ));
 
         let deserts = selectedDishMap.get(DESERT).map(desertTitle => (
-            <Box pad="medium" background="light-2">
+            <Box pad="medium" background="light-2" key={desertTitle}>
                 <Text>
                     {desertTitle}
                     <Button onClick={() => this.deleteRecipeFromMenu(DESERT, desertTitle)}>
