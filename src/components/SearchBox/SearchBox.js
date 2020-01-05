@@ -27,7 +27,11 @@ function AdvancedSearch(props){
                 >
                     <Box overflow="auto" margin="auto" pad="40px" width="large">
                         <Heading level="1">Advanced Search</Heading>
-                        <Form onSubmit={props.advancedSearch}>
+                        <Form onSubmit={(e) => {
+                                props.advancedSearch(e);
+                                setShow(false);
+                            }}
+                        >
                             <Box>
                                 <FormField label="Search by recipe:" name="advancedQuery" placeholder="type here"/>
                             </Box>
