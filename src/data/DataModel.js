@@ -16,6 +16,7 @@ class DataModel extends ObservableModel{
 		super()
 		this.dishType = ""
 		this.dishTitle = ""
+		this.allDishesInMenu = []
 		this.selectedDishesMap = new Map()
 		this.selectedDishesMap.set(STARTER, []);
 		this.selectedDishesMap.set(FIRST_DISH, []);
@@ -91,8 +92,10 @@ class DataModel extends ObservableModel{
 		throw response;
 	}
 
-	addDishToMenu(dishType, dishTitle) {
-		this.selectedDishesMap.get(dishType).push(dishTitle)
+	addDishToMenu(dishType, dishTitle, dishID) {
+		let dishInfo = dishTitle + "/" + dishID
+		this.selectedDishesMap.get(dishType).push(dishInfo)
+		this.allDishesInMenu.push(dishInfo)
 		this.notifyObservers("addDishToMenu");
 	}
 
@@ -105,6 +108,16 @@ class DataModel extends ObservableModel{
 	getSelectedDishes() {
 		return this.selectedDishesMap
 	}
+
+	getAllDishesInMenu() {
+		return this.allDishesInMenu
+	}
+
+	getSimilarRecipes(dishID) {
+		const url = `${BASE_URL}/recipes/${dishID}/similar`
+		return fetch(url, httpOptions).then(this.processResponse);
+	}
+
 }
 
 

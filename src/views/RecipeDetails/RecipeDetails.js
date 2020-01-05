@@ -12,7 +12,7 @@ function AddToMyMenu(props) {
 	const [value, setValue] = React.useState(STARTER);
 
 	let addDishToMenu = () => {
-		modelInstance.addDishToMenu(value, props.dishTitle);
+		modelInstance.addDishToMenu(value, props.dishTitle, props.dishID);
 	};
 
 	return (
@@ -115,7 +115,7 @@ class RecipeDetails extends Component {
 					margin={{top:'medium', left:'medium'}}
 				>
 					<Heading level="1" margin="small"> {this.state.recipe.title}</Heading>
-					<AddToMyMenu dishTitle={this.state.recipe.title}/>
+					<AddToMyMenu dishTitle={this.state.recipe.title} dishID={this.id}/>
 					<Box
 						gridArea="nav"
 						direction="row"

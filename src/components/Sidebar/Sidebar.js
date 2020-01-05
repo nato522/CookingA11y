@@ -41,7 +41,7 @@ class Sidebar extends Component {
         let starters = selectedDishMap.get(STARTER).map(starterTitle => (
             <Box pad="medium" background="light-2">
                 <Text>
-                    {starterTitle}
+                    {starterTitle.split("/")[0]}
                     <Button onClick={() => this.deleteRecipeFromMenu(STARTER, starterTitle)}>
                         <FormTrash color='brand'/>
                     </Button>
@@ -53,7 +53,7 @@ class Sidebar extends Component {
         let firstDishes = selectedDishMap.get(FIRST_DISH).map(firstDishesTitle => (
             <Box pad="medium" background="light-2">
                 <Text>
-                    {firstDishesTitle}
+                    {firstDishesTitle.split("/")[0]}
                     <Button onClick={() => this.deleteRecipeFromMenu(FIRST_DISH, firstDishesTitle)}>
                         <FormTrash color='brand'/>
                     </Button>
@@ -64,7 +64,7 @@ class Sidebar extends Component {
         let secondDishes = selectedDishMap.get(SECOND_DISH).map(secondDishesTitle => (
             <Box pad="medium" background="light-2">
                 <Text>
-                    {secondDishesTitle}
+                    {secondDishesTitle.split("/")[0]}
                     <Button onClick={() => this.deleteRecipeFromMenu(SECOND_DISH, secondDishesTitle)}>
                         <FormTrash color='brand'/>
                     </Button>
@@ -75,7 +75,7 @@ class Sidebar extends Component {
         let desserts = selectedDishMap.get(DESSERT).map(dessertTitle => (
             <Box pad="medium" background="light-2">
                 <Text>
-                    {dessertTitle}
+                    {dessertTitle.split("/")[0]}
                     <Button onClick={() => this.deleteRecipeFromMenu(DESSERT, dessertTitle)}>
                         <FormTrash color='brand'/>
                     </Button>
