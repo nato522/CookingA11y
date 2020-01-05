@@ -11,6 +11,7 @@ import { Add } from 'grommet-icons';
 
 import Sidebar from '../../components/Sidebar/Sidebar';
 import {STARTER, FIRST_DISH, SECOND_DISH, DESERT} from "../../data/Constants"
+import placeholder from "../../images/placeholder.png"
 
 function AddToMyMenu(props) {
 
@@ -73,16 +74,25 @@ class RecipeDetails extends Component {
 	}
 
 	componentDidMount() {
-		modelInstance.getRecipeByID(this.id)
-			.then(recipe => {
-				this.setState({
-					recipe: recipe,
-					ingredients: recipe.extendedIngredients,
-					instructions: recipe.analyzedInstructions[0].steps
-				})
-			}).catch(error => {
-			console.error(error);
-		});
+		if (!isNaN(this.id)){
+			modelInstance.getRecipeByID(this.id)
+				.then(recipe => {
+					this.setState({
+						recipe: recipe,
+						ingredients: recipe.extendedIngredients,
+						instructions: recipe.analyzedInstructions[0].steps
+					})
+				}).catch(error => {
+				console.error(error);
+			});
+		} else {
+			const customRecipe = modelInstance.getCustomRecipe(this.id);
+			this.setState({
+				recipe: customRecipe.recipe,
+				ingredients: customRecipe.ingredients,
+				instructions: customRecipe.instructions
+			})
+		}
 	}
 
 	render() {
@@ -91,7 +101,7 @@ class RecipeDetails extends Component {
 				<TableCell scope="row">
 					<strong>{ingredient.name}</strong>
 				</TableCell>
-				<TableCell>{parseFloat(ingredient.amount).toFixed(1) + " " + ingredient.unit}</TableCell>
+				<TableCell>{parseFloat(ingredient.measures.metric.amount).toFixed(1) + " " + ingredient.measures.metric.unitShort}</TableCell>
 			</TableRow>
 		));
 
@@ -132,7 +142,8 @@ class RecipeDetails extends Component {
 						<Box height="250px" width="500px">
 							<Image
 								fit="cover"
-								src={this.state.recipe.image}
+								src={this.state.recipe.image || placeholder}
+								alt={ this.state.recipe.image ? this.state.recipe.title : "This is just a placeholder image. We don't support uploading images for your own recipes yet."}
 							/>
 						</Box>
 						<Box overflow="auto">

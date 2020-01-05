@@ -116,6 +116,11 @@ class DataModel extends ObservableModel{
 	getCustomRecipes() {
 		return this.customRecipes;
 	}
+
+	getCustomRecipe(title){
+		const obj = this.customRecipes.find(item => item.recipe.title === title);
+		return obj;
+	}
 }
 
 

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+
 import { Menu } from 'grommet';
 
 import modelInstance from "../../data/DataModel";
@@ -31,7 +33,9 @@ class CustomMenu extends Component {
         let menu_items = [];
         for (let index = 0; index < customRecipes.length; index++) {
             const item = {
-                label: customRecipes[index].recipe.title
+                label:  <Link to={"/recipe_details/" + customRecipes[index].recipe.title} key={customRecipes[index].recipe.title}>
+                            {customRecipes[index].recipe.title}
+			            </Link>,
             }
             menu_items = menu_items.concat(item);
         }
