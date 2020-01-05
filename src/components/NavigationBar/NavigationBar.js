@@ -7,7 +7,7 @@ import {
     Anchor, Box, Heading, Grommet, ResponsiveContext
 } from 'grommet';
 
-import CustomMenu from '../MyMenu/MyMenu';
+import CustomMenu from '../MyRecipesMenu/MyRecipesMenu';
 
 /* theme & AppBar need to be moved in NavigationBar.css or another file for the components folder*/
 const theme = {
