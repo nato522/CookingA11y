@@ -55,7 +55,7 @@ class NavigationBar extends Component {
                                 <Link to="/addRecipe">
                                     Add your recipe
                                 </Link>
-                                <CustomMenu />
+                                <CustomMenu model={this.props.model}/>
 							</AppBar>
 						</Box>
 					)}

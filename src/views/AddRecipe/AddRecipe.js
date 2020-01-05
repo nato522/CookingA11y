@@ -7,6 +7,7 @@ import {
 import { Add } from 'grommet-icons';
 
 import UNITS from "../../data/Constants";
+import modelInstance from "../../data/DataModel";
 
 import burger from "../../images/burger.jpg"
 
@@ -60,6 +61,10 @@ class AddRecipe extends Component {
         });
     }
 
+    addCustomRecipeToMenu = (recipe) => {
+        modelInstance.addCustomRecipeToMenu(recipe);
+    };
+
     addRecipe = (e) => {
         let new_recipe_steps = [];
         let new_recipe_ingredients = [];
@@ -102,6 +107,8 @@ class AddRecipe extends Component {
             ingredients: new_recipe_ingredients,
             instructions: new_recipe_steps,
         }
+
+        this.addCustomRecipeToMenu(new_recipe);
         localRecipes.push(new_recipe);
         localStorage.setItem('my_recipes', JSON.stringify(localRecipes));
     }

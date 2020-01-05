@@ -40,7 +40,7 @@ class App extends Component {
             full={true}
             >
                 <SkipToContent/>
-                <NavigationBar/>
+                <NavigationBar model={modelInstance}/>
                 <Route exact path="/" component={Homepage}/>
                 <Route
                     path="/recipes"
