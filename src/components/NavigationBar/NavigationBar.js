@@ -3,7 +3,11 @@ import {Link} from "react-router-dom";
 
 import "./NavigationBar.css";
 
-import {Anchor, Box, Heading, Grommet, Menu, ResponsiveContext} from 'grommet';
+import {
+    Anchor, Box, Heading, Grommet, ResponsiveContext
+} from 'grommet';
+
+import CustomMenu from '../MyMenu/MyMenu';
 
 /* theme & AppBar need to be moved in NavigationBar.css or another file for the components folder*/
 const theme = {
@@ -32,22 +36,6 @@ const AppBar = (props) => (
         {...props}
     />
 );
-
-const CustomMenu = () => {
-    const my_recipes = JSON.parse(localStorage.getItem('my_recipes'));
-    let menu_items = [];
-    for (let index = 0; index < my_recipes.length; index++) {
-        const item = {
-            label: my_recipes[index].recipe.title
-        }
-        menu_items = menu_items.concat(item);
-    }
-    return (<Menu
-        label="Menu"
-        items={menu_items}
-    />)
-
-}
 
 class NavigationBar extends Component {
 	render() {
