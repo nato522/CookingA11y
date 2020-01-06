@@ -4,7 +4,8 @@ import {Link} from "react-router-dom";
 import "./NavigationBar.css";
 
 import {
-    Anchor, Box, Heading, Grommet, ResponsiveContext
+    Anchor, Box, Grommet, Header, Heading, Menu,
+    ResponsiveContext
 } from 'grommet';
 
 import CustomMenu from '../MyRecipesMenu/MyRecipesMenu';
@@ -43,21 +44,39 @@ class NavigationBar extends Component {
 			<Grommet theme={theme}>
 				<ResponsiveContext.Consumer>
 					{size => (
-						<Box fill>
-							<AppBar>
-                                <Link to="/">
-                                <Heading level='1' margin='none'>Go Bananas Logo</Heading>
-                                </Link>
-                                <Link to="/recipes">
-                                    Recipes
-                                </Link>
-                                <Anchor label="Recommendations" href="#" />
-                                <Link to="/addRecipe">
-                                    Add your recipe
-                                </Link>
-                                <CustomMenu model={this.props.model}/>
-							</AppBar>
-						</Box>
+						<Box as="nav">
+                        {(size !== 'small' ) &&
+                            <Header
+                                background="#163D57"
+                                pad="small"
+                                elevation="medium"
+                                align="center"
+                            >
+                                <Anchor href="/">
+                                    <Heading level="1">GoBananas</Heading>
+                                </Anchor>
+                                <Box direction="row" pad="medium" gap="medium" align="center">
+                                    <Anchor label="Recipes" href="/recipes"/>
+                                    <Anchor label="Recommendations" href="/recommendations"/>
+                                    <Anchor label="Add your recipe" href="/addRecipe"/>
+                                    <CustomMenu model={this.props.model} />
+                                </Box>
+                            </Header>
+                        }
+                        {(size === 'small' ) &&
+                            <Header background="#163D57">
+                                <Anchor label="GoBananas" href="/"/>
+                                <Box direction="row" pad="medium" align="center">
+                                    <Menu label="Menu" items={[
+                                        { label: <Anchor label="Recipes" href="/recipes"/> },
+                                        { label: <Anchor label="Recommendations" href="/recommendations"/> },
+                                        { label: <Anchor label="Add your recipe" href="/addRecipe"/> },
+                                        ]} />
+                                    <CustomMenu model={this.props.model} />
+                                </Box>
+                            </Header>
+                        }
+                        </Box>
 					)}
 				</ResponsiveContext.Consumer>
 			</Grommet>
