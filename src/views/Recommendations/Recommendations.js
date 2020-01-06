@@ -17,11 +17,16 @@ class Recommendations extends Component {
 	}
 
 	componentDidMount() {
-		let iterator = modelInstance.getSelectedDishes().values();
-		let selectedDish = iterator.next().value;
-		this.state.allDishesInMenu.push(selectedDish)
 
-		let dishesInMenuList = this.state.allDishesInMenu[0];
+		let resultMap = modelInstance.getSelectedDishes();
+		for(let key of resultMap.keys()) {
+			let listOfDishes = resultMap.get(key);
+			for(let j = 0; j < listOfDishes.length; j++) {
+				this.state.allDishesInMenu.push(listOfDishes[j])
+			}
+		}
+
+		let dishesInMenuList = this.state.allDishesInMenu;
 
 		modelInstance.getSimilarRecipes(dishesInMenuList)
 			.then(resultMap => {
@@ -38,21 +43,24 @@ class Recommendations extends Component {
 		let similarRecipes
 		let allSimilarRecipes = []
 		if(this.state.similarRecipesMap.size > 0) {
-			console.log("full map")
-			console.log(this.state.similarRecipesMap)
 			let baseURLImage = "https://spoonacular.com/recipeImages/"
 			for (let key of this.state.similarRecipesMap.keys()) {
+				let dishName = key.split("/")[0]
 				let similarList = this.state.similarRecipesMap.get(key);
-				console.log(similarList)
 				similarRecipes = similarList.map((similarRecipe, i) => (
-					<Link to={"/recipe_details/" + similarRecipe.id} key={similarRecipe.id}>
-						<RecipeCard key={i}
-							recipeID={similarRecipe.id}
-							imageURL={`${baseURLImage}` + similarRecipe.image}
-							title={similarRecipe.title}
-							cookingTime={similarRecipe.readyInMinutes}
-						/>
-					</Link>
+					<Text
+						size="large"
+					>
+						Because you cooked {dishName}, we recommend you:
+						<Link to={"/recipe_details/" + similarRecipe.id} key={similarRecipe.id}>
+							<RecipeCard key={i}
+								recipeID={similarRecipe.id}
+								imageURL={`${baseURLImage}` + similarRecipe.image}
+								title={similarRecipe.title}
+								cookingTime={similarRecipe.readyInMinutes}
+							/>
+						</Link>
+					</Text>
 				));
 				allSimilarRecipes.push(similarRecipes)
 			}
