@@ -16,7 +16,6 @@ class DataModel extends ObservableModel{
 		super()
 		this.dishType = ""
 		this.dishTitle = ""
-		this.allDishesInMenu = []
 		this.selectedDishesMap = new Map()
 		this.selectedDishesMap.set(STARTER, []);
 		this.selectedDishesMap.set(FIRST_DISH, []);
@@ -95,7 +94,6 @@ class DataModel extends ObservableModel{
 	addDishToMenu(dishType, dishTitle, dishID) {
 		let dishInfo = dishTitle + "/" + dishID
 		this.selectedDishesMap.get(dishType).push(dishInfo)
-		this.allDishesInMenu.push(dishInfo)
 		this.notifyObservers("addDishToMenu");
 	}
 
@@ -109,15 +107,23 @@ class DataModel extends ObservableModel{
 		return this.selectedDishesMap
 	}
 
-	getAllDishesInMenu() {
-		return this.allDishesInMenu
-	}
+	async getSimilarRecipes(dishesInMenuList) {
+		let result = new Map();
 
-	getSimilarRecipes(dishID) {
-		const url = `${BASE_URL}/recipes/${dishID}/similar`
-		return fetch(url, httpOptions).then(this.processResponse);
-	}
+		for (let i = 0; i < dishesInMenuList.length; i++) {
+			let dishID = dishesInMenuList[i].split("/")[1]
+			console.log("dishID " + dishID)
+			result.set(dishesInMenuList[i], [])			// we set the key as the name + id for uniqueness
 
+			const url = `${BASE_URL}/recipes/${dishID}/similar`
+			const response = await fetch(url, httpOptions)
+			const similarDishes = await response.json()
+			for(let j = 0; j < similarDishes.length; j++) {
+				result.get(dishesInMenuList[i]).push(similarDishes[j])
+			}
+		}
+		return result
+	}
 }
 
 
