@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -199,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578351477751</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="workspace">
+      <created>1578352178445</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1578352178445</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,17 +240,18 @@
     <MESSAGE value="fixed typos" />
     <MESSAGE value="added the Link component for Recipes and Recommendations" />
     <MESSAGE value="replaced the Anchors with Link components in the navigation bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="replaced the Anchors with Link components in the navigation bar" />
+    <MESSAGE value="workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace" />
   </component>
   <component name="WindowStateProjectService">
     <state x="371" y="89" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1578161116062">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="89" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1578161116062" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578351476852">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578352177573">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578351476852" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578352177573" />
     <state x="421" y="97" key="FileChooserDialogImpl" timestamp="1578344430196">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
