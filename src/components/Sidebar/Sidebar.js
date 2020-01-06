@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import modelInstance from "../../data/DataModel"
 import {Accordion, AccordionPanel, Box, Button, Heading, Text} from 'grommet';
 import './Sidebar.css';
-import {STARTER, FIRST_DISH, SECOND_DISH, DESERT} from "../../data/Constants"
+import {STARTER, FIRST_DISH, SECOND_DISH, DESSERT} from "../../data/Constants"
 import {FormTrash} from "grommet-icons";
 
 class Sidebar extends Component {
@@ -41,7 +41,7 @@ class Sidebar extends Component {
         let starters = selectedDishMap.get(STARTER).map(starterTitle => (
             <Box pad="medium" background="light-2" key={starterTitle}>
                 <Text>
-                    {starterTitle}
+                    {starterTitle.split("/")[0]}
                     <Button onClick={() => this.deleteRecipeFromMenu(STARTER, starterTitle)}>
                         <FormTrash color='brand'/>
                     </Button>
@@ -53,7 +53,7 @@ class Sidebar extends Component {
         let firstDishes = selectedDishMap.get(FIRST_DISH).map(firstDishesTitle => (
             <Box pad="medium" background="light-2" key={firstDishesTitle}>
                 <Text>
-                    {firstDishesTitle}
+                    {firstDishesTitle.split("/")[0]}
                     <Button onClick={() => this.deleteRecipeFromMenu(FIRST_DISH, firstDishesTitle)}>
                         <FormTrash color='brand'/>
                     </Button>
@@ -64,7 +64,7 @@ class Sidebar extends Component {
         let secondDishes = selectedDishMap.get(SECOND_DISH).map(secondDishesTitle => (
             <Box pad="medium" background="light-2" key={secondDishesTitle}>
                 <Text>
-                    {secondDishesTitle}
+                    {secondDishesTitle.split("/")[0]}
                     <Button onClick={() => this.deleteRecipeFromMenu(SECOND_DISH, secondDishesTitle)}>
                         <FormTrash color='brand'/>
                     </Button>
@@ -72,11 +72,11 @@ class Sidebar extends Component {
             </Box>
         ));
 
-        let deserts = selectedDishMap.get(DESERT).map(desertTitle => (
-            <Box pad="medium" background="light-2" key={desertTitle}>
+        let desserts = selectedDishMap.get(DESSERT).map(dessertTitle => (
+            <Box pad="medium" background="light-2">
                 <Text>
-                    {desertTitle}
-                    <Button onClick={() => this.deleteRecipeFromMenu(DESERT, desertTitle)}>
+                    {dessertTitle.split("/")[0]}
+                    <Button onClick={() => this.deleteRecipeFromMenu(DESSERT, dessertTitle)}>
                         <FormTrash color='brand'/>
                     </Button>
                 </Text>
@@ -103,8 +103,8 @@ class Sidebar extends Component {
                     <AccordionPanel label={SECOND_DISH}>
                         {secondDishes}
                     </AccordionPanel>
-                    <AccordionPanel label={DESERT}>
-                        {deserts}
+                    <AccordionPanel label={DESSERT}>
+                        {desserts}
                     </AccordionPanel>
                 </Accordion>
             </Box>

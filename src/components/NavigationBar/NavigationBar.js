@@ -41,8 +41,12 @@ class NavigationBar extends Component {
                                     <Heading level="1" margin="none">GoBananas</Heading>
                                 </Anchor>
                                 <Box direction="row" gap="medium" align="center">
-                                    <Anchor label="Recipes" href="/recipes"/>
-                                    <Anchor label="Recommendations" href="/recommendations"/>
+									<Link to="/recipes">
+                                    	<Anchor label="Recipes"/>
+									</Link>
+									<Link to="/recommendations">
+                                    	<Anchor label="Recommendations"/>
+									</Link>
                                     <Anchor label="Add your recipe" href="/addRecipe"/>
                                     <CustomMenu model={this.props.model} />
                                 </Box>

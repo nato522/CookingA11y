@@ -1,6 +1,6 @@
 import API_KEY from "./ApiKey";
 import ObservableModel from "./ObservableModel";
-import {STARTER, FIRST_DISH, SECOND_DISH, DESERT} from "./Constants"
+import {STARTER, FIRST_DISH, SECOND_DISH, DESSERT} from "./Constants"
 
 const BASE_URL= "http://sunset.nada.kth.se:8080/iprog/group/45";
 const httpOptions = {
@@ -15,13 +15,11 @@ class DataModel extends ObservableModel{
 
 	constructor() {
 		super();
-		this.dishType = "";
-		this.dishTitle = "";
 		this.selectedDishesMap = new Map();
 		this.selectedDishesMap.set(STARTER, []);
 		this.selectedDishesMap.set(FIRST_DISH, []);
 		this.selectedDishesMap.set(SECOND_DISH, []);
-		this.selectedDishesMap.set(DESERT, []);
+		this.selectedDishesMap.set(DESSERT, []);
 		this.customRecipes = my_recipes;
 	}
 
@@ -93,8 +91,9 @@ class DataModel extends ObservableModel{
 		throw response;
 	}
 
-	addDishToMenu(dishType, dishTitle) {
-		this.selectedDishesMap.get(dishType).push(dishTitle)
+	addDishToMenu(dishType, dishTitle, dishID) {
+		let dishInfo = dishTitle + "/" + dishID
+		this.selectedDishesMap.get(dishType).push(dishInfo)
 		this.notifyObservers("addDishToMenu");
 	}
 
@@ -117,9 +116,28 @@ class DataModel extends ObservableModel{
 		return this.customRecipes;
 	}
 
-	getCustomRecipe(title){
+	getCustomRecipe(title) {
 		const obj = this.customRecipes.find(item => item.recipe.title === title);
 		return obj;
+	}
+
+	async getSimilarRecipes(dishesInMenuList) {
+		let result = new Map();
+		let numberOfSimilar = 1
+
+		for (let i = 0; i < dishesInMenuList.length; i++) {
+			let dishID = dishesInMenuList[i].split("/")[1]
+			console.log("dishID " + dishID)
+			result.set(dishesInMenuList[i], [])			// we set the key as the name + id for uniqueness
+
+			const url = `${BASE_URL}/recipes/${dishID}/similar?number=${numberOfSimilar}`
+			const response = await fetch(url, httpOptions)
+			const similarDishes = await response.json()
+			for(let j = 0; j < similarDishes.length; j++) {
+				result.get(dishesInMenuList[i]).push(similarDishes[j])
+			}
+		}
+		return result
 	}
 }
 

@@ -12,6 +12,7 @@ import Homepage from "./views/Homepage/Homepage";
 import Recipes from "./views/Recipes/Recipes";
 import RecipeDetails from "./views/RecipeDetails/RecipeDetails";
 import AddRecipe from "./views/AddRecipe/AddRecipe";
+import Recommendations from "./views/Recommendations/Recommendations";
 
 const theme = {
 	global: {
@@ -27,6 +28,7 @@ const theme = {
 };
 
 class App extends Component {
+
     constructor(props) {
         super(props);
         this.state = {};
@@ -50,6 +52,10 @@ class App extends Component {
                     path="/recipe_details/:id"
                     render={(props) => <RecipeDetails {...props} model={modelInstance} />}
                 />
+				<Route
+					path="/recommendations"
+					render={(props) => <Recommendations {...props} model={modelInstance} />}
+				/>
                 <Route path="/addRecipe" component={AddRecipe}/>
                 <Footer/>
             </Grommet>

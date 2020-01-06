@@ -8,10 +8,9 @@ import {
 } from 'grommet';
 
 import { Add } from 'grommet-icons';
-
 import Sidebar from '../../components/Sidebar/Sidebar';
-import {STARTER, FIRST_DISH, SECOND_DISH, DESERT} from "../../data/Constants"
 import placeholder from "../../images/placeholder.png"
+import {STARTER, FIRST_DISH, SECOND_DISH, DESSERT} from "../../data/Constants"
 
 function AddToMyMenu(props) {
 
@@ -19,7 +18,7 @@ function AddToMyMenu(props) {
 	const [value, setValue] = React.useState(STARTER);
 
 	let addDishToMenu = () => {
-		modelInstance.addDishToMenu(value, props.dishTitle);
+		modelInstance.addDishToMenu(value, props.dishTitle, props.dishID);
 	};
 
 	return (
@@ -41,7 +40,7 @@ function AddToMyMenu(props) {
 					<Text margin="small" >Please choose the dish type:</Text>
 					<RadioButtonGroup
 						name="dishType"
-						options={[STARTER, FIRST_DISH, SECOND_DISH, DESERT]}
+						options={[STARTER, FIRST_DISH, SECOND_DISH, DESSERT]}
 						value={value}
 						onChange={(event) => setValue(event.target.value)}
 						margin="small"
@@ -161,7 +160,7 @@ class RecipeDetails extends Component {
 					margin={{top:'medium', left:'medium'}}
 				>
 					<Heading level="1" margin="small"> {this.state.recipe.title}</Heading>
-					<AddToMyMenu dishTitle={this.state.recipe.title}/>
+					<AddToMyMenu dishTitle={this.state.recipe.title} dishID={this.id}/>
 					<Box
 						gridArea="nav"
 						direction="row"
