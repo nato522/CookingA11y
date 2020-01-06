@@ -24,7 +24,6 @@ class Recommendations extends Component {
 			}
 		}
 
-		console.log(this.state.allDishesInMenu)
 		let dishesInMenuList = this.state.allDishesInMenu;
 		modelInstance.getSimilarRecipes(dishesInMenuList)
 			.then(resultMap => {

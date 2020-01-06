@@ -32,34 +32,37 @@ class NavigationBar extends Component {
 						<Box as="nav">
                         {(size !== 'small' ) &&
                             <Header
-                                background="#163D57"
+                                // background="#163D57"
+                                background="#FFCA58"
                                 pad="small"
                                 elevation="medium"
                                 align="center"
                             >
-                                <Anchor href="/">
+                                <Link href="/">
                                     <Heading level="1" margin="none">GoBananas</Heading>
-                                </Anchor>
+                                </Link>
                                 <Box direction="row" gap="medium" align="center">
 									<Link to="/recipes">
-                                    	<Anchor label="Recipes"/>
+                                    	Recipes
 									</Link>
 									<Link to="/recommendations">
-                                    	<Anchor label="Recommendations"/>
+                                    	Recommendations
 									</Link>
-                                    <Anchor label="Add your recipe" href="/addRecipe"/>
+									<Link to="/addRecipe">
+                                    	Add your recipe
+									</Link>
                                     <CustomMenu model={this.props.model} />
                                 </Box>
                             </Header>
                         }
                         {(size === 'small' ) &&
                             <Header background="#163D57">
-                                <Anchor label="GoBananas" href="/"/>
+                                <Link to="/">Go Bananas</Link>
                                 <Box direction="row" pad="medium" align="center">
                                     <Menu label="Menu" items={[
-                                        { label: <Anchor label="Recipes" href="/recipes"/> },
-                                        { label: <Anchor label="Recommendations" href="/recommendations"/> },
-                                        { label: <Anchor label="Add your recipe" href="/addRecipe"/> },
+										{ label: <Link to="/recipes">Recipes</Link>},
+                                        { label: <Link to="/recommendations">Recommendations</Link>},
+                                        { label: <Link to="/addRecipe">Add your recipe</Link>},
                                         ]} />
                                     <CustomMenu model={this.props.model} />
                                 </Box>
