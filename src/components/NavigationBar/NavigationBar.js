@@ -53,9 +53,9 @@ class NavigationBar extends Component {
                                 align="center"
                             >
                                 <Anchor href="/">
-                                    <Heading level="1">GoBananas</Heading>
+                                    <Heading level="1" margin="none">GoBananas</Heading>
                                 </Anchor>
-                                <Box direction="row" pad="medium" gap="medium" align="center">
+                                <Box direction="row" gap="medium" align="center">
                                     <Anchor label="Recipes" href="/recipes"/>
                                     <Anchor label="Recommendations" href="/recommendations"/>
                                     <Anchor label="Add your recipe" href="/addRecipe"/>
