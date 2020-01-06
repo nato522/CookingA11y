@@ -204,6 +204,7 @@ class AddRecipe extends Component {
                         this.addRecipe(e);
                         this.reset(e);
                         }}>
+                        <Heading level="2">Recipe information:</Heading>
                         <Box>
                             <FormFieldLabel
                                 label="Recipe name:"
@@ -217,12 +218,14 @@ class AddRecipe extends Component {
                                 required={true}
                             />
                         </Box>
+                        <Heading level="2">Ingredients:</Heading>
                         { ingredients }
                         <Button
                             icon={ <Add /> }
                             label="Add ingredient"
                             onClick={()=>{this.addIngredient()}}
                         />
+                        <Heading level="2">Instructions:</Heading>
                         { steps }
                         <Button
                             icon={ <Add /> }
