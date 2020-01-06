@@ -10,7 +10,6 @@ import {
 
 import CustomMenu from '../MyRecipesMenu/MyRecipesMenu';
 
-/* theme & AppBar need to be moved in NavigationBar.css or another file for the components folder*/
 const theme = {
     global: {
         colors: {
@@ -23,20 +22,6 @@ const theme = {
         },
     },
 };
-
-const AppBar = (props) => (
-    <Box
-        tag='header'
-        direction='row'
-        align='center'
-        justify='evenly'
-        background= '#163D57'
-        pad={{ left: 'medium', right: 'small', vertical: 'small', top: 'medium', bottom: 'medium'}}
-        elevation='medium'
-        style={{ zIndex: '1' }}
-        {...props}
-    />
-);
 
 class NavigationBar extends Component {
 	render() {
