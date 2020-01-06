@@ -5,12 +5,7 @@ import modelInstance from "../../data/DataModel"
 
 import { Box, Grid, Heading, ResponsiveContext } from 'grommet';
 
-import banana from "../../images/banana.jpg";
-import cooking from "../../images/cooking.jpg"
 import burger from "../../images/burger.jpg"
-import healthy from "../../images/healthy_food.jpg"
-import carrots from "../../images/carrots.jpg"
-import vegetables from "../../images/vegetables.jpg"
 
 import "./Homepage.css";
 

@@ -1,20 +1,26 @@
 import React, { Component } from "react";
-import "./NavigationBar.css";
-import {Anchor, Box, Heading, Grommet, ResponsiveContext} from 'grommet';
 import {Link} from "react-router-dom";
+
+import "./NavigationBar.css";
+
+import {
+    Anchor, Box, Heading, Grommet, ResponsiveContext
+} from 'grommet';
+
+import CustomMenu from '../MyRecipesMenu/MyRecipesMenu';
 
 /* theme & AppBar need to be moved in NavigationBar.css or another file for the components folder*/
 const theme = {
-  global: {
-    colors: {
-      brand: '#341A04',
+    global: {
+        colors: {
+            brand: '#341A04',
+        },
+        font: {
+            family: 'Roboto',
+            size: '18px',
+            height: '20px',
+        },
     },
-    font: {
-      family: 'Roboto',
-      size: '18px',
-      height: '20px',
-    },
-  },
 };
 
 const AppBar = (props) => (
@@ -31,9 +37,7 @@ const AppBar = (props) => (
     />
 );
 
-
 class NavigationBar extends Component {
-
 	render() {
 		return (
 			<Grommet theme={theme}>
@@ -41,12 +45,17 @@ class NavigationBar extends Component {
 					{size => (
 						<Box fill>
 							<AppBar>
-								<Heading level='3' margin='none'>Go Bananas Logo</Heading>
-								<Link to="/recipes">
-									Recipes
-								</Link>
-								<Anchor label="Recommendations" href="#" />
-								<Anchor label="Add your recipe" href="#" />
+                                <Link to="/">
+                                <Heading level='1' margin='none'>Go Bananas Logo</Heading>
+                                </Link>
+                                <Link to="/recipes">
+                                    Recipes
+                                </Link>
+                                <Anchor label="Recommendations" href="#" />
+                                <Link to="/addRecipe">
+                                    Add your recipe
+                                </Link>
+                                <CustomMenu model={this.props.model}/>
 							</AppBar>
 						</Box>
 					)}

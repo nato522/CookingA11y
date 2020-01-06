@@ -9,18 +9,20 @@ const httpOptions = {
 	}
 };
 
+const my_recipes = JSON.parse(localStorage.getItem('my_recipes')) || [];
 
 class DataModel extends ObservableModel{
 
 	constructor() {
-		super()
-		this.dishType = ""
-		this.dishTitle = ""
-		this.selectedDishesMap = new Map()
+		super();
+		this.dishType = "";
+		this.dishTitle = "";
+		this.selectedDishesMap = new Map();
 		this.selectedDishesMap.set(STARTER, []);
 		this.selectedDishesMap.set(FIRST_DISH, []);
 		this.selectedDishesMap.set(SECOND_DISH, []);
 		this.selectedDishesMap.set(DESERT, []);
+		this.customRecipes = my_recipes;
 	}
 
 	getRandomFoodJoke() {
@@ -104,6 +106,20 @@ class DataModel extends ObservableModel{
 
 	getSelectedDishes() {
 		return this.selectedDishesMap
+	}
+
+	addCustomRecipeToMenu(recipe) {
+		this.customRecipes.push(recipe)
+		this.notifyObservers("addCustomRecipeToMenu");
+	}
+
+	getCustomRecipes() {
+		return this.customRecipes;
+	}
+
+	getCustomRecipe(title){
+		const obj = this.customRecipes.find(item => item.recipe.title === title);
+		return obj;
 	}
 }
 
