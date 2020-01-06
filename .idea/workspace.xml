@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/DataModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DataModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/RecipeDetails/RecipeDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/RecipeDetails/RecipeDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Recommendations/Recommendations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Recommendations/Recommendations.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
