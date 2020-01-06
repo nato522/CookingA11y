@@ -38,7 +38,7 @@ class NavigationBar extends Component {
                                 elevation="medium"
                                 align="center"
                             >
-                                <Link href="/">
+                                <Link to="/">
                                     <Heading level="1" margin="none">GoBananas</Heading>
                                 </Link>
                                 <Box direction="row" gap="medium" align="center">
