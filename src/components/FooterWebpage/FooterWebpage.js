@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./FooterWebpage.css";
 import {
-	Box, Grommet, Footer, Text
+	Grommet, Footer, Text
 } from 'grommet';
 
 import Theme from "../../styles/Theme";

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import {
     Box, Button, Form, FormField, Grid, Heading,
-    Main, Select, Text, TextArea, Layer,
+    Main, Paragraph, Select, Text, TextArea, Layer,
 } from 'grommet';
 import { Add } from 'grommet-icons';
 
@@ -262,7 +262,7 @@ class AddRecipe extends Component {
                             <Heading level="3" margin="none">
                                 Congratulations!
                             </Heading>
-                            <Text>You have added a new recipe!</Text>
+                            <Paragraph>You have added a new recipe!</Paragraph>
                             <Box
                                 as="footer"
                                 gap="small"
