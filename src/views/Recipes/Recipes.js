@@ -60,9 +60,6 @@ class Recipes extends Component {
         const query = this.state.query;
 
         if (this.state.filters.complexSearch){
-            /**
-             * TODO: get more elements with complexSearch url
-             */
             const filters = this.state.filters;
 
             modelInstance.getComplexRecipes(limit, offset, query, filters)
@@ -108,7 +105,7 @@ class Recipes extends Component {
                         complexSearch: false,
                     },
                 });
-                Store.searchedInfo.recipes = this.state.recipes;
+                Store.searchedInfo = this.state;
 			}).catch(error => {
                 console.error(error);
             });
@@ -153,6 +150,7 @@ class Recipes extends Component {
 
         return [query, allFilters];
     }
+
     /**
      * Trigerred when user uses the input at the "advanced search" modal
      */
