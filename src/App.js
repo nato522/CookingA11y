@@ -14,18 +14,7 @@ import RecipeDetails from "./views/RecipeDetails/RecipeDetails";
 import AddRecipe from "./views/AddRecipe/AddRecipe";
 import Recommendations from "./views/Recommendations/Recommendations";
 
-const theme = {
-	global: {
-		colors: {
-            brand: 'black'
-        },
-		font: {
-			family: 'Roboto',
-			size: '18px',
-            height: '20px',
-		},
-	},
-};
+import Theme from "./styles/Theme";
 
 class App extends Component {
 
@@ -38,7 +27,7 @@ class App extends Component {
         return (
             <Grommet
             className="App"
-            theme={theme}
+            theme={Theme}
             full={true}
             >
                 <SkipToContent/>

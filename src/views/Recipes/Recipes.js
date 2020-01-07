@@ -2,8 +2,11 @@ import modelInstance from "../../data/DataModel"
 import Store from '../../data/Store';
 
 import React, { Component } from "react";
-import {Link} from "react-router-dom";
-import {Box, Button, Grid, Paragraph, ResponsiveContext } from 'grommet';
+import { Link } from "react-router-dom";
+import {
+    Box, Button, Grid, Main, Paragraph,
+    ResponsiveContext
+} from 'grommet';
 import { Add } from 'grommet-icons';
 
 import SearchBox from '../../components/SearchBox/SearchBox';
@@ -33,6 +36,7 @@ class Recipes extends Component {
             }
         }
     }
+
     /**
      *  Get recipes when initialized
      */
@@ -176,14 +180,16 @@ class Recipes extends Component {
 	render() {
         let result_recipes = this.state.recipes.map((recipe, i) => {
             return(
-                <Link to={"/recipe_details/" + recipe.id} key={recipe.id}>
-                    <RecipeCard key={i}
-                        recipeID={recipe.id}
-                        imageURL={(this.state.baseURI ? (`${this.state.baseURI}${recipe.imageUrls[0]}`) : recipe.image)}
-                        title={recipe.title}
-                        cookingTime={recipe.readyInMinutes}
-                    />
-                </Link>
+                <Box as="li" key={recipe.id}>
+                    <Link to={"/recipe_details/" + recipe.id}>
+                        <RecipeCard key={i}
+                            recipeID={recipe.id}
+                            imageURL={(this.state.baseURI ? (`${this.state.baseURI}${recipe.imageUrls[0]}`) : recipe.image)}
+                            title={recipe.title}
+                            cookingTime={recipe.readyInMinutes}
+                        />
+                    </Link>
+                </Box>
             )
         })
 
@@ -201,56 +207,59 @@ class Recipes extends Component {
                         rows={["auto", "auto"]}
                         gap='none'
                     >
-                        <Box
-                            gridArea='searchbox'
-                        >
-                            <SearchBox
-                                search={this.searchRecipe}
-                                advancedSearch={this.searchComplexRecipe}
-                            />
-                        </Box>
-                        {(this.state.total === 0) && <EmptySearch />}
-                        {(size === "small") && (this.state.total > 0) &&
-                            <Box gridArea="recipes" margin="auto">
-                                { this.state.total && <Paragraph>Showing {this.state.recipes.length} recipes out of {this.state.total}!</Paragraph>}
-                                <Grid
-                                    columns={["full"]}
-                                >
-                                    { result_recipes }
-                                </Grid>
+                        <Main>
+                            <Box
+                                gridArea='searchbox'
+                            >
+                                <SearchBox
+                                    search={this.searchRecipe}
+                                    advancedSearch={this.searchComplexRecipe}
+                                />
                             </Box>
-                        }
-                        {(size === "medium") && (this.state.total > 0) &&
-                            <Box gridArea="recipes" margin="auto">
-                                { this.state.total && <Paragraph>Showing {this.state.recipes.length} recipes out of {this.state.total}!</Paragraph>}
-                                <Grid
-                                    columns={["1/3", "1/3", "1/3"]}
-                                >
-                                    { result_recipes }
-                                </Grid>
-                            </Box>
-                        }
-                        {(size === "large") && (this.state.total > 0) &&
-                            <Box gridArea="recipes" margin="auto">
-                                { this.state.total && <Paragraph>Showing {this.state.recipes.length} out of {this.state.total} recipes!</Paragraph>}
-                                <Grid
-                                    columns={["1/4", "1/4", "1/4", "1/4"]}
-                                >
-                                    { result_recipes }
-                                </Grid>
-                            </Box>
-                        }
-                        <Box
-                            alignSelf="end"
-                            margin="auto"
-                        >
-                            { this.state.recipes.length < this.state.total && <Button
-                                icon={<Add />}
-                                label= "See more!"
-                                onClick={this.getMoreRecipes}
-                            />
+                            {(this.state.total === 0) && <EmptySearch />}
+                            {(size === "small") && (this.state.total > 0) &&
+                                <Box gridArea="recipes" margin="auto">
+                                    { this.state.total && <Paragraph>Showing {this.state.recipes.length} recipes out of {this.state.total}!</Paragraph>}
+                                    <Grid
+                                        columns={["full"]}
+                                    >
+                                        { result_recipes }
+                                    </Grid>
+                                </Box>
                             }
-                        </Box>
+                            {(size === "medium") && (this.state.total > 0) &&
+                                <Box gridArea="recipes" margin="auto">
+                                    { this.state.total && <Paragraph>Showing {this.state.recipes.length} recipes out of {this.state.total}!</Paragraph>}
+                                    <Grid
+                                        columns={["1/3", "1/3", "1/3"]}
+                                    >
+                                        { result_recipes }
+                                    </Grid>
+                                </Box>
+                            }
+                            {(size === "large") && (this.state.total > 0) &&
+                                <Box gridArea="recipes" margin="auto">
+                                    { this.state.total && <Paragraph>Showing {this.state.recipes.length} out of {this.state.total} recipes!</Paragraph>}
+                                    <Grid
+                                        as="ul"
+                                        columns={["1/4", "1/4", "1/4", "1/4"]}
+                                    >
+                                        { result_recipes }
+                                    </Grid>
+                                </Box>
+                            }
+                            <Box
+                                alignSelf="end"
+                                margin="auto"
+                            >
+                                { this.state.recipes.length < this.state.total && <Button
+                                    icon={<Add />}
+                                    label= "See more!"
+                                    onClick={this.getMoreRecipes}
+                                />
+                                }
+                            </Box>
+                        </Main>
                         <Box
                             gridArea='sidebar'
                         >
