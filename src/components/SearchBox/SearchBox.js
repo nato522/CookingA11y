@@ -26,18 +26,18 @@ function AdvancedSearch(props){
                 responsive={true}
                 >
                     <Box overflow="auto" margin="auto" pad="40px" width="large">
-                        <Heading level="1">Advanced Search</Heading>
-                        <Form onSubmit={(e) => {
+                        <Heading level="2">Advanced Search</Heading>
+                        <Form role="search" onSubmit={(e) => {
                                 props.advancedSearch(e);
                                 setShow(false);
                             }}
                         >
                             <Box>
-                                <FormField label="Search by recipe:" name="advancedQuery" placeholder="type here"/>
+                                <FormField label="Search by recipe:" name="advancedQuery" type="search" placeholder="type here"/>
                             </Box>
                             <Box direction="row-responsive">
                                 <Box>
-                                    <Heading level="4">Diet:</Heading>
+                                    <Heading level="3">Diet:</Heading>
                                     <FormField
                                         component={CheckBox}
                                         name="vegan"
@@ -56,7 +56,7 @@ function AdvancedSearch(props){
                                     />
                                 </Box>
                                 <Box>
-                                    <Heading level="4">Meal type:</Heading>
+                                    <Heading level="3">Meal type:</Heading>
                                     <FormField
                                         component={RadioButtonGroup}
                                         name="mealType"
@@ -66,7 +66,7 @@ function AdvancedSearch(props){
                                 </Box>
                             </Box>
                             <Box>
-                                <Heading level="4">Cooking time:</Heading>
+                                <Heading level="3">Cooking time:</Heading>
                                 <FormField
                                     component={CheckBox}
                                     toggle
@@ -76,7 +76,7 @@ function AdvancedSearch(props){
                                 </FormField>
                             </Box>
                             <Box>
-                                <Heading level="4">Intolerances:</Heading>
+                                <Heading level="3">Intolerances:</Heading>
                                 <FormField component={CheckBox} name="dairy" label="Dairy"></FormField>
                                 <FormField component={CheckBox} name="egg" label="Egg"></FormField>
                                 <FormField component={CheckBox} name="gluten" label="Gluten"></FormField>
@@ -109,11 +109,12 @@ const SearchBox = (props) => (
         align="center"
     >
         <Box>
-            <Form onSubmit={props.search}>
+            <Form role="search" onSubmit={props.search}>
                 <Box direction="row-responsive">
                     <FormField name="query" label="Search a recipe:">
                         <TextInput
                             name="query"
+                            type="search"
                             placeholder="type here"
                         />
                     </FormField>
