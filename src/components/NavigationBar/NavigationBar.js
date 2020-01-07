@@ -4,35 +4,24 @@ import {Link} from "react-router-dom";
 import "./NavigationBar.css";
 
 import {
-    Anchor, Box, Grommet, Header, Heading, Menu,
+    Box, Grommet, Header, Heading, Menu,
     ResponsiveContext
 } from 'grommet';
 
 import CustomMenu from '../MyRecipesMenu/MyRecipesMenu';
 
-const theme = {
-    global: {
-        colors: {
-            brand: '#341A04',
-        },
-        font: {
-            family: 'Roboto',
-            size: '18px',
-            height: '20px',
-        },
-    },
-};
+import Theme from "../../styles/Theme";
 
 class NavigationBar extends Component {
 	render() {
 		return (
-			<Grommet theme={theme}>
+			<Grommet theme={Theme}>
 				<ResponsiveContext.Consumer>
 					{size => (
 						<Box as="nav">
                         {(size !== 'small' ) &&
                             <Header
-                                background="#FFCA58"
+                                background="brand"
                                 elevation="medium"
                                 align="center"
                                 pad={
