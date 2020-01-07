@@ -180,14 +180,16 @@ class Recipes extends Component {
 	render() {
         let result_recipes = this.state.recipes.map((recipe, i) => {
             return(
-                <Link to={"/recipe_details/" + recipe.id} key={recipe.id}>
-                    <RecipeCard key={i}
-                        recipeID={recipe.id}
-                        imageURL={(this.state.baseURI ? (`${this.state.baseURI}${recipe.imageUrls[0]}`) : recipe.image)}
-                        title={recipe.title}
-                        cookingTime={recipe.readyInMinutes}
-                    />
-                </Link>
+                <Box as="li" key={recipe.id}>
+                    <Link to={"/recipe_details/" + recipe.id}>
+                        <RecipeCard key={i}
+                            recipeID={recipe.id}
+                            imageURL={(this.state.baseURI ? (`${this.state.baseURI}${recipe.imageUrls[0]}`) : recipe.image)}
+                            title={recipe.title}
+                            cookingTime={recipe.readyInMinutes}
+                        />
+                    </Link>
+                </Box>
             )
         })
 
@@ -239,6 +241,7 @@ class Recipes extends Component {
                                 <Box gridArea="recipes" margin="auto">
                                     { this.state.total && <Paragraph>Showing {this.state.recipes.length} out of {this.state.total} recipes!</Paragraph>}
                                     <Grid
+                                        as="ul"
                                         columns={["1/4", "1/4", "1/4", "1/4"]}
                                     >
                                         { result_recipes }
