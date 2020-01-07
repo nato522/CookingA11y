@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import {
     Box, Button, Form, FormField, Grid, Heading,
-    Select, Text, TextArea, Layer,
+    Main, Select, Text, TextArea, Layer,
 } from 'grommet';
 import { Add } from 'grommet-icons';
 
@@ -193,53 +193,63 @@ class AddRecipe extends Component {
                     gridArea="cover"
                     background={`url(${burger})`}
                 >
-                    <Heading level='1' alignSelf='center' color="#F8F8F8">
+                    <Heading level='2' alignSelf='center' color="#F8F8F8">
                         Add your own recipe!
                     </Heading>
                 </Box>
                 <Grid
                     gridArea="recipe_form"
                 >
-                    <Form id="form-recipe" onSubmit={(e) =>{
-                        this.addRecipe(e);
-                        this.reset(e);
-                        }}>
-                        <Heading level="2">Recipe information:</Heading>
-                        <Box>
-                            <FormFieldLabel
-                                label="Recipe name:"
-                                name="title"
-                                required={true}
-                            />
-                            <FormFieldLabel
-                                component={ TextArea }
-                                label="Recipe description:"
-                                name="instructions"
-                                required={true}
-                            />
-                        </Box>
-                        <Heading level="2">Ingredients:</Heading>
-                        { ingredients }
-                        <Button
-                            icon={ <Add /> }
-                            label="Add ingredient"
-                            onClick={()=>{this.addIngredient()}}
-                        />
-                        <Heading level="2">Instructions:</Heading>
-                        { steps }
-                        <Button
-                            icon={ <Add /> }
-                            label="Add step"
-                            onClick={()=>{this.addStep()}}
-                        />
-                        <Box>
+                    <Main
+                        id="mainContent"
+                        margin={
+                            {"horizontal": "large"}
+                        }
+                    >
+                        <Form
+                            id="form-recipe"
+                            onSubmit={(e) =>{
+                                this.addRecipe(e);
+                                this.reset(e);
+                            }}
+                        >
+                            <Heading level="3">Recipe information:</Heading>
+                            <Box>
+                                <FormFieldLabel
+                                    label="Recipe name:"
+                                    name="title"
+                                    required={true}
+                                />
+                                <FormFieldLabel
+                                    component={ TextArea }
+                                    label="Recipe description:"
+                                    name="instructions"
+                                    required={true}
+                                />
+                            </Box>
+                            <Heading level="3">Ingredients:</Heading>
+                            { ingredients }
                             <Button
-                                type="submit"
-                                label="Submit"
-                                margin="auto"
+                                icon={ <Add /> }
+                                label="Add ingredient"
+                                onClick={()=>{this.addIngredient()}}
                             />
-                        </Box>
-                    </Form>
+                            <Heading level="3">Instructions:</Heading>
+                            { steps }
+                            <Button
+                                icon={ <Add /> }
+                                label="Add step"
+                                onClick={()=>{this.addStep()}}
+                            />
+                            <Box>
+                                <Button
+                                    type="submit"
+                                    label="Submit"
+                                    margin="auto"
+                                />
+                            </Box>
+                        </Form>
+                    </Main>
                 </Grid>
                 {this.state.openLayer && (
                     <Layer
@@ -249,7 +259,7 @@ class AddRecipe extends Component {
                         onEsc={this.onClose}
                     >
                         <Box pad="medium" gap="small" width="medium">
-                            <Heading level={3} margin="none">
+                            <Heading level="3" margin="none">
                                 Congratulations!
                             </Heading>
                             <Text>You have added a new recipe!</Text>
