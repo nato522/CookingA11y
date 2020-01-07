@@ -1,38 +1,27 @@
 import React, { Component } from "react";
 import "./FooterWebpage.css";
-import {Box, Grommet, Footer, Text} from 'grommet';
+import {
+	Box, Grommet, Footer, Text
+} from 'grommet';
 
-// /* theme needs to be moved in FooterWebpage.css* or a file for all the components/
-const theme = {
-	global: {
-		colors: {
-			brand: '#F7F7F8',
-		},
-		font: {
-			family: 'Roboto',
-			size: '13px',
-		},
-	},
-};
+import Theme from "../../styles/Theme";
 
 const AppBar = (props) => (
 	<Box
 		align='center'
 		justify='center'
-		background= '#163D57'
+		background= 'brand'
 		{...props}
 	/>
 );
 
-
 class FooterWebpage extends Component {
-
 	render() {
 		return (
-			<Grommet theme={theme}>
+			<Grommet theme={Theme}>
 				<AppBar>
 					<Footer pad="medium">
-						<Text>Copyright</Text>
+						<Text size="small">Copyright</Text>
 					</Footer>
 				</AppBar>
 			</Grommet>
