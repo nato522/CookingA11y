@@ -75,10 +75,10 @@ class Homepage extends Component {
 							background={`url(${burger})`}
 						>
 							<Heading level='2' alignSelf='center' color="#E0E3F0">
-								Welcome
+								Welcome!
 							</Heading>
 							<Heading level='3' alignSelf='center' color="#E0E3F0">
-								{this.state.joke}
+								Food joke of the day: {this.state.joke}
 							</Heading>
 						</Box>
 						{(size === 'small' ) &&
