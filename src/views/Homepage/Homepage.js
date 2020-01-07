@@ -74,10 +74,10 @@ class Homepage extends Component {
 							gridArea="cover"
 							background={`url(${burger})`}
 						>
-							<Heading level='1' alignSelf='center' color="#E0E3F0">
+							<Heading level='2' alignSelf='center' color="#E0E3F0">
 								Welcome
 							</Heading>
-							<Heading level='4' alignSelf='center' color="#E0E3F0">
+							<Heading level='3' alignSelf='center' color="#E0E3F0">
 								{this.state.joke}
 							</Heading>
 						</Box>
