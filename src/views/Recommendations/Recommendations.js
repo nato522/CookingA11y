@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import modelInstance from "../../data/DataModel"
-import {Box, Text} from 'grommet';
+import {Box, Grid, ResponsiveContext, Text} from 'grommet';
 import {Link} from "react-router-dom";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 
@@ -38,6 +38,7 @@ class Recommendations extends Component {
 	render() {
 
 		let similarRecipes
+		let recipeTitle
 		let allSimilarRecipes = []
 		if(this.state.similarRecipesMap.size > 0) {
 			let baseURLImage = "https://spoonacular.com/recipeImages/"
@@ -64,15 +65,24 @@ class Recommendations extends Component {
 		}
 
 		return(
-			<Box>
-				<Text>Introduction text about this page. "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-					eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-					exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-					reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-					cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-				</Text>
-				{allSimilarRecipes}
-			</Box>
+			<ResponsiveContext.Consumer>
+				{ size => (
+					<Grid
+						columns={["full"]}
+						background="#E0E3F0"
+					>
+						<Box>
+							<Text>Introduction text about this page. "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+								eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+								exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+								reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+								cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+							</Text>
+							{allSimilarRecipes}
+						</Box>
+					</Grid>
+				)}
+			</ResponsiveContext.Consumer>
 		);
 	}
 }
