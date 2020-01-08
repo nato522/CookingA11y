@@ -13,16 +13,21 @@ import SearchBox from '../../components/SearchBox/SearchBox';
 import RecipeCard from '../../components/RecipeCard/RecipeCard';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import EmptySearch from '../../components/EmptySearch/EmptySearch';
+import LoadingContent from '../../components/LoadingContent/LoadingContent';
 
 import "./Recipes.css";
 
 const limit = 9;
 let offset = 0;
 
+const message = "Loading recipes...";
+
 class Recipes extends Component {
 	constructor(props) {
 		super(props);
         this.state = {
+            isLoading: true,
+            isLoadingMore: false,
             recipes: Store.searchedInfo.recipes || [],
             total: Store.searchedInfo.total || null,
             baseURI: Store.searchedInfo.baseURI || null,
@@ -45,6 +50,7 @@ class Recipes extends Component {
             modelInstance.getRecipes(limit, offset)
                 .then(data => {
                     this.setState({
+                        isLoading: false,
                         recipes: (this.state.recipes.length === 0 ? data.results : this.state.recipes),
                         total: (this.state.total === null ? data.totalResults : this.state.total),
                         baseURI: (this.state.baseURI === null ? data.baseUri : this.state.baseURI),
@@ -53,7 +59,17 @@ class Recipes extends Component {
                 }).catch(error => {
                     console.error(error);
                 });
+        } else {
+            this.setState({
+                isLoading: false,
+            });
         }
+    }
+
+    loadingMessage = () =>{
+        this.setState({
+            isLoading: true,
+        });
     }
 
     /**
@@ -62,6 +78,9 @@ class Recipes extends Component {
     getMoreRecipes = () =>{
         offset += (this.state.recipes.length + 1);
         const query = this.state.query;
+        this.setState({
+            isLoadingMore: true,
+        });
 
         if (this.state.filters.complexSearch){
             const filters = this.state.filters;
@@ -70,6 +89,7 @@ class Recipes extends Component {
                 .then(data => {
                     const old_recipes = this.state.recipes.slice();
                     this.setState({
+                        isLoadingMore: false,
                         recipes: old_recipes.concat(data.results),
                     });
                     offset = 0;
@@ -82,6 +102,7 @@ class Recipes extends Component {
                 .then(data => {
                     const old_recipes = this.state.recipes.slice();
                     this.setState({
+                        isLoadingMore: false,
                         recipes: old_recipes.concat(data.results),
                     });
                     offset = 0;
@@ -97,10 +118,12 @@ class Recipes extends Component {
      */
     searchRecipe = (e) => {
         const query = e.target.elements.query.value;
+        this.loadingMessage();
 
         modelInstance.getRecipes(limit, offset, query)
 			.then(data => {
                 this.setState({
+                    isLoading: false,
                     recipes: data.results,
                     total: data.totalResults,
                     baseURI: data.baseUri,
@@ -161,10 +184,12 @@ class Recipes extends Component {
     searchComplexRecipe = (e) => {
         const query = this.handleFilters(e)[0];
         const filters = this.handleFilters(e)[1];
+        this.loadingMessage();
 
         modelInstance.getComplexRecipes(limit, offset, query, filters)
 			.then(data => {
                 this.setState({
+                    isLoading: false,
                     recipes: data.results,
                     total: data.totalResults,
                     baseURI: null,
@@ -216,8 +241,17 @@ class Recipes extends Component {
                                     advancedSearch={this.searchComplexRecipe}
                                 />
                             </Box>
-                            {(this.state.total === 0) && <EmptySearch />}
-                            {(size === "small") && (this.state.total > 0) &&
+                            {this.state.isLoading &&
+                                <Box gridArea="recipes" margin="auto">
+                                    <LoadingContent message={message}/>
+                                </Box>
+                            }
+                            {(this.state.total === 0 && !this.state.isLoading) &&
+                                <Box gridArea="recipes" margin="auto">
+                                    <EmptySearch />
+                                </Box>
+                            }
+                            {(size === "small") && (this.state.total > 0 && !this.state.isLoading) &&
                                 <Box gridArea="recipes" margin="auto">
                                     { this.state.total && <Paragraph>Showing {this.state.recipes.length} recipes out of {this.state.total}!</Paragraph>}
                                     <Grid
@@ -227,7 +261,7 @@ class Recipes extends Component {
                                     </Grid>
                                 </Box>
                             }
-                            {(size === "medium") && (this.state.total > 0) &&
+                            {(size === "medium") && (this.state.total > 0 && !this.state.isLoading) &&
                                 <Box gridArea="recipes" margin="auto">
                                     { this.state.total && <Paragraph>Showing {this.state.recipes.length} recipes out of {this.state.total}!</Paragraph>}
                                     <Grid
@@ -237,7 +271,7 @@ class Recipes extends Component {
                                     </Grid>
                                 </Box>
                             }
-                            {(size === "large") && (this.state.total > 0) &&
+                            {(size === "large") && (this.state.total > 0 && !this.state.isLoading) &&
                                 <Box gridArea="recipes" margin="auto">
                                     { this.state.total && <Paragraph>Showing {this.state.recipes.length} out of {this.state.total} recipes!</Paragraph>}
                                     <Grid
@@ -252,7 +286,10 @@ class Recipes extends Component {
                                 alignSelf="end"
                                 margin="auto"
                             >
-                                { this.state.recipes.length < this.state.total && <Button
+                                {this.state.isLoadingMore &&
+                                            <LoadingContent />
+                                        }
+                                { ((this.state.recipes.length < this.state.total) && !this.state.isLoading && !this.state.isLoadingMore) && <Button
                                     icon={<Add />}
                                     label= "See more!"
                                     onClick={this.getMoreRecipes}
