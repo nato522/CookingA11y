@@ -221,6 +221,7 @@ class Recipes extends Component {
                                 <Box gridArea="recipes" margin="auto">
                                     { this.state.total && <Paragraph>Showing {this.state.recipes.length} recipes out of {this.state.total}!</Paragraph>}
                                     <Grid
+                                        as="ul"
                                         columns={["full"]}
                                     >
                                         { result_recipes }
@@ -231,6 +232,7 @@ class Recipes extends Component {
                                 <Box gridArea="recipes" margin="auto">
                                     { this.state.total && <Paragraph>Showing {this.state.recipes.length} recipes out of {this.state.total}!</Paragraph>}
                                     <Grid
+                                        as="ul"
                                         columns={["1/3", "1/3", "1/3"]}
                                     >
                                         { result_recipes }

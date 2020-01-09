@@ -47,9 +47,9 @@ class NavigationBar extends Component {
                                             Add your recipe
                                         </Link>
                                     </Box>
-                                    <Box as="li">
-                                        <CustomMenu model={this.props.model} />
-                                    </Box>
+                                    {/*<Box as="li">*/}
+                                    {/*    <CustomMenu model={this.props.model} />*/}
+                                    {/*</Box>*/}
                                 </Box>
                             </Header>
                         }
@@ -73,9 +73,9 @@ class NavigationBar extends Component {
                                             { label: <Link to="/addRecipe">Add your recipe</Link>},
                                             ]} />
                                     </Box>
-                                    <Box as="li">
-                                        <CustomMenu model={this.props.model} />
-                                    </Box>
+                                    {/*<Box as="li">*/}
+                                    {/*    <CustomMenu model={this.props.model} />*/}
+                                    {/*</Box>*/}
                                 </Box>
                             </Header>
                         }
