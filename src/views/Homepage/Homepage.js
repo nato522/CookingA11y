@@ -28,6 +28,9 @@ class Homepage extends Component {
 			}).catch(error => {
 			console.error(error);
 		});
+		// this.setState({
+		// 	joke: modelInstance.getRandomFoodJoke()
+		// })
 
 		modelInstance.getRandomRecipes(4)
 			.then(welcome_recipes => {

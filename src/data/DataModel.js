@@ -21,12 +21,24 @@ class DataModel extends ObservableModel{
 		this.selectedDishesMap.set(SECOND_DISH, []);
 		this.selectedDishesMap.set(DESSERT, []);
 		this.customRecipes = my_recipes;
+		this.jokes = ["Diet tip: If you think you're hungry, you might just be thirsty. Have a bottle of wine first and " +
+		"then see how you feel.",
+		"What did Bacon say to Tomato? Lettuce get together!",
+		"Turning vegan is a big missed steak.",
+		"If you weigh 99 pounds and eat 1 pound of nachos you will be 1% nachos!",
+		"I eat my tacos over a Tortilla. That way when stuff falls out, BOOM, another taco.",
+		"I went to a peanut factory last week. It was nuts!"]
 	}
 
 	getRandomFoodJoke() {
 		const url = `${BASE_URL}/food/jokes/random`;
 		return fetch(url, httpOptions).then(this.processResponse);
 	}
+
+	// getRandomFoodJoke() {
+	// 	let joke = this.jokes[Math.floor(Math.random()*this.jokes.length)];
+	// 	return joke;
+	// }
 
 	getRandomRecipes(number_of_recipes) {
 		const url = `${BASE_URL}/recipes/random?number=` + number_of_recipes;
