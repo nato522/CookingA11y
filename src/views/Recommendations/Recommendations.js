@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import modelInstance from "../../data/DataModel"
-import {Box, Text} from 'grommet';
+import {Box, Grid, Heading, Main, ResponsiveContext, Text} from 'grommet';
 import {Link} from "react-router-dom";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
+import burger from "../../images/burger.jpg";
+import {RESPONSIVE} from "../../data/Constants"
 
 class Recommendations extends Component {
+
 
 	constructor(props) {
 		super(props)
@@ -35,44 +38,68 @@ class Recommendations extends Component {
 		});
 	}
 
-	render() {
-
-		let similarRecipes
-		let allSimilarRecipes = []
+	renderSimilarRecipes() {
+		let result
 		if(this.state.similarRecipesMap.size > 0) {
 			let baseURLImage = "https://spoonacular.com/recipeImages/"
-			for (let key of this.state.similarRecipesMap.keys()) {
-				let dishName = key.split("/")[0]
-				let similarList = this.state.similarRecipesMap.get(key);
-				similarRecipes = similarList.map((similarRecipe, i) => (
-					<Text
-						size="large"
-					>
-						Because you cooked {dishName}, we recommend you:
-						<Link to={"/recipe_details/" + similarRecipe.id} key={similarRecipe.id}>
-							<RecipeCard key={i}
-								recipeID={similarRecipe.id}
-								imageURL={`${baseURLImage}` + similarRecipe.image}
-								title={similarRecipe.title}
-								cookingTime={similarRecipe.readyInMinutes}
-							/>
-						</Link>
-					</Text>
-				));
-				allSimilarRecipes.push(similarRecipes)
-			}
+
+			result = Array.from(this.state.similarRecipesMap).map(([dishKey, dishValue]) => {
+				return <ResponsiveContext.Consumer>
+					{ size => (
+						<Main id="mainContent">
+							<Box>
+								<Heading level={2}> Because you cooked {dishKey.split("/")[0]}, we recommend you: </Heading>
+								<Grid
+									as="ul"
+									columns={RESPONSIVE["recommendations"][size]}
+									background="#E0E3F0"
+								>
+									{dishValue.map((similarRecipe, i) => (
+										<Box as="li">
+											<Link to={"/recipe_details/" + similarRecipe.id} key={similarRecipe.id}>
+												<RecipeCard
+													recipeID={similarRecipe.id}
+													imageURL={`${baseURLImage}` + similarRecipe.image}
+													title={similarRecipe.title}
+													cookingTime={similarRecipe.readyInMinutes}
+												/>
+											</Link>
+										</Box>
+									))}
+								</Grid>
+							</Box>
+						</Main>
+					)}
+				</ResponsiveContext.Consumer>
+			})
 		}
+		return result
+	}
+
+	render() {
+
 
 		return(
-			<Box>
-				<Text>Introduction text about this page. "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-					eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-					exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-					reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-					cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-				</Text>
-				{allSimilarRecipes}
-			</Box>
+					<Grid as="div" justify="stretch"
+						  areas={[
+							  { name: "cover", start: [0, 0], end: [2, 0] },
+							  { name: "recommended_recipes", start: [0, 1], end: [2, 1] }
+						  ]}
+						  columns={["flex"]}
+						  rows={["medium", "auto"]}
+						  gap="medium"
+					>
+						<Box
+							gridArea="cover"
+							background={`url(${burger})`}
+						>
+						</Box>
+							<Box
+								gridArea="recommended_recipes"
+							>
+								{this.renderSimilarRecipes()}
+							</Box>
+					</Grid>
 		);
 	}
 }

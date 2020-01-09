@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
 import modelInstance from "../../data/DataModel"
-
-import { Box, Grid, Heading, ResponsiveContext } from 'grommet';
-
+import { Box, Grid, Heading, Main, ResponsiveContext } from 'grommet';
 import burger from "../../images/burger.jpg"
-
 import "./Homepage.css";
-
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
+
 
 class Homepage extends Component {
 
@@ -78,48 +74,41 @@ class Homepage extends Component {
 								Welcome!
 							</Heading>
 							<Heading level='3' alignSelf='center' color="#E0E3F0">
-								Food joke of the day: {this.state.joke}
+								Food joke of the day: <br/> {this.state.joke}
 							</Heading>
 						</Box>
 						{(size === 'small' ) &&
-							<Grid
-								gridArea="random_recipes"
-								columns={["full"]}
-								background="#E0E3F0"
-							>
-								{recipes}
-							</Grid>
-							/*
-								<Box
-									gridArea="nav"
+							<Main id="mainContent">
+								<Grid
+									gridArea="random_recipes"
+									columns={["full"]}
 									background="#E0E3F0"
-									direction="row"
-									elevation="medium"
-									alignSelf='center'
-									justify='evenly'
-									pad={{ left: 'medium', right: 'small', vertical: 'small', top: 'medium', bottom: 'medium'}}
-									>
-										{recipes}
-								</Box>
-							*/
+								>
+									{recipes}
+								</Grid>
+							</Main>
 						}
 						{(size === 'medium') &&
-							<Grid
-								gridArea="random_recipes"
-								columns={["1/2", "1/2"]}
-								background="#E0E3F0"
-							>
-								{recipes}
-							</Grid>
+							<Main id="mainContent">
+								<Grid
+									gridArea="random_recipes"
+									columns={["1/3", "1/3", "1/3"]}
+									background="#E0E3F0"
+								>
+									{recipes}
+								</Grid>
+							</Main>
 						}
 						{(size === 'large') &&
-							<Grid
-								columns={["1/4", "1/4", "1/4", "1/4"]}
-								gridArea="random_recipes"
-								background="#E0E3F0"
-							>
-								{recipes}
-							</Grid>
+							<Main id="mainContent">
+								<Grid
+									columns={["1/4", "1/4", "1/4", "1/4"]}
+									gridArea="random_recipes"
+									background="#E0E3F0"
+								>
+									{recipes}
+								</Grid>
+							</Main>
 						}
 					</Grid>
 				)}
