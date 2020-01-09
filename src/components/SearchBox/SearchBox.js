@@ -39,7 +39,7 @@ function AdvancedSearch(props){
                             }}
                         >
                             <Box>
-                                <FormField label="Search by recipe:" name="advancedQuery" placeholder="type here"/>
+                                <FormField aria-label="Search by recipe:" name="advancedQuery" placeholder="type here"/>
                             </Box>
                             <Box direction="row-responsive">
                                 <Box>
@@ -117,7 +117,7 @@ const SearchBox = (props) => (
         <Box>
             <Form onSubmit={props.search}>
                 <Box direction="row-responsive">
-                    <FormFieldLabel name="query" label="Search a recipe:" placeholder="type here again"/>
+                    <FormFieldLabel name="query" aria-label="Search" label="Search a recipe:" placeholder="type here again"/>
                     <Box justify="center">
                         <Button
                             icon={<Search />}

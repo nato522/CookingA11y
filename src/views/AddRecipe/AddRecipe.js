@@ -120,17 +120,20 @@ class AddRecipe extends Component {
                 >
                     <FormFieldLabel
                         label="Name:"
+                        aria-label="Name"
                         name={`ingredient_${i + 1}_name`}
                         required={true}
                     />
                     <FormFieldLabel
                         type="number"
                         label="Amount:"
+                        aria-label="Amount"
                         name={`ingredient_${i + 1}_amount`}
                         required={true}
                     />
                     <FormFieldLabel
                         label="Unit:"
+                        aria-label="Unit"
                         name={`ingredient_${i + 1}_unit`}
                         component={ Select }
                         options={[
@@ -154,6 +157,7 @@ class AddRecipe extends Component {
                     <FormFieldLabel
                         component={ TextArea }
                         label={`Step ${i + 1}:`}
+                        aria-label={`Step ${i + 1}:`}
                         name={`step_${i + 1}_description`}
                         required={true}
                     />
@@ -198,12 +202,14 @@ class AddRecipe extends Component {
                             <Box>
                                 <FormFieldLabel
                                     label="Recipe name:"
+                                    aria-label="Recipe name"
                                     name="title"
                                     required={true}
                                 />
                                 <FormFieldLabel
                                     component={ TextArea }
                                     label="Recipe description:"
+                                    aria-label="Recipe description"
                                     name="instructions"
                                     required={true}
                                 />
