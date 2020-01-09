@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Image, Text } from 'grommet';
+import {Box, Heading, Image, Text} from 'grommet';
 
 const RecipeCard = (props) => {
     return(
@@ -26,7 +26,7 @@ const RecipeCard = (props) => {
                 height="auto"
                 margin="small"
             >
-                <Text size="20px" textAlign="center" weight="bold">{props.title}</Text>
+                <Heading level={3} size="20px" textAlign="center" weight="bold">{props.title}</Heading>
                 <Text textAlign="center">Ready in {props.cookingTime} minutes!</Text>
             </Box>
         </Box>

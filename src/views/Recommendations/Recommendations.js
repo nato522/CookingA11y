@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import modelInstance from "../../data/DataModel"
-import {Box, Grid, Heading, Main, ResponsiveContext, Text} from 'grommet';
+import {Box, Grid, Heading, Main, Paragraph, ResponsiveContext, Text} from 'grommet';
 import {Link} from "react-router-dom";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import LoadingContent from '../../components/LoadingContent/LoadingContent';
 import burger from "../../images/burger.jpg";
 import {RESPONSIVE} from "../../data/Constants"
+import Emoji from "a11y-react-emoji";
 
 class Recommendations extends Component {
 
@@ -72,6 +73,20 @@ class Recommendations extends Component {
 					</Box>
 				)
 			})
+		}
+		else {
+			return (
+				<Paragraph
+					fill="true"
+					alignSelf="center"
+				>
+					For now, we don't have any recommendations for you
+					<Emoji symbol="😢" label="sad face"/>
+					.Add recipes to your menu and come back to see
+					new similar ones.
+				</Paragraph>
+			)
+
 		}
 		return result
 	}

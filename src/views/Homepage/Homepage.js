@@ -84,6 +84,7 @@ class Homepage extends Component {
 							</Heading>
 						</Box>
 						<Main id="mainContent" background="#E0E3F0">
+							<Heading level={2}>Random "Go Bananas"</Heading>
 							{(this.state.isLoading) &&
 								<Box gridArea="random_recipes" margin="auto">
 									<LoadingContent />
