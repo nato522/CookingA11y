@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SearchBox/SearchBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchBox/SearchBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/AddRecipe/AddRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AddRecipe/AddRecipe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Recipes/Recipes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Recipes/Recipes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578591725006</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="fixed accessibility issues">
+      <created>1578595451941</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1578595451941</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,17 +266,18 @@
     <MESSAGE value="workspace" />
     <MESSAGE value="small fix" />
     <MESSAGE value="added local jokes, code commented for now" />
-    <option name="LAST_COMMIT_MESSAGE" value="added local jokes, code commented for now" />
+    <MESSAGE value="fixed accessibility issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed accessibility issues" />
   </component>
   <component name="WindowStateProjectService">
     <state x="371" y="89" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1578161116062">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="89" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1578161116062" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578591723452">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578595451007">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578591723452" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578595451007" />
     <state x="421" y="97" key="FileChooserDialogImpl" timestamp="1578344430196">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -294,10 +298,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1259" height="161" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1578141434129" />
-    <state x="233" y="63" key="Vcs.Push.Dialog.v2" timestamp="1578591727194">
+    <state x="233" y="63" key="Vcs.Push.Dialog.v2" timestamp="1578595453209">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="63" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1578591727194" />
+    <state x="233" y="63" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1578595453209" />
     <state x="303" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1578591604452">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
