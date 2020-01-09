@@ -93,7 +93,7 @@ class Sidebar extends Component {
                 >
                     My Menu
                 </Heading>
-                <Accordion>
+                <Accordion >
                     <AccordionPanel label= {STARTER}>
                         {starters}
                     </AccordionPanel>

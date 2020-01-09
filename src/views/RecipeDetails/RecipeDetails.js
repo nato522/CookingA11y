@@ -7,7 +7,7 @@ import {
 	TableCell, TableHeader, TableRow, Text
 } from 'grommet';
 
-import { Add } from 'grommet-icons';
+import { Add, FormClose, StatusGood } from "grommet-icons";
 import Sidebar from '../../components/Sidebar/Sidebar';
 import placeholder from "../../images/placeholder.png"
 import {STARTER, FIRST_DISH, SECOND_DISH, DESSERT} from "../../data/Constants"
@@ -16,6 +16,10 @@ function AddToMyMenu(props) {
 
 	const [show, setShow] = React.useState();
 	const [value, setValue] = React.useState(STARTER);
+	const [open, setOpen] = React.useState();
+
+	// const onOpen = () => setOpen(true);
+	// const onClose = () => setOpen(undefined);
 
 	let addDishToMenu = () => {
 		modelInstance.addDishToMenu(value, props.dishTitle, props.dishID);
@@ -50,10 +54,38 @@ function AddToMyMenu(props) {
 						onClick={() => {
 							setShow(false);
 							addDishToMenu()
+							setOpen(true)
 						}}
 						alignSelf="center"
 						margin="small"
 					/>
+				</Layer>
+			)}
+			{open && (
+				<Layer
+					position="bottom"
+					modal={false}
+					margin={{ vertical: "medium", horizontal: "small" }}
+					onEsc={() => setOpen(undefined)}
+					responsive={false}
+					plain
+				>
+					<Box
+						align="center"
+						direction="row"
+						gap="small"
+						justify="between"
+						round="medium"
+						elevation="medium"
+						pad={{ vertical: "xsmall", horizontal: "small" }}
+						background="status-ok"
+					>
+						<Box align="center" direction="row" gap="xsmall">
+							<StatusGood />
+							<Text>The recipe has been added to your menu</Text>
+						</Box>
+						<Button icon={<FormClose />} onClick={() => setOpen(undefined)} plain />
+					</Box>
 				</Layer>
 			)}
 		</Box>
