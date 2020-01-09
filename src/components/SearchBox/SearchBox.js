@@ -117,7 +117,7 @@ const SearchBox = (props) => (
         <Box>
             <Form onSubmit={props.search}>
                 <Box direction="row-responsive">
-                    <FormFieldLabel name="query" label="Search a recipe:" placeholder="type here again" required/>
+                    <FormFieldLabel name="query" label="Search a recipe:" placeholder="type here again"/>
                     <Box justify="center">
                         <Button
                             icon={<Search />}
