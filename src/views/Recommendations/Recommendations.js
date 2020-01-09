@@ -6,6 +6,7 @@ import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import LoadingContent from '../../components/LoadingContent/LoadingContent';
 import burger from "../../images/burger.jpg";
 import {RESPONSIVE} from "../../data/Constants"
+import Emoji from "a11y-react-emoji";
 
 class Recommendations extends Component {
 
@@ -75,8 +76,14 @@ class Recommendations extends Component {
 		}
 		else {
 			return (
-				<Paragraph>
-
+				<Paragraph
+					fill="true"
+					alignSelf="center"
+				>
+					For now, we don't have any recommendations for you
+					<Emoji symbol="😢" label="sad face"/>
+					.Add recipes to your menu and come back to see
+					new similar ones.
 				</Paragraph>
 			)
 
