@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import modelInstance from "../../data/DataModel"
-import {Box, Grid, Heading, Main, ResponsiveContext, Text} from 'grommet';
+import {Box, Grid, Heading, Main, Paragraph, ResponsiveContext, Text} from 'grommet';
 import {Link} from "react-router-dom";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import LoadingContent from '../../components/LoadingContent/LoadingContent';
@@ -72,6 +72,14 @@ class Recommendations extends Component {
 					</Box>
 				)
 			})
+		}
+		else {
+			return (
+				<Paragraph>
+
+				</Paragraph>
+			)
+
 		}
 		return result
 	}

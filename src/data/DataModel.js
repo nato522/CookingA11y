@@ -27,7 +27,8 @@ class DataModel extends ObservableModel{
 		"Turning vegan is a big missed steak.",
 		"If you weigh 99 pounds and eat 1 pound of nachos you will be 1% nachos!",
 		"I eat my tacos over a Tortilla. That way when stuff falls out, BOOM, another taco.",
-		"I went to a peanut factory last week. It was nuts!"]
+		"I went to a peanut factory last week. It was nuts!",
+		"I eat my tacos over a Tortilla. That way when stuff falls out, BOOM, another taco."]
 	}
 
 	getRandomFoodJoke() {
