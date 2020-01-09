@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import {
     Box, Button, CheckBox, Form, FormField, Heading,
-    Layer, RadioButtonGroup, TextInput
+    Layer, RadioButtonGroup,
 } from 'grommet';
 import { Search, SearchAdvanced } from 'grommet-icons';
+import FormFieldLabel from "../../components/FormFieldLabel/FormFieldLabel";
 import './SearchBox.css';
 
 
@@ -21,11 +22,16 @@ function AdvancedSearch(props){
             </Button>
             {show && (
                 <Layer
-                onEsc={() => setShow(false)}
-                onClickOutside={() => setShow(false)}
-                responsive={true}
+                    onEsc={() => setShow(false)}
+                    onClickOutside={() => setShow(false)}
+                    responsive={true}
                 >
-                    <Box overflow="auto" margin="auto" pad="40px" width="large">
+                    <Box
+                        overflow="auto"
+                        margin="auto"
+                        pad="40px"
+                        width="large"
+                    >
                         <Heading level="1">Advanced Search</Heading>
                         <Form onSubmit={(e) => {
                                 props.advancedSearch(e);
@@ -111,12 +117,7 @@ const SearchBox = (props) => (
         <Box>
             <Form onSubmit={props.search}>
                 <Box direction="row-responsive">
-                    <FormField name="query" label="Search a recipe:">
-                        <TextInput
-                            name="query"
-                            placeholder="type here"
-                        />
-                    </FormField>
+                    <FormFieldLabel name="query" label="Search a recipe:" placeholder="type here again"/>
                     <Box justify="center">
                         <Button
                             icon={<Search />}

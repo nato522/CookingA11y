@@ -31,23 +31,23 @@ class NavigationBar extends Component {
                                 <Link to="/">
                                     <Heading level="1" margin="none">GoBananas</Heading>
                                 </Link>
-                                <Box as="ul" direction="row" gap="medium" align="center">
-                                    <Box as="li">
+                                <Box as="ul" direction="row" align="center">
+                                    <Box as="li" margin="small">
                                         <Link to="/recipes">
                                             Recipes
                                         </Link>
                                     </Box>
-                                    <Box as="li">
+                                    <Box as="li" margin="small">
                                         <Link to="/recommendations">
                                             Recommendations
                                         </Link>
                                     </Box>
-                                    <Box as="li">
+                                    <Box as="li" margin="small">
                                         <Link to="/addRecipe">
                                             Add your recipe
                                         </Link>
                                     </Box>
-                                    <Box as="li">
+                                    <Box as="li" margin="small">
                                         <CustomMenu model={this.props.model} />
                                     </Box>
                                 </Box>

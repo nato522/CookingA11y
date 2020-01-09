@@ -6,6 +6,7 @@ import {
 } from 'grommet';
 import { Add } from 'grommet-icons';
 
+import FormFieldLabel from "../../components/FormFieldLabel/FormFieldLabel";
 import UNITS from "../../data/Constants";
 import modelInstance from "../../data/DataModel";
 
@@ -19,26 +20,6 @@ function _getUnitShort(unitLong){
     const obj = UNITS.find(unit => unit.unitLong === unitLong);
     return obj.unitShort;
 }
-
-const FormFieldLabel = props => {
-    const { required, label, ...rest } = props;
-    return (
-        <FormField
-            label={
-                required ? (
-                <Box direction="row">
-                <Text>{label}</Text>
-                <Text color="status-critical">*</Text>
-                </Box>
-            ) : (
-                label
-            )
-            }
-            required={required}
-            {...rest}
-        />
-    );
-};
 
 class AddRecipe extends Component {
     constructor(props) {
