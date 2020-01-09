@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 import {
-    Box, Button, Form, FormField, Grid, Heading,
-    Main, Select, Text, TextArea, Layer,
+    Box, Button, Form, Grid, Heading, Main,
+    Paragraph, Select, Text, TextArea, Layer,
 } from 'grommet';
 import { Add } from 'grommet-icons';
 
@@ -198,6 +198,9 @@ class AddRecipe extends Component {
                                 this.reset(e);
                             }}
                         >
+                            <Paragraph fill>
+                                All required fields are marked with an asterisk (*) at the end. Example: "Recipe name *"
+                            </Paragraph>
                             <Heading level="3">Recipe information:</Heading>
                             <Box>
                                 <FormFieldLabel
