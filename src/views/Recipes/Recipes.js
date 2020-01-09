@@ -1,5 +1,6 @@
 import modelInstance from "../../data/DataModel"
 import Store from '../../data/Store';
+import { RESPONSIVE } from '../../data/Constants';
 
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
@@ -251,32 +252,11 @@ class Recipes extends Component {
                                     <EmptySearch />
                                 </Box>
                             }
-                            {(size === "small") && (this.state.total > 0 && !this.state.isLoading) &&
+                            {(this.state.total > 0 && !this.state.isLoading) &&
                                 <Box gridArea="recipes" margin="auto">
                                     { this.state.total && <Paragraph>Showing {this.state.recipes.length} recipes out of {this.state.total}!</Paragraph>}
                                     <Grid
-                                        columns={["full"]}
-                                    >
-                                        { result_recipes }
-                                    </Grid>
-                                </Box>
-                            }
-                            {(size === "medium") && (this.state.total > 0 && !this.state.isLoading) &&
-                                <Box gridArea="recipes" margin="auto">
-                                    { this.state.total && <Paragraph>Showing {this.state.recipes.length} recipes out of {this.state.total}!</Paragraph>}
-                                    <Grid
-                                        columns={["1/3", "1/3", "1/3"]}
-                                    >
-                                        { result_recipes }
-                                    </Grid>
-                                </Box>
-                            }
-                            {(size === "large") && (this.state.total > 0 && !this.state.isLoading) &&
-                                <Box gridArea="recipes" margin="auto">
-                                    { this.state.total && <Paragraph>Showing {this.state.recipes.length} out of {this.state.total} recipes!</Paragraph>}
-                                    <Grid
-                                        as="ul"
-                                        columns={["1/4", "1/4", "1/4", "1/4"]}
+                                        columns={RESPONSIVE[size]}
                                     >
                                         { result_recipes }
                                     </Grid>

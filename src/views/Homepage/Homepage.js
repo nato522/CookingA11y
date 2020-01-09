@@ -82,7 +82,7 @@ class Homepage extends Component {
 						</Box>
 						<Main id="mainContent" background="#E0E3F0">
 							{(this.state.isLoading) &&
-								<Box gridArea="random_recipes">
+								<Box gridArea="random_recipes" margin="auto">
 									<LoadingContent />
 								</Box>
 							}
