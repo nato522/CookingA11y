@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="" />
+    <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/DataModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DataModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Homepage/Homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Homepage/Homepage.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -204,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578352178445</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Merge branch 'style_recommendations'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1578590086893</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1578590086893</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,6 +288,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="63" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1578351478925" />
+    <state x="303" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1578591604452">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.680@0.0.1280.680" timestamp="1578591604452" />
     <state x="450" y="259" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578142468856">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
