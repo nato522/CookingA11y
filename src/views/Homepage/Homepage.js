@@ -92,7 +92,7 @@ class Homepage extends Component {
 							<Main id="mainContent">
 								<Grid
 									gridArea="random_recipes"
-									columns={["1/2", "1/2"]}
+									columns={["1/3", "1/3", "1/3"]}
 									background="#E0E3F0"
 								>
 									{recipes}
