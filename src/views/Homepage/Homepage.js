@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import modelInstance from "../../data/DataModel"
+import modelInstance from "../../data/DataModel";
+import { RESPONSIVE } from "../../data/Constants";
 import { Box, Grid, Heading, Main, ResponsiveContext } from 'grommet';
 import burger from "../../images/burger.jpg"
 import "./Homepage.css";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
-
+import LoadingContent from "../../components/LoadingContent/LoadingContent";
 
 class Homepage extends Component {
 
@@ -13,6 +14,7 @@ class Homepage extends Component {
 		super(props);
 
 		this.state = {
+			isLoading: true,
 			joke: "",
 			welcome_recipes: []
 		}
@@ -32,6 +34,7 @@ class Homepage extends Component {
 		modelInstance.getRandomRecipes(4)
 			.then(welcome_recipes => {
 				this.setState({
+					isLoading: false,
 					welcome_recipes: welcome_recipes.recipes
 				})
 			}).catch(error => {
@@ -77,39 +80,15 @@ class Homepage extends Component {
 								Food joke of the day: <br/> {this.state.joke}
 							</Heading>
 						</Box>
-						{(size === 'small' ) &&
-							<Main id="mainContent">
-								<Grid
-									gridArea="random_recipes"
-									columns={["full"]}
-									background="#E0E3F0"
-								>
-									{recipes}
-								</Grid>
-							</Main>
-						}
-						{(size === 'medium') &&
-							<Main id="mainContent">
-								<Grid
-									gridArea="random_recipes"
-									columns={["1/3", "1/3", "1/3"]}
-									background="#E0E3F0"
-								>
-									{recipes}
-								</Grid>
-							</Main>
-						}
-						{(size === 'large') &&
-							<Main id="mainContent">
-								<Grid
-									columns={["1/4", "1/4", "1/4", "1/4"]}
-									gridArea="random_recipes"
-									background="#E0E3F0"
-								>
-									{recipes}
-								</Grid>
-							</Main>
-						}
+						<Main id="mainContent">
+							<Grid
+								gridArea="random_recipes"
+								columns={RESPONSIVE["homepage"][size]}
+								background="#E0E3F0"
+							>
+								{recipes}
+							</Grid>
+						</Main>
 					</Grid>
 				)}
 			</ResponsiveContext.Consumer>
