@@ -1,29 +1,16 @@
 import React, { Component } from "react";
 import "./SkipToContent.css";
-import {Anchor, Box, Grommet} from 'grommet';
-
-/* theme needs to be moved in SkipToContent.css* or have a css for the components folder */
-const theme = {
-	global: {
-		colors: {
-			brand: 'black',
-		},
-		font: {
-			family: 'Roboto',
-			size: '13px',
-		},
-	},
-};
+import {Box, Grommet, SkipLink,} from 'grommet';
+import theme from "../../styles/Theme"
 
 const AppBar = (props) => (
 	<Box
 		align='start'
-		background= '#E0E3F0'
+		background= 'grey'
 		pad={{ left: 'medium'}}
 		{...props}
 	/>
 );
-
 
 class SkipToContent extends Component {
 
@@ -31,7 +18,7 @@ class SkipToContent extends Component {
 		return (
 			<Grommet theme={theme}>
 				<AppBar>
-					<Anchor>Skip to Content</Anchor>
+					<SkipLink id="mainContent" target="_self" label="Skip to content" />
 				</AppBar>
 			</Grommet>
 		);

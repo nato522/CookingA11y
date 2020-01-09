@@ -2,7 +2,7 @@ import modelInstance from "../../data/DataModel"
 import React, { Component } from "react";
 
 import {
-	Box, Button, Grid, Heading, Image, Layer,
+	Box, Button, Grid, Heading, Image, Layer, Main,
 	RadioButtonGroup, Paragraph, Table, TableBody,
 	TableCell, TableHeader, TableRow, Text
 } from 'grommet';
@@ -154,44 +154,46 @@ class RecipeDetails extends Component {
 				rows={['500px', 'large']}
 				gap='small'
 			>
-				<Box
-					gridArea='recipe_title'
-					background='#E0E3F0'
-					margin={{top:'medium', left:'medium'}}
-				>
-					<Heading level="1" margin="small"> {this.state.recipe.title}</Heading>
-					<AddToMyMenu dishTitle={this.state.recipe.title} dishID={this.id}/>
+				<Main id="mainContent">
 					<Box
-						gridArea="nav"
-						direction="row"
-						pad={{ left: 'medium', right: 'small', vertical: 'small', top: 'medium', bottom: 'medium'}}
+						gridArea='recipe_title'
+						background='#E0E3F0'
+						margin={{top:'medium', left:'medium'}}
 					>
-						<Box height="250px" width="500px">
-							<Image
-								fit="cover"
-								src={this.state.recipe.image || placeholder}
-								alt={ this.state.recipe.image ? this.state.recipe.title : "This is just a placeholder image. We don't support uploading images for your own recipes yet."}
-							/>
-						</Box>
-						<Box overflow="auto">
-							<Table margin={{ left: 'xlarge'}}>
-								<TableHeader>
-									<TableRow>
-										<TableCell scope="col" border="bottom">
-											Ingredient Name
-										</TableCell>
-										<TableCell scope="col" border="bottom">
-											Quantity
-										</TableCell>
-									</TableRow>
-								</TableHeader>
-								<TableBody>
-									{tableRow}
-								</TableBody>
-							</Table>
+						<Heading level="1" margin="small"> {this.state.recipe.title}</Heading>
+						<AddToMyMenu dishTitle={this.state.recipe.title} dishID={this.id}/>
+						<Box
+							gridArea="nav"
+							direction="row"
+							pad={{ left: 'medium', right: 'small', vertical: 'small', top: 'medium', bottom: 'medium'}}
+						>
+							<Box height="250px" width="500px">
+								<Image
+									fit="cover"
+									src={this.state.recipe.image || placeholder}
+									alt={ this.state.recipe.image ? this.state.recipe.title : "This is just a placeholder image. We don't support uploading images for your own recipes yet."}
+								/>
+							</Box>
+							<Box overflow="auto">
+								<Table margin={{ left: 'xlarge'}}>
+									<TableHeader>
+										<TableRow>
+											<TableCell scope="col" border="bottom">
+												Ingredient Name
+											</TableCell>
+											<TableCell scope="col" border="bottom">
+												Quantity
+											</TableCell>
+										</TableRow>
+									</TableHeader>
+									<TableBody>
+										{tableRow}
+									</TableBody>
+								</Table>
+							</Box>
 						</Box>
 					</Box>
-				</Box>
+				</Main>
 				<Box gridArea='sidebar' background='brand'margin={{top:'medium', right:'medium'}}>
 					<Sidebar model={this.props.model}/>
 				</Box>

@@ -123,7 +123,7 @@ class DataModel extends ObservableModel{
 
 	async getSimilarRecipes(dishesInMenuList) {
 		let result = new Map();
-		let numberOfSimilar = 1
+		let numberOfSimilar = 4
 
 		for (let i = 0; i < dishesInMenuList.length; i++) {
 			let dishID = dishesInMenuList[i].split("/")[1]
