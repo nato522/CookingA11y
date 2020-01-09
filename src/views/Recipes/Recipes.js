@@ -256,6 +256,7 @@ class Recipes extends Component {
                                 <Box gridArea="recipes" margin="auto">
                                     { this.state.total && <Paragraph>Showing {this.state.recipes.length} recipes out of {this.state.total}!</Paragraph>}
                                     <Grid
+                                        as="ul"
                                         columns={RESPONSIVE[size]}
                                     >
                                         { result_recipes }

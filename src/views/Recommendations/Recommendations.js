@@ -3,6 +3,7 @@ import modelInstance from "../../data/DataModel"
 import {Box, Grid, Heading, Main, ResponsiveContext, Text} from 'grommet';
 import {Link} from "react-router-dom";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
+import LoadingContent from '../../components/LoadingContent/LoadingContent';
 import burger from "../../images/burger.jpg";
 import {RESPONSIVE} from "../../data/Constants"
 
@@ -12,6 +13,7 @@ class Recommendations extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
+			isLoading: true,
 			allDishesInMenu: [],
 			similarRecipesMap: new Map()
 		}
@@ -31,6 +33,7 @@ class Recommendations extends Component {
 		modelInstance.getSimilarRecipes(dishesInMenuList)
 			.then(resultMap => {
 				this.setState({
+					isLoading: false,
 					similarRecipesMap: resultMap
 				})
 		}).catch(error => {
@@ -38,68 +41,76 @@ class Recommendations extends Component {
 		});
 	}
 
-	renderSimilarRecipes() {
-		let result
+	renderSimilarRecipes(size) {
+		let result;
+
 		if(this.state.similarRecipesMap.size > 0) {
 			let baseURLImage = "https://spoonacular.com/recipeImages/"
 
 			result = Array.from(this.state.similarRecipesMap).map(([dishKey, dishValue]) => {
-				return <ResponsiveContext.Consumer>
-					{ size => (
-						<Main id="mainContent">
-							<Box>
-								<Heading level={2}> Because you cooked {dishKey.split("/")[0]}, we recommend you: </Heading>
-								<Grid
-									as="ul"
-									columns={RESPONSIVE["recommendations"][size]}
-									background="#E0E3F0"
-								>
-									{dishValue.map((similarRecipe, i) => (
-										<Box as="li">
-											<Link to={"/recipe_details/" + similarRecipe.id} key={similarRecipe.id}>
-												<RecipeCard
-													recipeID={similarRecipe.id}
-													imageURL={`${baseURLImage}` + similarRecipe.image}
-													title={similarRecipe.title}
-													cookingTime={similarRecipe.readyInMinutes}
-												/>
-											</Link>
-										</Box>
-									))}
-								</Grid>
-							</Box>
-						</Main>
-					)}
-				</ResponsiveContext.Consumer>
+				return(
+					<Box key={`recommendation_${dishKey}`}>
+						<Heading level={2}> Because you cooked {dishKey.split("/")[0]}, we recommend you: </Heading>
+						<Grid
+							as="ul"
+							columns={RESPONSIVE["recommendations"][size]}
+							background="#E0E3F0"
+						>
+							{dishValue.map((similarRecipe, i) => (
+								<Box as="li" key={similarRecipe.id}	>
+									<Link to={"/recipe_details/" + similarRecipe.id}>
+										<RecipeCard
+											recipeID={similarRecipe.id}
+											imageURL={`${baseURLImage}` + similarRecipe.image}
+											title={similarRecipe.title}
+											cookingTime={similarRecipe.readyInMinutes}
+										/>
+									</Link>
+								</Box>
+							))}
+						</Grid>
+					</Box>
+				)
 			})
 		}
 		return result
 	}
 
 	render() {
-
-
 		return(
-					<Grid as="div" justify="stretch"
-						  areas={[
-							  { name: "cover", start: [0, 0], end: [2, 0] },
-							  { name: "recommended_recipes", start: [0, 1], end: [2, 1] }
-						  ]}
-						  columns={["flex"]}
-						  rows={["medium", "auto"]}
-						  gap="medium"
-					>
-						<Box
-							gridArea="cover"
-							background={`url(${burger})`}
-						>
-						</Box>
-							<Box
-								gridArea="recommended_recipes"
-							>
-								{this.renderSimilarRecipes()}
+			<Grid as="div" justify="stretch"
+				areas={[
+					{ name: "cover", start: [0, 0], end: [2, 0] },
+					{ name: "recommended_recipes", start: [0, 1], end: [2, 1] }
+				]}
+				columns={["flex"]}
+				rows={["medium", "auto"]}
+				gap="medium"
+			>
+				<Box
+					gridArea="cover"
+					background={`url(${burger})`}
+				>
+				</Box>
+				<Box
+					gridArea="recommended_recipes"
+				>
+					<Main id="mainContent">
+						{this.state.isLoading &&
+							<Box margin="auto">
+								<LoadingContent />
 							</Box>
-					</Grid>
+						}
+						{!this.state.isLoading &&
+							<ResponsiveContext.Consumer>
+								{size => (
+									this.renderSimilarRecipes(size)
+								)}
+							</ResponsiveContext.Consumer>
+						}
+					</Main>
+				</Box>
+			</Grid>
 		);
 	}
 }

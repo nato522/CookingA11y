@@ -11,8 +11,8 @@ const UNITS = [
 export const RESPONSIVE = {
     "recommendations": {
         "small": "full",
-        "medium": ["1/4", "1/4", "1/4", "1/4"],
-        "large": ["1/5", "1/5", "1/5", "1/5", "1/5"],
+        "medium": ["1/3", "1/3", "1/3"],
+        "large": ["1/4", "1/4", "1/4", "1/4"],
     },
     "homepage": {
         "small": "full",

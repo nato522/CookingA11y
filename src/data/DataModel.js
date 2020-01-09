@@ -123,21 +123,21 @@ class DataModel extends ObservableModel{
 
 	async getSimilarRecipes(dishesInMenuList) {
 		let result = new Map();
-		let numberOfSimilar = 4
+		let numberOfSimilar = 6;
 
 		for (let i = 0; i < dishesInMenuList.length; i++) {
-			let dishID = dishesInMenuList[i].split("/")[1]
-			console.log("dishID " + dishID)
-			result.set(dishesInMenuList[i], [])			// we set the key as the name + id for uniqueness
+			let dishID = dishesInMenuList[i].split("/")[1];
+			result.set(dishesInMenuList[i], []);	// we set the key as the name + id for uniqueness
 
-			const url = `${BASE_URL}/recipes/${dishID}/similar?number=${numberOfSimilar}`
-			const response = await fetch(url, httpOptions)
-			const similarDishes = await response.json()
+			const url = `${BASE_URL}/recipes/${dishID}/similar?number=${numberOfSimilar}`;
+			const response = await fetch(url, httpOptions);
+			const similarDishes = await response.json();
+
 			for(let j = 0; j < similarDishes.length; j++) {
-				result.get(dishesInMenuList[i]).push(similarDishes[j])
+				result.get(dishesInMenuList[i]).push(similarDishes[j]);
 			}
 		}
-		return result
+		return result;
 	}
 }
 
