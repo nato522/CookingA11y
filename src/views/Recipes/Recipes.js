@@ -207,7 +207,7 @@ class Recipes extends Component {
                         rows={["auto", "auto"]}
                         gap='none'
                     >
-                        <Main>
+                        <Main id="mainContent">
                             <Box
                                 gridArea='searchbox'
                             >

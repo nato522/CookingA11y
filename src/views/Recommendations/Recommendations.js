@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import modelInstance from "../../data/DataModel"
-import {Box, Grid, ResponsiveContext, Text} from 'grommet';
+import {Box, Grid, Heading, Main, Paragraph, ResponsiveContext, Text} from 'grommet';
 import {Link} from "react-router-dom";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
+import burger from "../../images/burger.jpg";
 
 class Recommendations extends Component {
 
@@ -37,52 +38,139 @@ class Recommendations extends Component {
 
 	render() {
 
-		let similarRecipes
-		let recipeTitle
-		let allSimilarRecipes = []
+		let result
 		if(this.state.similarRecipesMap.size > 0) {
 			let baseURLImage = "https://spoonacular.com/recipeImages/"
-			for (let key of this.state.similarRecipesMap.keys()) {
-				let dishName = key.split("/")[0]
-				let similarList = this.state.similarRecipesMap.get(key);
-				similarRecipes = similarList.map((similarRecipe, i) => (
-					<Text
-						size="large"
-					>
-						Because you cooked {dishName}, we recommend you:
-						<Link to={"/recipe_details/" + similarRecipe.id} key={similarRecipe.id}>
-							<RecipeCard key={i}
-								recipeID={similarRecipe.id}
-								imageURL={`${baseURLImage}` + similarRecipe.image}
-								title={similarRecipe.title}
-								cookingTime={similarRecipe.readyInMinutes}
-							/>
-						</Link>
-					</Text>
-				));
-				allSimilarRecipes.push(similarRecipes)
-			}
-		}
 
+			result = Array.from(this.state.similarRecipesMap).map(([dishKey, dishValue]) => {
+				return <Heading
+					level="2">
+					Because you cooked {dishKey.split("/")[0]}, we recommend you:
+					{dishValue.map((similarRecipe, i) => (
+						<Text
+							size="large">
+							<Link to={"/recipe_details/" + similarRecipe.id} key={similarRecipe.id}>
+								<RecipeCard as="li"key={i}
+											recipeID={similarRecipe.id}
+											imageURL={`${baseURLImage}` + similarRecipe.image}
+											title={similarRecipe.title}
+											cookingTime={similarRecipe.readyInMinutes}
+								/>
+							</Link>
+						</Text>
+					))}
+				</Heading>
+			})
+		}
 		return(
 			<ResponsiveContext.Consumer>
 				{ size => (
 					<Grid
-						columns={["full"]}
-						background="#E0E3F0"
+						as="div"
+						areas={[
+							{name: "cover", start: [0,0], end: [2,0]},
+							{name: "recipes", start: [0,1], end: [2,1]},
+							// {name: "sidebar", start: [2,0], end: [2,1]},
+						]}
+						columns={["flex"]}
+						rows={["small", "auto"]}
+						// gap='none'
 					>
-						<Box>
-							<Text>Introduction text about this page. "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-								eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-								exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-								reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-								cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-							</Text>
-							{allSimilarRecipes}
-						</Box>
+						<Main id="mainContent">
+							<Box
+								gridArea='cover'
+								background={`url(${burger})`}
+							>
+							</Box>
+							{(size === "small") &&
+								<Box gridArea="recipes" margin="auto">
+									<Paragraph fill={true}>
+										With every recipe you add in the menu, we will recommend you similar ones!
+									</Paragraph>
+									<Grid
+										columns={["full"]}
+									>
+										{result}
+									</Grid>
+								</Box>
+							}
+							{(size === "medium") && (this.state.total > 0) &&
+								<Box gridArea="recipes" margin="auto">
+									<Paragraph fill={true}>
+										With every recipe you add in the menu, we will recommend you similar ones!
+									</Paragraph>
+									<Grid
+										columns={["1/3", "1/3", "1/3"]}
+									>
+										{result}
+									</Grid>
+								</Box>
+							}
+							{(size === "large") && (this.state.total > 0) &&
+								<Box gridArea="recipes" margin="auto">
+									<Paragraph fill={true}>
+										With every recipe you add in the menu, we will recommend you similar ones!
+									</Paragraph>
+									<Grid as="ul"
+										columns={["1/4", "1/4", "1/4"]}
+									>
+										{result}
+									</Grid>
+								</Box>
+							}
+							{/*<Box*/}
+							{/*	alignSelf="end"*/}
+							{/*	margin="auto"*/}
+							{/*>*/}
+							{/*	{ this.state.recipes.length < this.state.total && <Button*/}
+							{/*		icon={<Add />}*/}
+							{/*		label= "See more!"*/}
+							{/*		onClick={this.getMoreRecipes}*/}
+							{/*	/>*/}
+							{/*	}*/}
+							{/*</Box>*/}
+						</Main>
+						{/*<Box*/}
+						{/*	gridArea='sidebar'*/}
+						{/*>*/}
+						{/*	<Sidebar model={this.props.model}/>*/}
+						{/*</Box>*/}
 					</Grid>
+					// <Grid as="div" justify="stretch"
+					// 	  areas={[
+					// 		  { name: "cover", start: [0, 0], end: [2, 0] },
+					// 		  { name: "similar_recipes", start: [0, 1], end: [2, 1] }
+					// 	  ]}
+					// 	  columns={["flex"]}
+					// 	  rows={["small", "auto"]}
+					// >
+					// 	<Box
+					// 		gridArea="cover"
+					// 		background={`url(${burger})`}
+					// 	>
+					// 	</Box>
+					// 	{/*<Grid fill="true"*/}
+					// 	{/*	gridArea="similar_recipes"*/}
+					// 	{/*>*/}
+					// 		<Main
+					// 			id="mainContent"
+					// 			margin={
+					// 				{"horizontal": "large"}
+					// 			}
+					// 		>
+					// 			<Paragraph fill="true">
+					// 				With every recipe you add in the menu, we will recommend you similar ones!
+					// 			</Paragraph>
+					// 			{/*<Box gridArea="similar_recipes" margin="auto">*/}
+					// 				<Grid gridArea="similar_recipes" columns={["full"]}>
+					// 					{result}
+					// 				</Grid>
+					// 			{/*</Box>*/}
+					// 		</Main>
+					// 	{/*</Grid>*/}
+					// </Grid>
 				)}
-			</ResponsiveContext.Consumer>
+     		</ResponsiveContext.Consumer>
 		);
 	}
 }
