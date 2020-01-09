@@ -80,14 +80,20 @@ class Homepage extends Component {
 								Food joke of the day: <br/> {this.state.joke}
 							</Heading>
 						</Box>
-						<Main id="mainContent">
-							<Grid
-								gridArea="random_recipes"
-								columns={RESPONSIVE["homepage"][size]}
-								background="#E0E3F0"
-							>
-								{recipes}
-							</Grid>
+						<Main id="mainContent" background="#E0E3F0">
+							{(this.state.isLoading) &&
+								<Box gridArea="random_recipes">
+									<LoadingContent />
+								</Box>
+							}
+							{(!this.state.isLoading) &&
+								<Grid
+									gridArea="random_recipes"
+									columns={RESPONSIVE["homepage"][size]}
+								>
+									{recipes}
+								</Grid>
+							}
 						</Main>
 					</Grid>
 				)}
