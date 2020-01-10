@@ -83,7 +83,9 @@ class Recommendations extends Component {
 					alignSelf="center"
 				>
 					For now, we don't have any recommendations for you <Emoji symbol="😢" label="sad face"/>.
-					Add recipes to your menu and come back to see new similar ones.
+					Add recipes to your menu and come back to see new similar ones. You can do this by
+					navigating to a recipe page and clicking on the rounded button that is located under
+					the recipe name. This button will be labelled with the text "Add to my menu".
 				</Paragraph>
 			)
 
