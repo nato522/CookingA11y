@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="" />
+    <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -311,7 +314,21 @@
       <option name="project" value="LOCAL" />
       <updated>1578653947867</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Merge branch 'ruxi'&#10;&#10;# Conflicts:&#10;#&#9;src/views/RecipeDetails/RecipeDetails.js">
+      <created>1578654222717</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1578654222717</updated>
+    </task>
+    <task id="LOCAL-00033" summary=".workspace">
+      <created>1578654269544</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1578654269544</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,8 +349,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="random commit" />
-    <MESSAGE value="click in the navbar to go to the recipes page" />
     <MESSAGE value="finished Details View, but without the sidebar" />
     <MESSAGE value="finished the popup" />
     <MESSAGE value="added dish according to the type; still some bugs" />
@@ -357,7 +372,9 @@
     <MESSAGE value="fixed duplicate items in My Menu" />
     <MESSAGE value="updated readme with running instructions" />
     <MESSAGE value="added X for the advanced search and add to menu pop ups" />
-    <option name="LAST_COMMIT_MESSAGE" value="added X for the advanced search and add to menu pop ups" />
+    <MESSAGE value="Merge branch 'ruxi'&#10;&#10;# Conflicts:&#10;#&#9;src/views/RecipeDetails/RecipeDetails.js" />
+    <MESSAGE value=".workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value=".workspace" />
   </component>
   <component name="WindowStateProjectService">
     <state x="371" y="89" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1578161116062">
@@ -408,9 +425,9 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="450" y="259" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1578142468856" />
-    <state x="336" y="72" width="612" height="536" key="find.popup" timestamp="1578653887850">
+    <state x="336" y="72" width="612" height="536" key="find.popup" timestamp="1578654524156">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="336" y="72" width="612" height="536" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1578653887850" />
+    <state x="336" y="72" width="612" height="536" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1578654524156" />
   </component>
 </project>
