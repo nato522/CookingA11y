@@ -39,7 +39,12 @@ function AdvancedSearch(props){
                             }}
                         >
                             <Box>
-                                <FormField aria-label="Search by recipe:" name="advancedQuery" placeholder="type here"/>
+                                <FormField
+                                    aria-label="Search by recipe name:"
+                                    label="Search by name:"
+                                    name="advancedQuery"
+                                    placeholder="e.g. Avocado salad"
+                                />
                             </Box>
                             <Box direction="row-responsive">
                                 <Box>
@@ -61,8 +66,8 @@ function AdvancedSearch(props){
                                         label="Pescetarian"
                                     />
                                 </Box>
-                                <Box>
-                                    <Heading level="4">Meal type:</Heading>
+                                <Box role="radiogroup" aria-labelledby="meal_type">
+                                    <Heading id="meal_type" level="4">Meal type:</Heading>
                                     <FormField
                                         component={RadioButtonGroup}
                                         name="mealType"
