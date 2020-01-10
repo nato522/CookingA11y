@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/RecipeDetails/RecipeDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/RecipeDetails/RecipeDetails.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +96,7 @@
       <workItem from="1577784165997" duration="48000" />
       <workItem from="1578141261417" duration="22064000" />
       <workItem from="1578605194665" duration="39000" />
-      <workItem from="1578641880979" duration="689000" />
+      <workItem from="1578641880979" duration="1106000" />
     </task>
     <task id="LOCAL-00001" summary="added the .gitignore file">
       <created>1577287941476</created>
@@ -250,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578602929812</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="workspace">
+      <created>1578642628365</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1578642628365</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,24 +295,24 @@
     <MESSAGE value="fixed typos" />
     <MESSAGE value="added the Link component for Recipes and Recommendations" />
     <MESSAGE value="replaced the Anchors with Link components in the navigation bar" />
-    <MESSAGE value="workspace" />
     <MESSAGE value="small fix" />
     <MESSAGE value="added local jokes, code commented for now" />
     <MESSAGE value="fixed accessibility issues" />
     <MESSAGE value="Merge branch 'ruxi'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/components/NavigationBar/NavigationBar.js&#10;#&#9;src/components/SearchBox/SearchBox.js&#10;#&#9;src/views/Recipes/Recipes.js" />
     <MESSAGE value="added heading in the fron page + changed the heading for recipe cards" />
     <MESSAGE value="added instruction text to Recommendations.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="added instruction text to Recommendations.js" />
+    <MESSAGE value="workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace" />
   </component>
   <component name="WindowStateProjectService">
     <state x="371" y="89" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1578161116062">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="89" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1578161116062" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578602928937">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578642627191">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578602928937" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578642627191" />
     <state x="421" y="97" key="FileChooserDialogImpl" timestamp="1578344430196">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -336,9 +345,9 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="450" y="259" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1578142468856" />
-    <state x="336" y="72" width="612" height="536" key="find.popup" timestamp="1578602692848">
+    <state x="336" y="72" width="612" height="536" key="find.popup" timestamp="1578642778550">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="336" y="72" width="612" height="536" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1578602692848" />
+    <state x="336" y="72" width="612" height="536" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1578642778550" />
   </component>
 </project>

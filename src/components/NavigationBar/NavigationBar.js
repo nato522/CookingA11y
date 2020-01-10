@@ -29,7 +29,8 @@ class NavigationBar extends Component {
                                     }
                             >
                                 <Link to="/">
-                                    <Heading level="1" margin="none">GoBananas</Heading>
+                                    <Heading
+										level="1" margin="none">GoBananas</Heading>
                                 </Link>
                                 <Box as="ul" direction="row" align="center">
                                     <Box as="li" margin="small">

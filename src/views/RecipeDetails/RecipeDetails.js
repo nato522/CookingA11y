@@ -41,8 +41,10 @@ function AddToMyMenu(props) {
 					onEsc={() => setShow(false)}
 					onClickOutside={() => setShow(false)}
 				>
-					<Text margin="small" >Please choose the dish type:</Text>
+					<Paragraph alignSelf={"center"} margin="small" >Please choose the dish type!</Paragraph>
+					<Paragraph alignSelf={"center"} margin="small" >The recipe will be added to the menu on the right.</Paragraph>
 					<RadioButtonGroup
+						alignSelf={"center"}
 						name="dishType"
 						options={[STARTER, FIRST_DISH, SECOND_DISH, DESSERT]}
 						value={value}
