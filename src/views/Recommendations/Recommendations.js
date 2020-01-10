@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Emoji from "a11y-react-emoji";
 import {
 	Box, Grid, Heading, Main, Paragraph,
-	ResponsiveContext, Text
+	ResponsiveContext
 } from 'grommet';
 
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
@@ -79,7 +79,7 @@ class Recommendations extends Component {
 		else {
 			return (
 				<Paragraph
-					fill="true"
+					fill={true}
 					alignSelf="center"
 				>
 					For now, we don't have any recommendations for you <Emoji symbol="😢" label="sad face"/>.
