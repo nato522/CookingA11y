@@ -66,7 +66,7 @@ class NavigationBar extends Component {
                                 <Link to="/">
                                     <Heading level="1" margin="none">GoBananas</Heading>
                                 </Link>
-                                <Box as="ul" direction="row" align="center">
+                                <Box as="ul" pad={{'horizontal': 'none'}} direction="row" align="center">
                                     <Box as="li">
                                         <Menu label="Other pages" items={[
                                             { label: <Link to="/recipes">Recipes</Link>},

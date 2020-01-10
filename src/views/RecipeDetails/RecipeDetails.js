@@ -176,26 +176,26 @@ class RecipeDetails extends Component {
 
 		return (
 			<Grid
+				as="div"
 				areas={[
 					{ name: 'recipe_title', start: [0, 0], end: [1, 0] },
-					{ name: 'sidebar', start: [1, 0], end: [2, 0] },
-					{ name: 'recipe_instructions', start: [0, 1], end: [2, 1] },
+					{ name: 'recipe_instructions', start: [0, 1], end: [1, 1] },
+					{ name: 'sidebar', start: [2, 0], end: [2, 1] },
 				]}
-				columns={['1000px', 'small']}
-				rows={['500px', 'large']}
-				gap='small'
+				columns={['flex']}
+				rows={['auto', 'auto']}
+				gap='none'
 			>
 				<Main id="mainContent">
 					<Box
 						gridArea='recipe_title'
 						background='#F7F1F8'
-						margin={{top:'medium', left:'medium'}}
+						margin={{top:'medium'}}
 					>
 						<Heading level="1" margin="small"> {this.state.recipe.title}</Heading>
 						<AddToMyMenu dishTitle={this.state.recipe.title} dishID={this.id}/>
 						<Box
-							gridArea="nav"
-							direction="row"
+							direction="row-responsive"
 							pad={{ left: 'medium', right: 'small', vertical: 'small', top: 'medium', bottom: 'medium'}}
 						>
 							<Box height="250px" width="500px">
@@ -206,7 +206,7 @@ class RecipeDetails extends Component {
 								/>
 							</Box>
 							<Box overflow="auto">
-								<Table margin={{ left: 'xlarge'}}>
+								<Table>
 									<TableHeader>
 										<TableRow>
 											<TableCell scope="col" border="bottom">
@@ -224,23 +224,22 @@ class RecipeDetails extends Component {
 							</Box>
 						</Box>
 					</Box>
+					<Box
+						gridArea='recipe_instructions'
+						background='#F7F1F8'
+						overflow="auto"
+					>
+						<Heading level="2" margin="small">
+							Recipe Steps
+						</Heading>
+						<Paragraph margin="small" fill={true}>
+							{this.state.recipe.instructions}
+						</Paragraph>
+						{detailedInstructions}
+					</Box>
 				</Main>
 				<Box gridArea='sidebar' background='brand'margin={{top:'medium', right:'medium'}}>
 					<Sidebar model={this.props.model}/>
-				</Box>
-				<Box
-					gridArea='recipe_instructions'
-					background='#F7F1F8'
-					margin={{bottom:'medium', left:'medium', right:'402px'}}
-					overflow="auto"
-				>
-					<Heading level="2" margin="small">
-						Recipe Steps
-					</Heading>
-					<Paragraph margin="small" fill={true}>
-						{this.state.recipe.instructions}
-					</Paragraph>
-					{detailedInstructions}
 				</Box>
 			</Grid>
 		);
