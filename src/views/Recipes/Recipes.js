@@ -250,7 +250,7 @@ class Recipes extends Component {
                             }
                             {(this.state.total > 0 && !this.state.isLoading) &&
                                 <Box gridArea="recipes" margin="auto">
-                                    { this.state.total && <Paragraph>Showing {this.state.recipes.length} recipes out of {this.state.total}!</Paragraph>}
+                                    { this.state.total && <Paragraph role="status">Showing {this.state.recipes.length} recipes out of {this.state.total}!</Paragraph>}
                                     <Grid
                                         as="ul"
                                         columns={RESPONSIVE[size]}
