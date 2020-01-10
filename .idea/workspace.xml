@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/DataModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DataModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578651176798</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="fixed duplicate items in My Menu">
+      <created>1578651635568</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1578651635568</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,7 +321,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="draft on creating the Navigation Bar" />
     <MESSAGE value="completed SkipToContent, NavigationBar and Footer" />
     <MESSAGE value="added the joke of the day calling the API" />
     <MESSAGE value="random commit" />
@@ -339,17 +345,18 @@
     <MESSAGE value="recipes in &quot;My menu&quot; are clickable and can be redirected to their instructions" />
     <MESSAGE value="checked accessible color contrast" />
     <MESSAGE value="Merge branch 'ruxi'&#10;&#10;# Conflicts:&#10;#&#9;src/views/Recommendations/Recommendations.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'ruxi'&#10;&#10;# Conflicts:&#10;#&#9;src/views/Recommendations/Recommendations.js" />
+    <MESSAGE value="fixed duplicate items in My Menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed duplicate items in My Menu" />
   </component>
   <component name="WindowStateProjectService">
     <state x="371" y="89" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1578161116062">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="89" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1578161116062" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578649951131">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578651634708">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578649951131" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578651634708" />
     <state x="421" y="97" key="FileChooserDialogImpl" timestamp="1578344430196">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
