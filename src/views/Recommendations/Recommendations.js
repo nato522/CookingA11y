@@ -61,7 +61,7 @@ class Recommendations extends Component {
 						>
 							{dishValue.map((similarRecipe, i) => (
 								<Box as="li" key={similarRecipe.id}	>
-									<Link to={"/recipe_details/" + similarRecipe.id}>
+									<Link aria-label={`Read the details of "${similarRecipe.title}"`} to={"/recipe_details/" + similarRecipe.id}>
 										<RecipeCard
 											recipeID={similarRecipe.id}
 											imageURL={`${baseURLImage}` + similarRecipe.image}

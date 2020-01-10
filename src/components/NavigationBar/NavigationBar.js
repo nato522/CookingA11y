@@ -67,7 +67,7 @@ class NavigationBar extends Component {
                                 </Link>
                                 <Box as="ul" direction="row" align="center">
                                     <Box as="li">
-                                        <Menu label="Menu" items={[
+                                        <Menu label="Other pages" items={[
                                             { label: <Link to="/recipes">Recipes</Link>},
                                             { label: <Link to="/recommendations">Recommendations</Link>},
                                             { label: <Link to="/addRecipe">Add your recipe</Link>},

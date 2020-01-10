@@ -234,14 +234,14 @@ class AddRecipe extends Component {
                             { ingredients }
                             <Button
                                 icon={ <Add /> }
-                                label="Add ingredient"
+                                label="Add more ingredients"
                                 onClick={()=>{this.addIngredient()}}
                             />
                             <Heading level="3">Instructions:</Heading>
                             { steps }
                             <Button
                                 icon={ <Add /> }
-                                label="Add step"
+                                label="Add more steps"
                                 onClick={()=>{this.addStep()}}
                             />
                             <Box>
