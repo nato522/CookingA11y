@@ -26,21 +26,40 @@ export const RESPONSIVE = {
 
 
 export const RESPONSIVE_AREAS = {
-    "small":[
-        { name: 'recipe_title', start: [0, 0], end: [2, 0] },
-        { name: 'recipe_instructions', start: [0, 1], end: [2, 1] },
-        { name: 'sidebar', start: [0, 2], end: [2, 2] },
-    ],
-    "medium":[
-        { name: 'recipe_title', start: [0, 0], end: [1, 0] },
-        { name: 'recipe_instructions', start: [0, 1], end: [1, 1] },
-        { name: 'sidebar', start: [2, 0], end: [2, 1] },
-    ],
-    "large":[
-        { name: 'recipe_title', start: [0, 0], end: [1, 0] },
-        { name: 'recipe_instructions', start: [0, 1], end: [1, 1] },
-        { name: 'sidebar', start: [2, 0], end: [2, 1] },
-    ],
+    "recipeDetails":{
+        "small":[
+            { name: 'recipe_title', start: [0, 0], end: [2, 0] },
+            { name: 'recipe_instructions', start: [0, 1], end: [2, 1] },
+            { name: 'sidebar', start: [0, 2], end: [2, 2] },
+        ],
+        "medium":[
+            { name: 'recipe_title', start: [0, 0], end: [1, 0] },
+            { name: 'recipe_instructions', start: [0, 1], end: [1, 1] },
+            { name: 'sidebar', start: [2, 0], end: [2, 1] },
+        ],
+        "large":[
+            { name: 'recipe_title', start: [0, 0], end: [1, 0] },
+            { name: 'recipe_instructions', start: [0, 1], end: [1, 1] },
+            { name: 'sidebar', start: [2, 0], end: [2, 1] },
+        ],
+    },
+    "recipes":{
+        "small":[
+            { name: 'searchBox', start: [0, 0], end: [2, 0] },
+            { name: 'recipes', start: [0, 1], end: [2, 1] },
+            { name: 'sidebar', start: [0, 2], end: [2, 2] },
+        ],
+        "medium":[
+            { name: 'searchBox', start: [0, 0], end: [1, 0] },
+            { name: 'recipes', start: [0, 1], end: [1, 1] },
+            { name: 'sidebar', start: [2, 0], end: [2, 1] },
+        ],
+        "large":[
+            { name: 'searchBox', start: [0, 0], end: [1, 0] },
+            { name: 'recipes', start: [0, 1], end: [1, 1] },
+            { name: 'sidebar', start: [2, 0], end: [2, 1] },
+        ],
+    },
     "rows":{
         "small": ['auto', 'auto', 'auto'],
         "medium": ['auto', 'auto'],

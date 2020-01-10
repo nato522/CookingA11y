@@ -180,7 +180,7 @@ class RecipeDetails extends Component {
 				{size => (
 					<Grid
 						as="div"
-						areas={RESPONSIVE_AREAS[size]}
+						areas={RESPONSIVE_AREAS["recipeDetails"][size]}
 						columns={['flex']}
 						rows={RESPONSIVE_AREAS["rows"][size]}
 						gap='none'

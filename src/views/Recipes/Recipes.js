@@ -1,6 +1,6 @@
 import modelInstance from "../../data/DataModel"
 import Store from '../../data/Store';
-import { RESPONSIVE } from '../../data/Constants';
+import { RESPONSIVE, RESPONSIVE_AREAS } from '../../data/Constants';
 
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
@@ -224,13 +224,9 @@ class Recipes extends Component {
                 { size => (
                     <Grid
                         as="div"
-                        areas={[
-                            {name: "searchbox", start: [0,0], end: [1,0]},
-                            {name: "recipes", start: [0,1], end: [1,1]},
-                            {name: "sidebar", start: [2,0], end: [2,1]},
-                        ]}
+                        areas={RESPONSIVE_AREAS["recipes"][size]}
                         columns={["flex"]}
-                        rows={["auto", "auto"]}
+                        rows={RESPONSIVE_AREAS["rows"][size]}
                         gap='none'
                     >
                         <Main id="mainContent">
