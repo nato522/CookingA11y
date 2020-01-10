@@ -1,7 +1,7 @@
 const Theme = {
 	global: {
 		colors: {
-            brand: '#FFCA58'
+            brand: '#66C3D1'
         },
 		font: {
 			family: 'Roboto',

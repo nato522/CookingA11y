@@ -31,15 +31,15 @@ class DataModel extends ObservableModel{
 		"I eat my tacos over a Tortilla. That way when stuff falls out, BOOM, another taco."]
 	}
 
-	getRandomFoodJoke() {
-		const url = `${BASE_URL}/food/jokes/random`;
-		return fetch(url, httpOptions).then(this.processResponse);
-	}
-
 	// getRandomFoodJoke() {
-	// 	let joke = this.jokes[Math.floor(Math.random()*this.jokes.length)];
-	// 	return joke;
+	// 	const url = `${BASE_URL}/food/jokes/random`;
+	// 	return fetch(url, httpOptions).then(this.processResponse);
 	// }
+
+	getRandomFoodJoke() {
+		let joke = this.jokes[Math.floor(Math.random()*this.jokes.length)];
+		return joke;
+	}
 
 	getRandomRecipes(number_of_recipes) {
 		const url = `${BASE_URL}/recipes/random?number=` + number_of_recipes;
@@ -140,14 +140,15 @@ class DataModel extends ObservableModel{
 
 		for (let i = 0; i < dishesInMenuList.length; i++) {
 			let dishID = dishesInMenuList[i].split("/")[1];
-			result.set(dishesInMenuList[i], []);	// we set the key as the name + id for uniqueness
+			if(!isNaN(parseInt(dishID, 10))) {
+				result.set(dishesInMenuList[i], []);	// we set the key as the name + id for uniqueness
+				const url = `${BASE_URL}/recipes/${dishID}/similar?number=${numberOfSimilar}`;
+				const response = await fetch(url, httpOptions);
+				const similarDishes = await response.json();
 
-			const url = `${BASE_URL}/recipes/${dishID}/similar?number=${numberOfSimilar}`;
-			const response = await fetch(url, httpOptions);
-			const similarDishes = await response.json();
-
-			for(let j = 0; j < similarDishes.length; j++) {
-				result.get(dishesInMenuList[i]).push(similarDishes[j]);
+				for (let j = 0; j < similarDishes.length; j++) {
+					result.get(dishesInMenuList[i]).push(similarDishes[j]);
+				}
 			}
 		}
 		return result;
