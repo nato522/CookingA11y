@@ -106,8 +106,10 @@ class DataModel extends ObservableModel{
 
 	addDishToMenu(dishType, dishTitle, dishID) {
 		let dishInfo = dishTitle + "/" + dishID
-		this.selectedDishesMap.get(dishType).push(dishInfo)
-		this.notifyObservers("addDishToMenu");
+		if(!this.selectedDishesMap.get(dishType).includes(dishInfo)) {
+			this.selectedDishesMap.get(dishType).push(dishInfo)
+			this.notifyObservers("addDishToMenu");
+		}
 	}
 
 	deleteDishFromMenu(dishType, dishTitle) {
