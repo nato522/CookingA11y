@@ -4,8 +4,6 @@
     <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/Sidebar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/DataModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DataModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/RecipeDetails/RecipeDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/RecipeDetails/RecipeDetails.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +95,7 @@
       <workItem from="1577784165997" duration="48000" />
       <workItem from="1578141261417" duration="22064000" />
       <workItem from="1578605194665" duration="39000" />
-      <workItem from="1578641880979" duration="2569000" />
+      <workItem from="1578641880979" duration="3722000" />
     </task>
     <task id="LOCAL-00001" summary="added the .gitignore file">
       <created>1577287941476</created>
@@ -267,7 +265,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578643059084</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="fixed recommendations to be only for the recipes in the website">
+      <created>1578644640664</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1578644640664</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,17 +316,18 @@
     <MESSAGE value="added instruction text to Recommendations.js" />
     <MESSAGE value="workspace" />
     <MESSAGE value="added instructions for adding a recipe to the menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="added instructions for adding a recipe to the menu" />
+    <MESSAGE value="fixed recommendations to be only for the recipes in the website" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed recommendations to be only for the recipes in the website" />
   </component>
   <component name="WindowStateProjectService">
     <state x="371" y="89" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1578161116062">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="89" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1578161116062" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578643058200">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578644639753">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578643058200" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578644639753" />
     <state x="421" y="97" key="FileChooserDialogImpl" timestamp="1578344430196">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
