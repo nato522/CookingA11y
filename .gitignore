@@ -24,4 +24,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # private information
-/src/data/ApiKey.js
+#/src/data/ApiKey.js
