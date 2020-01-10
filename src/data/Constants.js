@@ -25,6 +25,30 @@ export const RESPONSIVE = {
 };
 
 
+export const RESPONSIVE_AREAS = {
+    "small":[
+        { name: 'recipe_title', start: [0, 0], end: [2, 0] },
+        { name: 'recipe_instructions', start: [0, 1], end: [2, 1] },
+        { name: 'sidebar', start: [0, 2], end: [2, 2] },
+    ],
+    "medium":[
+        { name: 'recipe_title', start: [0, 0], end: [1, 0] },
+        { name: 'recipe_instructions', start: [0, 1], end: [1, 1] },
+        { name: 'sidebar', start: [2, 0], end: [2, 1] },
+    ],
+    "large":[
+        { name: 'recipe_title', start: [0, 0], end: [1, 0] },
+        { name: 'recipe_instructions', start: [0, 1], end: [1, 1] },
+        { name: 'sidebar', start: [2, 0], end: [2, 1] },
+    ],
+    "rows":{
+        "small": ['auto', 'auto', 'auto'],
+        "medium": ['auto', 'auto'],
+        "large": ['auto', 'auto'],
+    }
+};
+
+
 export const STARTER = "Starter";
 export const FIRST_DISH = "First Dish";
 export const SECOND_DISH = "Second Dish";

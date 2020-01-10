@@ -1,16 +1,17 @@
 import modelInstance from "../../data/DataModel"
-import React, { Component } from "react";
+import { STARTER, FIRST_DISH, SECOND_DISH, DESSERT, RESPONSIVE_AREAS } from "../../data/Constants"
 
+import React, { Component } from "react";
 import {
 	Box, Button, Grid, Heading, Image, Layer, Main,
-	RadioButtonGroup, Paragraph, Table, TableBody,
-	TableCell, TableHeader, TableRow, Text
+	RadioButtonGroup, Paragraph, ResponsiveContext,
+	Table, TableBody, TableCell, TableHeader, TableRow,
+	Text
 } from 'grommet';
-
 import { Add, FormClose, StatusGood } from "grommet-icons";
+
 import Sidebar from '../../components/Sidebar/Sidebar';
 import placeholder from "../../images/placeholder.png"
-import {STARTER, FIRST_DISH, SECOND_DISH, DESSERT} from "../../data/Constants"
 
 function AddToMyMenu(props) {
 
@@ -175,73 +176,73 @@ class RecipeDetails extends Component {
 		));
 
 		return (
-			<Grid
-				as="div"
-				areas={[
-					{ name: 'recipe_title', start: [0, 0], end: [1, 0] },
-					{ name: 'recipe_instructions', start: [0, 1], end: [1, 1] },
-					{ name: 'sidebar', start: [2, 0], end: [2, 1] },
-				]}
-				columns={['flex']}
-				rows={['auto', 'auto']}
-				gap='none'
-			>
-				<Main id="mainContent">
-					<Box
-						gridArea='recipe_title'
-						background='#F7F1F8'
-						margin={{top:'medium'}}
+			<ResponsiveContext.Consumer>
+				{size => (
+					<Grid
+						as="div"
+						areas={RESPONSIVE_AREAS[size]}
+						columns={['flex']}
+						rows={RESPONSIVE_AREAS["rows"][size]}
+						gap='none'
 					>
-						<Heading level="1" margin="small"> {this.state.recipe.title}</Heading>
-						<AddToMyMenu dishTitle={this.state.recipe.title} dishID={this.id}/>
-						<Box
-							direction="row-responsive"
-							pad={{ left: 'medium', right: 'small', vertical: 'small', top: 'medium', bottom: 'medium'}}
-						>
-							<Box height="250px" width="500px">
-								<Image
-									fit="cover"
-									src={this.state.recipe.image || placeholder}
-									alt={ this.state.recipe.image ? this.state.recipe.title : "This is just a placeholder image. We don't support uploading images for your own recipes yet."}
-								/>
+						<Main id="mainContent">
+							<Box
+								gridArea='recipe_title'
+								background='#F7F1F8'
+								margin={{top:'medium'}}
+							>
+								<Heading level="1" margin="small"> {this.state.recipe.title}</Heading>
+								<AddToMyMenu dishTitle={this.state.recipe.title} dishID={this.id}/>
+								<Box
+									direction="row-responsive"
+									pad={{ left: 'medium', right: 'small', vertical: 'small', top: 'medium', bottom: 'medium'}}
+								>
+									<Box height="250px" width="500px">
+										<Image
+											fit="cover"
+											src={this.state.recipe.image || placeholder}
+											alt={ this.state.recipe.image ? this.state.recipe.title : "This is just a placeholder image. We don't support uploading images for your own recipes yet."}
+										/>
+									</Box>
+									<Box overflow="auto">
+										<Table>
+											<TableHeader>
+												<TableRow>
+													<TableCell scope="col" border="bottom">
+														Ingredient Name
+													</TableCell>
+													<TableCell scope="col" border="bottom">
+														Quantity
+													</TableCell>
+												</TableRow>
+											</TableHeader>
+											<TableBody>
+												{tableRow}
+											</TableBody>
+										</Table>
+									</Box>
+								</Box>
 							</Box>
-							<Box overflow="auto">
-								<Table>
-									<TableHeader>
-										<TableRow>
-											<TableCell scope="col" border="bottom">
-												Ingredient Name
-											</TableCell>
-											<TableCell scope="col" border="bottom">
-												Quantity
-											</TableCell>
-										</TableRow>
-									</TableHeader>
-									<TableBody>
-										{tableRow}
-									</TableBody>
-								</Table>
+							<Box
+								gridArea='recipe_instructions'
+								background='#F7F1F8'
+								overflow="auto"
+							>
+								<Heading level="2" margin="small">
+									Recipe Steps
+								</Heading>
+								<Paragraph margin="small" fill={true}>
+									{this.state.recipe.instructions}
+								</Paragraph>
+								{detailedInstructions}
 							</Box>
+						</Main>
+						<Box gridArea='sidebar' margin={{top:'medium', right:'medium'}}>
+							<Sidebar model={this.props.model}/>
 						</Box>
-					</Box>
-					<Box
-						gridArea='recipe_instructions'
-						background='#F7F1F8'
-						overflow="auto"
-					>
-						<Heading level="2" margin="small">
-							Recipe Steps
-						</Heading>
-						<Paragraph margin="small" fill={true}>
-							{this.state.recipe.instructions}
-						</Paragraph>
-						{detailedInstructions}
-					</Box>
-				</Main>
-				<Box gridArea='sidebar' background='brand'margin={{top:'medium', right:'medium'}}>
-					<Sidebar model={this.props.model}/>
-				</Box>
-			</Grid>
+					</Grid>
+				)}
+			</ResponsiveContext.Consumer>
 		);
 	}
 }
