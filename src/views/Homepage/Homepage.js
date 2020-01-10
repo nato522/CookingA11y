@@ -22,17 +22,17 @@ class Homepage extends Component {
 
 	componentDidMount() {
 
-		modelInstance.getRandomFoodJoke()
-			.then(joke => {
-				this.setState({
-					joke: joke.text
-				})
-			}).catch(error => {
-			console.error(error);
-		});
-		// this.setState({
-		// 	joke: modelInstance.getRandomFoodJoke()
-		// })
+		// modelInstance.getRandomFoodJoke()
+		// 	.then(joke => {
+		// 		this.setState({
+		// 			joke: joke.text
+		// 		})
+		// 	}).catch(error => {
+		// 	console.error(error);
+		// });
+		this.setState({
+			joke: modelInstance.getRandomFoodJoke()
+		})
 
 		modelInstance.getRandomRecipes(4)
 			.then(welcome_recipes => {
@@ -83,7 +83,7 @@ class Homepage extends Component {
 								Food joke of the day: <br/> {this.state.joke}
 							</Heading>
 						</Box>
-						<Main id="mainContent" background="#E0E3F0">
+						<Main id="mainContent" background="#F7F1F8">
 							<Heading level={2}>Random "Go Bananas"</Heading>
 							{(this.state.isLoading) &&
 								<Box gridArea="random_recipes" margin="auto">

@@ -4,6 +4,7 @@ import {Accordion, AccordionPanel, Box, Button, Heading, Text} from 'grommet';
 import './Sidebar.css';
 import {STARTER, FIRST_DISH, SECOND_DISH, DESSERT} from "../../data/Constants"
 import {FormTrash} from "grommet-icons";
+import {Link} from "react-router-dom";
 
 class Sidebar extends Component {
 
@@ -38,11 +39,13 @@ class Sidebar extends Component {
     render() {
         let selectedDishMap = modelInstance.getSelectedDishes();
 
-        let starters = selectedDishMap.get(STARTER).map(starterTitle => (
-            <Box pad="medium" background="light-2" key={starterTitle}>
+        let starters = selectedDishMap.get(STARTER).map(starter => (
+            <Box pad="medium" background="light-2" key={starter}>
                 <Text>
-                    {starterTitle.split("/")[0]}
-                    <Button onClick={() => this.deleteRecipeFromMenu(STARTER, starterTitle)}>
+                    <Link to={"/recipe_details/" + starter.split("/")[1]}>
+                        {starter.split("/")[0]}
+                    </Link>
+                    <Button onClick={() => this.deleteRecipeFromMenu(STARTER, starter)}>
                         <FormTrash color='brand'/>
                     </Button>
                 </Text>
@@ -73,7 +76,7 @@ class Sidebar extends Component {
         ));
 
         let desserts = selectedDishMap.get(DESSERT).map(dessertTitle => (
-            <Box pad="medium" background="light-2">
+            <Box pad="medium" background="light-2" key={dessertTitle.split("/")[1]}>
                 <Text>
                     {dessertTitle.split("/")[0]}
                     <Button onClick={() => this.deleteRecipeFromMenu(DESSERT, dessertTitle)}>

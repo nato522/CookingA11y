@@ -18,9 +18,6 @@ function AddToMyMenu(props) {
 	const [value, setValue] = React.useState(STARTER);
 	const [open, setOpen] = React.useState();
 
-	// const onOpen = () => setOpen(true);
-	// const onClose = () => setOpen(undefined);
-
 	let addDishToMenu = () => {
 		modelInstance.addDishToMenu(value, props.dishTitle, props.dishID);
 	};
@@ -41,8 +38,10 @@ function AddToMyMenu(props) {
 					onEsc={() => setShow(false)}
 					onClickOutside={() => setShow(false)}
 				>
-					<Text margin="small" >Please choose the dish type:</Text>
+					<Paragraph alignSelf={"center"} margin="small" >Please choose the dish type!</Paragraph>
+					<Paragraph alignSelf={"center"} margin="small" >The recipe will be added to the menu on the right.</Paragraph>
 					<RadioButtonGroup
+						alignSelf={"center"}
 						name="dishType"
 						options={[STARTER, FIRST_DISH, SECOND_DISH, DESSERT]}
 						value={value}
@@ -78,11 +77,11 @@ function AddToMyMenu(props) {
 						round="medium"
 						elevation="medium"
 						pad={{ vertical: "xsmall", horizontal: "small" }}
-						background="status-ok"
+						background="#2C365E"
 					>
 						<Box align="center" direction="row" gap="xsmall">
-							<StatusGood />
-							<Text>The recipe has been added to your menu</Text>
+							<StatusGood color="#6fffb0"/>
+							<Text color="#6fffb0">The recipe has been added to your menu</Text>
 						</Box>
 						<Button icon={<FormClose />} onClick={() => setOpen(undefined)} plain />
 					</Box>
@@ -189,7 +188,7 @@ class RecipeDetails extends Component {
 				<Main id="mainContent">
 					<Box
 						gridArea='recipe_title'
-						background='#E0E3F0'
+						background='#F7F1F8'
 						margin={{top:'medium', left:'medium'}}
 					>
 						<Heading level="1" margin="small"> {this.state.recipe.title}</Heading>
@@ -231,7 +230,7 @@ class RecipeDetails extends Component {
 				</Box>
 				<Box
 					gridArea='recipe_instructions'
-					background='#236ea0'
+					background='#F7F1F8'
 					margin={{bottom:'medium', left:'medium', right:'402px'}}
 					overflow="auto"
 				>
