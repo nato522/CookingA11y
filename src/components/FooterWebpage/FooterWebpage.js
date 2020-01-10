@@ -10,7 +10,7 @@ class FooterWebpage extends Component {
 	render() {
 		return (
 			<Grommet theme={Theme}>
-				<Footer background="brand" pad="small" justify="center" margin={{"top":"small"}}>
+				<Footer background="brand" pad="small" justify="center" margin={{"top":"large"}}>
 					<Text size="small">Copyright</Text>
 				</Footer>
 			</Grommet>

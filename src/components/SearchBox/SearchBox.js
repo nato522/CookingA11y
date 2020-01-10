@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
     Box, Button, CheckBox, Form, FormField, Heading,
-    Layer, RadioButtonGroup,
+    Layer, RadioButtonGroup
 } from 'grommet';
 import { Search, SearchAdvanced } from 'grommet-icons';
 import FormFieldLabel from "../../components/FormFieldLabel/FormFieldLabel";
@@ -18,6 +18,7 @@ function AdvancedSearch(props){
                 label="Advanced Search"
                 onClick={() => setShow(true)}
                 plain={true}
+                margin={{"top":"medium"}}
             >
             </Button>
             {show && (
