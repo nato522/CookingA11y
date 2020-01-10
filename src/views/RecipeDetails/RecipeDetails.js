@@ -77,11 +77,11 @@ function AddToMyMenu(props) {
 						round="medium"
 						elevation="medium"
 						pad={{ vertical: "xsmall", horizontal: "small" }}
-						background="status-ok"
+						background="#2C365E"
 					>
 						<Box align="center" direction="row" gap="xsmall">
-							<StatusGood />
-							<Text>The recipe has been added to your menu</Text>
+							<StatusGood color="#6fffb0"/>
+							<Text color="#6fffb0">The recipe has been added to your menu</Text>
 						</Box>
 						<Button icon={<FormClose />} onClick={() => setOpen(undefined)} plain />
 					</Box>
@@ -188,7 +188,7 @@ class RecipeDetails extends Component {
 				<Main id="mainContent">
 					<Box
 						gridArea='recipe_title'
-						background='#E0E3F0'
+						background='#F7F1F8'
 						margin={{top:'medium', left:'medium'}}
 					>
 						<Heading level="1" margin="small"> {this.state.recipe.title}</Heading>
@@ -230,7 +230,7 @@ class RecipeDetails extends Component {
 				</Box>
 				<Box
 					gridArea='recipe_instructions'
-					background='#236ea0'
+					background='#F7F1F8'
 					margin={{bottom:'medium', left:'medium', right:'402px'}}
 					overflow="auto"
 				>

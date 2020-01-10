@@ -6,7 +6,7 @@ import theme from "../../styles/Theme"
 const AppBar = (props) => (
 	<Box
 		align='start'
-		background= 'grey'
+		background= '#2C365E'
 		pad={{ left: 'medium'}}
 		{...props}
 	/>
