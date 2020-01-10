@@ -3,7 +3,7 @@ import {
     Box, Button, CheckBox, Form, FormField, Heading,
     Layer, RadioButtonGroup,
 } from 'grommet';
-import { Search, SearchAdvanced } from 'grommet-icons';
+import {Close, Search, SearchAdvanced} from 'grommet-icons';
 import FormFieldLabel from "../../components/FormFieldLabel/FormFieldLabel";
 import './SearchBox.css';
 
@@ -32,6 +32,10 @@ function AdvancedSearch(props){
                         pad="40px"
                         width="large"
                     >
+                        <Button
+                            icon={ <Close /> }
+                            onClick={()=>{setShow(false)}}
+                        />
                         <Heading level="1">Advanced Search</Heading>
                         <Form onSubmit={(e) => {
                                 props.advancedSearch(e);

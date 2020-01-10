@@ -7,7 +7,7 @@ import {
 	TableCell, TableHeader, TableRow, Text
 } from 'grommet';
 
-import { Add, FormClose, StatusGood } from "grommet-icons";
+import { Add, Close, FormClose, StatusGood } from "grommet-icons";
 import Sidebar from '../../components/Sidebar/Sidebar';
 import placeholder from "../../images/placeholder.png"
 import {STARTER, FIRST_DISH, SECOND_DISH, DESSERT} from "../../data/Constants"
@@ -38,6 +38,10 @@ function AddToMyMenu(props) {
 					onEsc={() => setShow(false)}
 					onClickOutside={() => setShow(false)}
 				>
+					<Button
+						icon={ <Close /> }
+						onClick={()=>{setShow(false)}}
+					/>
 					<Paragraph alignSelf={"center"} margin="small" >Please choose the dish type!</Paragraph>
 					<Paragraph alignSelf={"center"} margin="small" >The recipe will be added to the menu on the right.</Paragraph>
 					<RadioButtonGroup
