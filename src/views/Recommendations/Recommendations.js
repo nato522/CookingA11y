@@ -82,8 +82,10 @@ class Recommendations extends Component {
 				>
 					For now, we don't have any recommendations for you
 					<Emoji symbol="😢" label="sad face"/>
-					.Add recipes to your menu and come back to see
-					new similar ones.
+					<Paragraph>
+						Add recipes from our website to your menu and come back to see
+						new similar ones.
+					</Paragraph>
 				</Paragraph>
 			)
 

@@ -18,9 +18,6 @@ function AddToMyMenu(props) {
 	const [value, setValue] = React.useState(STARTER);
 	const [open, setOpen] = React.useState();
 
-	// const onOpen = () => setOpen(true);
-	// const onClose = () => setOpen(undefined);
-
 	let addDishToMenu = () => {
 		modelInstance.addDishToMenu(value, props.dishTitle, props.dishID);
 	};

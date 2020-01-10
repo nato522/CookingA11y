@@ -140,14 +140,15 @@ class DataModel extends ObservableModel{
 
 		for (let i = 0; i < dishesInMenuList.length; i++) {
 			let dishID = dishesInMenuList[i].split("/")[1];
-			result.set(dishesInMenuList[i], []);	// we set the key as the name + id for uniqueness
+			if(!isNaN(parseInt(dishID, 10))) {
+				result.set(dishesInMenuList[i], []);	// we set the key as the name + id for uniqueness
+				const url = `${BASE_URL}/recipes/${dishID}/similar?number=${numberOfSimilar}`;
+				const response = await fetch(url, httpOptions);
+				const similarDishes = await response.json();
 
-			const url = `${BASE_URL}/recipes/${dishID}/similar?number=${numberOfSimilar}`;
-			const response = await fetch(url, httpOptions);
-			const similarDishes = await response.json();
-
-			for(let j = 0; j < similarDishes.length; j++) {
-				result.get(dishesInMenuList[i]).push(similarDishes[j]);
+				for (let j = 0; j < similarDishes.length; j++) {
+					result.get(dishesInMenuList[i]).push(similarDishes[j]);
+				}
 			}
 		}
 		return result;

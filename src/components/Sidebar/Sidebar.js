@@ -73,7 +73,7 @@ class Sidebar extends Component {
         ));
 
         let desserts = selectedDishMap.get(DESSERT).map(dessertTitle => (
-            <Box pad="medium" background="light-2">
+            <Box pad="medium" background="light-2" key={dessertTitle.split("/")[1]}>
                 <Text>
                     {dessertTitle.split("/")[0]}
                     <Button onClick={() => this.deleteRecipeFromMenu(DESSERT, dessertTitle)}>
