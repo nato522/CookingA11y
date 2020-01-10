@@ -121,6 +121,7 @@ class AddRecipe extends Component {
                     <FormFieldLabel
                         label="Name:"
                         aria-label="Name"
+                        placeholder="e.g. Chocolate"
                         name={`ingredient_${i + 1}_name`}
                         required={true}
                     />
@@ -129,6 +130,8 @@ class AddRecipe extends Component {
                         label="Amount:"
                         aria-label="Amount"
                         name={`ingredient_${i + 1}_amount`}
+                        min="0"
+                        placeholder="e.g. 500"
                         required={true}
                     />
                     <FormFieldLabel
@@ -136,6 +139,7 @@ class AddRecipe extends Component {
                         aria-label="Unit"
                         name={`ingredient_${i + 1}_unit`}
                         component={ Select }
+                        placeholder="Select from the list"
                         options={[
                             "Mililiter(s)",
                             "Liter(s)",
@@ -159,6 +163,7 @@ class AddRecipe extends Component {
                         label={`Step ${i + 1}:`}
                         aria-label={`Step ${i + 1}:`}
                         name={`step_${i + 1}_description`}
+                        placeholder="e.g. Carefully cut the tomatoes into square pieces"
                         required={true}
                     />
                 </Box>
@@ -207,6 +212,7 @@ class AddRecipe extends Component {
                                     label="Recipe name:"
                                     aria-label="Recipe name"
                                     name="title"
+                                    placeholder="e.g. Tomato Twister"
                                     required={true}
                                 />
                                 <FormFieldLabel
@@ -214,6 +220,7 @@ class AddRecipe extends Component {
                                     label="Recipe description:"
                                     aria-label="Recipe description"
                                     name="instructions"
+                                    placeholder="e.g. A vegan dish that is based on tomato with a layer of chocolate on top."
                                     required={true}
                                 />
                             </Box>
