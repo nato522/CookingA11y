@@ -9,7 +9,7 @@ class LoadingContent extends Component{
 
     render(){
         return(
-            <Box fill={true}>
+            <Box fill={true} margin={{"top": "medium"}}>
                 <Text>
                     {this.props.message || "Loading..."}
                 </Text>

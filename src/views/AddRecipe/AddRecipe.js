@@ -244,7 +244,7 @@ class AddRecipe extends Component {
                                 label="Add more steps"
                                 onClick={()=>{this.addStep()}}
                             />
-                            <Box>
+                            <Box margin={{"top": "large"}}>
                                 <Button
                                     type="submit"
                                     label="Submit"
