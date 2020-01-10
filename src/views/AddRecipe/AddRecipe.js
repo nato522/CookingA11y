@@ -117,7 +117,10 @@ class AddRecipe extends Component {
             ingredients.push(
                 <Box key={i}
                     direction="row-responsive"
+                    role="group"
+                    aria-labelledby={`ingredient_${i+1}`}
                 >
+                    <Heading id={`ingredient_${i+1}`} level={4}>Ingredient {i+1}</Heading>
                     <FormFieldLabel
                         label="Name:"
                         aria-label="Name"
