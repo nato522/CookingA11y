@@ -56,7 +56,7 @@ class NavigationBar extends Component {
                         }
                         {(size === 'small' ) &&
                             <Header
-                                background="#FFCA58"
+                                background="brand"
                                 elevation="medium"
                                 align="center"
                                 pad={

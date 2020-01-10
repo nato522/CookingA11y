@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7a64f032-d90d-4158-8458-d5044494be69" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SkipToContent/SkipToContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SkipToContent/SkipToContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/Theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/Theme.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavigationBar/NavigationBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/DataModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DataModel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Homepage/Homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Homepage/Homepage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/RecipeDetails/RecipeDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/RecipeDetails/RecipeDetails.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +97,7 @@
       <workItem from="1577784165997" duration="48000" />
       <workItem from="1578141261417" duration="22064000" />
       <workItem from="1578605194665" duration="39000" />
-      <workItem from="1578641880979" duration="6445000" />
+      <workItem from="1578641880979" duration="7053000" />
     </task>
     <task id="LOCAL-00001" summary="added the .gitignore file">
       <created>1577287941476</created>
@@ -282,7 +281,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578646161523</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="checked accessible color contrast">
+      <created>1578649952003</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1578649952003</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,7 +309,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added the .gitignore file" />
     <MESSAGE value="created the structure of the project" />
     <MESSAGE value="draft on creating the Navigation Bar" />
     <MESSAGE value="completed SkipToContent, NavigationBar and Footer" />
@@ -328,17 +333,18 @@
     <MESSAGE value="added instructions for adding a recipe to the menu" />
     <MESSAGE value="fixed recommendations to be only for the recipes in the website" />
     <MESSAGE value="recipes in &quot;My menu&quot; are clickable and can be redirected to their instructions" />
-    <option name="LAST_COMMIT_MESSAGE" value="recipes in &quot;My menu&quot; are clickable and can be redirected to their instructions" />
+    <MESSAGE value="checked accessible color contrast" />
+    <option name="LAST_COMMIT_MESSAGE" value="checked accessible color contrast" />
   </component>
   <component name="WindowStateProjectService">
     <state x="371" y="89" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1578161116062">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="89" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1578161116062" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578646160657">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578649951131">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578646160657" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578649951131" />
     <state x="421" y="97" key="FileChooserDialogImpl" timestamp="1578344430196">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

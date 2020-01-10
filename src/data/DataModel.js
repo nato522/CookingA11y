@@ -31,15 +31,15 @@ class DataModel extends ObservableModel{
 		"I eat my tacos over a Tortilla. That way when stuff falls out, BOOM, another taco."]
 	}
 
-	getRandomFoodJoke() {
-		const url = `${BASE_URL}/food/jokes/random`;
-		return fetch(url, httpOptions).then(this.processResponse);
-	}
-
 	// getRandomFoodJoke() {
-	// 	let joke = this.jokes[Math.floor(Math.random()*this.jokes.length)];
-	// 	return joke;
+	// 	const url = `${BASE_URL}/food/jokes/random`;
+	// 	return fetch(url, httpOptions).then(this.processResponse);
 	// }
+
+	getRandomFoodJoke() {
+		let joke = this.jokes[Math.floor(Math.random()*this.jokes.length)];
+		return joke;
+	}
 
 	getRandomRecipes(number_of_recipes) {
 		const url = `${BASE_URL}/recipes/random?number=` + number_of_recipes;
