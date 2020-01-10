@@ -39,11 +39,19 @@ function AdvancedSearch(props){
                             }}
                         >
                             <Box>
-                                <FormField aria-label="Search by recipe:" name="advancedQuery" placeholder="type here"/>
+                                <FormField
+                                    aria-label="Search by recipe name:"
+                                    label="Search by name:"
+                                    name="advancedQuery"
+                                    placeholder="e.g. Avocado salad"
+                                />
                             </Box>
                             <Box direction="row-responsive">
-                                <Box>
-                                    <Heading level="4">Diet:</Heading>
+                                <Box
+                                    role="group"
+                                    aria-labelledby="diet_type"
+                                >
+                                    <Heading id="diet_type" level="4">Diet:</Heading>
                                     <FormField
                                         component={CheckBox}
                                         name="vegan"
@@ -61,8 +69,8 @@ function AdvancedSearch(props){
                                         label="Pescetarian"
                                     />
                                 </Box>
-                                <Box>
-                                    <Heading level="4">Meal type:</Heading>
+                                <Box role="radiogroup" aria-labelledby="meal_type">
+                                    <Heading id="meal_type" level="4">Meal type:</Heading>
                                     <FormField
                                         component={RadioButtonGroup}
                                         name="mealType"
@@ -81,8 +89,11 @@ function AdvancedSearch(props){
                                 >
                                 </FormField>
                             </Box>
-                            <Box>
-                                <Heading level="4">Intolerances:</Heading>
+                            <Box
+                                role="group"
+                                aria-labelledby="intolerances"
+                            >
+                                <Heading id="intolerances" level="4">Intolerances:</Heading>
                                 <FormField component={CheckBox} name="dairy" label="Dairy"></FormField>
                                 <FormField component={CheckBox} name="egg" label="Egg"></FormField>
                                 <FormField component={CheckBox} name="gluten" label="Gluten"></FormField>
@@ -117,7 +128,12 @@ const SearchBox = (props) => (
         <Box>
             <Form onSubmit={props.search}>
                 <Box direction="row-responsive">
-                    <FormFieldLabel name="query" aria-label="Search" label="Search a recipe:" placeholder="type here again"/>
+                    <FormFieldLabel
+                        name="query"
+                        aria-label="Search"
+                        label="Search a recipe:"
+                        placeholder="e.g. Tiramisu"
+                    />
                     <Box justify="center">
                         <Button
                             icon={<Search />}

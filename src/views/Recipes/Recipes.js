@@ -207,7 +207,7 @@ class Recipes extends Component {
         let result_recipes = this.state.recipes.map((recipe, i) => {
             return(
                 <Box as="li" key={recipe.id}>
-                    <Link to={"/recipe_details/" + recipe.id}>
+                    <Link aria-label={`Read the details of "${recipe.title}"`} to={"/recipe_details/" + recipe.id}>
                         <RecipeCard key={i}
                             recipeID={recipe.id}
                             imageURL={(this.state.baseURI ? (`${this.state.baseURI}${recipe.imageUrls[0]}`) : recipe.image)}

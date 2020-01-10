@@ -50,7 +50,7 @@ class Homepage extends Component {
 		let welcome_recipes = this.state.welcome_recipes;
 
 		let recipes = welcome_recipes.map((recipe, i) => (
-			<Link to={"/recipe_details/" + recipe.id} key={recipe.id}>
+			<Link aria-label={`Read the details of "${recipe.title}"`} to={"/recipe_details/" + recipe.id} key={recipe.id}>
 				<RecipeCard
 					recipeID={recipe.id}
 					imageURL={recipe.image}

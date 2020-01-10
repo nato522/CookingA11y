@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 import {
-    Box, Button, Form, FormField, Grid, Heading,
-    Main, Select, Text, TextArea, Layer,
+    Box, Button, Form, Grid, Heading, Main,
+    Paragraph, Select, Text, TextArea, Layer,
 } from 'grommet';
 import { Add } from 'grommet-icons';
 
@@ -116,11 +116,17 @@ class AddRecipe extends Component {
         for (let i = 0; i < this.state.ingredientCount; i++){
             ingredients.push(
                 <Box key={i}
-                    direction="row-responsive"
+                    role="group"
+                    aria-labelledby={`ingredient_${i+1}`}
                 >
+                    <Heading margin="none" id={`ingredient_${i+1}`} level={4}>Ingredient {i+1}</Heading>
+                    <Box
+                        direction="row-responsive"
+                    >
                     <FormFieldLabel
                         label="Name:"
                         aria-label="Name"
+                        placeholder="e.g. Chocolate"
                         name={`ingredient_${i + 1}_name`}
                         required={true}
                     />
@@ -129,6 +135,8 @@ class AddRecipe extends Component {
                         label="Amount:"
                         aria-label="Amount"
                         name={`ingredient_${i + 1}_amount`}
+                        min="0"
+                        placeholder="e.g. 500"
                         required={true}
                     />
                     <FormFieldLabel
@@ -136,6 +144,7 @@ class AddRecipe extends Component {
                         aria-label="Unit"
                         name={`ingredient_${i + 1}_unit`}
                         component={ Select }
+                        placeholder="Select from the list"
                         options={[
                             "Mililiter(s)",
                             "Liter(s)",
@@ -147,6 +156,7 @@ class AddRecipe extends Component {
                         ]}
                         required={true}
                     />
+                    </Box>
                 </Box>
             );
         }
@@ -159,6 +169,7 @@ class AddRecipe extends Component {
                         label={`Step ${i + 1}:`}
                         aria-label={`Step ${i + 1}:`}
                         name={`step_${i + 1}_description`}
+                        placeholder="e.g. Carefully cut the tomatoes into square pieces"
                         required={true}
                     />
                 </Box>
@@ -198,12 +209,16 @@ class AddRecipe extends Component {
                                 this.reset(e);
                             }}
                         >
+                            <Paragraph fill>
+                                All required fields are marked with an asterisk (*) at the end. Example: "Recipe name *"
+                            </Paragraph>
                             <Heading level="3">Recipe information:</Heading>
                             <Box>
                                 <FormFieldLabel
                                     label="Recipe name:"
                                     aria-label="Recipe name"
                                     name="title"
+                                    placeholder="e.g. Tomato Twister"
                                     required={true}
                                 />
                                 <FormFieldLabel
@@ -211,6 +226,7 @@ class AddRecipe extends Component {
                                     label="Recipe description:"
                                     aria-label="Recipe description"
                                     name="instructions"
+                                    placeholder="e.g. A vegan dish that is based on tomato with a layer of chocolate on top."
                                     required={true}
                                 />
                             </Box>
@@ -218,14 +234,14 @@ class AddRecipe extends Component {
                             { ingredients }
                             <Button
                                 icon={ <Add /> }
-                                label="Add ingredient"
+                                label="Add more ingredients"
                                 onClick={()=>{this.addIngredient()}}
                             />
                             <Heading level="3">Instructions:</Heading>
                             { steps }
                             <Button
                                 icon={ <Add /> }
-                                label="Add step"
+                                label="Add more steps"
                                 onClick={()=>{this.addStep()}}
                             />
                             <Box>

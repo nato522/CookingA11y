@@ -1,16 +1,19 @@
-import React, {Component} from 'react';
-import modelInstance from "../../data/DataModel"
-import {Box, Grid, Heading, Main, Paragraph, ResponsiveContext, Text} from 'grommet';
-import {Link} from "react-router-dom";
+import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+import Emoji from "a11y-react-emoji";
+import {
+	Box, Grid, Heading, Main, Paragraph,
+	ResponsiveContext, Text
+} from 'grommet';
+
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import LoadingContent from '../../components/LoadingContent/LoadingContent';
+
+import modelInstance from "../../data/DataModel"
+import { RESPONSIVE } from "../../data/Constants"
 import burger from "../../images/burger.jpg";
-import {RESPONSIVE} from "../../data/Constants"
-import Emoji from "a11y-react-emoji";
 
 class Recommendations extends Component {
-
-
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -21,7 +24,6 @@ class Recommendations extends Component {
 	}
 
 	componentDidMount() {
-
 		let resultMap = modelInstance.getSelectedDishes();
 		for(let key of resultMap.keys()) {
 			let listOfDishes = resultMap.get(key);
@@ -51,7 +53,7 @@ class Recommendations extends Component {
 			result = Array.from(this.state.similarRecipesMap).map(([dishKey, dishValue]) => {
 				return(
 					<Box key={`recommendation_${dishKey}`}>
-						<Heading level={2}> Because you cooked {dishKey.split("/")[0]}, we recommend you: </Heading>
+						<Heading level={2}> Because you cooked "{dishKey.split("/")[0]}", we recommend you: </Heading>
 						<Grid
 							as="ul"
 							columns={RESPONSIVE["recommendations"][size]}
@@ -59,7 +61,7 @@ class Recommendations extends Component {
 						>
 							{dishValue.map((similarRecipe, i) => (
 								<Box as="li" key={similarRecipe.id}	>
-									<Link to={"/recipe_details/" + similarRecipe.id}>
+									<Link aria-label={`Read the details of "${similarRecipe.title}"`} to={"/recipe_details/" + similarRecipe.id}>
 										<RecipeCard
 											recipeID={similarRecipe.id}
 											imageURL={`${baseURLImage}` + similarRecipe.image}
@@ -80,10 +82,10 @@ class Recommendations extends Component {
 					fill="true"
 					alignSelf="center"
 				>
-					For now, we don't have any recommendations for you
-					<Emoji symbol="😢" label="sad face"/>
-					.Add recipes to your menu and come back to see
-					new similar ones.
+					For now, we don't have any recommendations for you <Emoji symbol="😢" label="sad face"/>.
+					Add recipes to your menu and come back to see new similar ones. You can do this by
+					navigating to a recipe page and clicking on the rounded button that is located under
+					the recipe name. This button will be labelled with the text "Add to my menu".
 				</Paragraph>
 			)
 

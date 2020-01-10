@@ -85,6 +85,7 @@ class Sidebar extends Component {
 
         return(
             <Box
+                as="aside"
                 background="white"
                 round="all"
             >
