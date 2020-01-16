@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.0378ead2.chunk.css",
-    "main.js": "/static/js/main.d1e228d5.chunk.js",
-    "main.js.map": "/static/js/main.d1e228d5.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.30c0f957.js",
-    "runtime-main.js.map": "/static/js/runtime-main.30c0f957.js.map",
-    "static/js/2.f01bfeed.chunk.js": "/static/js/2.f01bfeed.chunk.js",
-    "static/js/2.f01bfeed.chunk.js.map": "/static/js/2.f01bfeed.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.da5853befac62b3363917a10dc5a7bf6.js": "/precache-manifest.da5853befac62b3363917a10dc5a7bf6.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.0378ead2.chunk.css.map": "/static/css/main.0378ead2.chunk.css.map",
-    "static/js/2.f01bfeed.chunk.js.LICENSE": "/static/js/2.f01bfeed.chunk.js.LICENSE",
-    "static/media/burger.jpg": "/static/media/burger.86c58261.jpg"
+    "main.css": "/CookingA11y/static/css/main.0378ead2.chunk.css",
+    "main.js": "/CookingA11y/static/js/main.d1e228d5.chunk.js",
+    "main.js.map": "/CookingA11y/static/js/main.d1e228d5.chunk.js.map",
+    "runtime-main.js": "/CookingA11y/static/js/runtime-main.2bfb6938.js",
+    "runtime-main.js.map": "/CookingA11y/static/js/runtime-main.2bfb6938.js.map",
+    "static/js/2.9409f646.chunk.js": "/CookingA11y/static/js/2.9409f646.chunk.js",
+    "static/js/2.9409f646.chunk.js.map": "/CookingA11y/static/js/2.9409f646.chunk.js.map",
+    "index.html": "/CookingA11y/index.html",
+    "precache-manifest.f2658de14bf0a42b10a1d510238dfcdb.js": "/CookingA11y/precache-manifest.f2658de14bf0a42b10a1d510238dfcdb.js",
+    "service-worker.js": "/CookingA11y/service-worker.js",
+    "static/css/main.0378ead2.chunk.css.map": "/CookingA11y/static/css/main.0378ead2.chunk.css.map",
+    "static/js/2.9409f646.chunk.js.LICENSE": "/CookingA11y/static/js/2.9409f646.chunk.js.LICENSE",
+    "static/media/burger.jpg": "/CookingA11y/static/media/burger.86c58261.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.30c0f957.js",
-    "static/js/2.f01bfeed.chunk.js",
+    "static/js/runtime-main.2bfb6938.js",
+    "static/js/2.9409f646.chunk.js",
     "static/css/main.0378ead2.chunk.css",
     "static/js/main.d1e228d5.chunk.js"
   ]
