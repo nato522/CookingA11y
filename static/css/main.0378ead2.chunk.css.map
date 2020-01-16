@@ -1,0 +1,1 @@
+{"version":3,"sources":["SearchBox.css","Sidebar.css"],"names":[],"mappings":"AAAA,uBACI,4BACJ,CCFA,eACI,4BACJ","file":"main.0378ead2.chunk.css","sourcesContent":[".advancedSearch-button{\n    border-bottom: solid 1px #000000;\n}",".border-bottom{\n    border-bottom: 2px solid black;\n}"]}
